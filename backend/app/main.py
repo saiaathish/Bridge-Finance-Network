@@ -1,6 +1,16 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
+from supabase import create_client
 
 app = FastAPI(title="BFN")
+
+load_dotenv()
+
+supabase_url = os.getenv("SUPABASE_URL")
+supabase_key = os.getenv("SUPABASE_KEY") or os.getenv("SUPABASE_ANON_KEY")
+supabase = create_client(supabase_url, supabase_key) if supabase_url and supabase_key else None
 
 
 @app.get("/health")
@@ -16,6 +26,9 @@ def login(payload: dict) -> dict:
 
 	if not email or not password:
 		return {"error": "Email and password are required."}
+
+	if supabase is None:
+		return {"error": "Supabase is not configured."}
 	
 	try:
 		response = supabase.auth.sign_in_with_password(
@@ -39,6 +52,9 @@ def register(payload: dict) -> dict:
 
 	if not email or not password:
 		return {"error": "Email and password are required."}
+
+	if supabase is None:
+		return {"error": "Supabase is not configured."}
 	
 	# create a new user in supabase
 	try:
