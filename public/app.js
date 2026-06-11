@@ -952,7 +952,7 @@ function renderHome() {
           <p class="eyebrow">Student-led nonprofit finance network</p>
           <h1>Bridge Finance Network</h1>
           <p>BFN helps motivated students enter finance through structured learning, curated opportunities, research projects, competitions, and chapter leadership.</p>
-          <div class="hero-proof-strip" aria-label="Bridge Finance Network highlights">
+          <div class="hero-meta-line" aria-label="Bridge Finance Network highlights">
             ${heroProof.map(([value, label]) => `
               <span>
                 <strong>${escapeHtml(value)}</strong>
@@ -969,45 +969,27 @@ function renderHome() {
       </div>
     </section>
 
-    ${statsBand(stats, "overlap-stats")}
-
-    ${commandLibrarySection()}
-
-    <section class="section apple-showcase-section">
-      <div class="section-inner apple-split">
+    <section class="section homepage-overview-section">
+      <div class="section-inner homepage-overview">
         <div>
-          <p class="eyebrow">What members get</p>
-          <h2>Organized finance preparation students can actually use.</h2>
-          <p class="lead">Members receive curated opportunities, finance templates, competition prep, research workflows, and chapter materials in one organized workspace.</p>
+          <p class="eyebrow">What BFN organizes</p>
+          <h2>One clear path for students entering finance.</h2>
+          <p class="lead">Students can quickly see how BFN helps them learn finance, find opportunities, practice applied work, and lead locally.</p>
         </div>
-        <div class="apple-benefit-list">
-          ${memberBenefits.map((benefit) => `
-            <article>
-              <span>${escapeHtml(benefit.label)}</span>
-              <h3>${escapeHtml(benefit.title)}</h3>
-              <p>${escapeHtml(benefit.body)}</p>
-            </article>
+        <div class="overview-list">
+          ${[
+            ["Learn", "Finance fundamentals, templates, and recruiting preparation."],
+            ["Find", "Curated internships, programs, competitions, and deadlines."],
+            ["Practice", "Stock pitches, case work, research briefs, and presentations."],
+            ["Lead", "Chapter roles, team work, local events, and student projects."]
+          ].map(([title, body], index) => `
+            <a href="${index === 1 ? "/opportunities" : index === 3 ? "/chapters" : "/resources"}">
+              <span>${String(index + 1).padStart(2, "0")}</span>
+              <strong>${escapeHtml(title)}</strong>
+              <em>${escapeHtml(body)}</em>
+            </a>
           `).join("")}
         </div>
-      </div>
-    </section>
-
-    <section class="section apple-tile-section">
-      <div class="section-inner apple-section-title">
-        <p class="eyebrow">Four lanes</p>
-        <h2>BFN is organized into four clear member paths.</h2>
-        <p>Students can find opportunities, use resources, prepare for competitions, and build local chapter leadership without searching through scattered links.</p>
-      </div>
-      <div class="section-inner apple-tile-grid">
-        ${operatingPillars.map((pillar, index) => `
-          <article class="pillar-card apple-program-tile ${index === 0 ? "dark-tile" : ""}">
-            <span class="card-label">${escapeHtml(pillar.label)}</span>
-            <h3>${escapeHtml(pillar.title)}</h3>
-            <p>${escapeHtml(pillar.body)}</p>
-            <a href="${index === 3 ? "/chapters" : index === 1 ? "/opportunities" : "/resources"}">Learn more</a>
-            ${tagList(pillar.tags)}
-          </article>
-        `).join("")}
       </div>
     </section>
 
