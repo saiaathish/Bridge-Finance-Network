@@ -1,23 +1,20 @@
-# Bridge Finance Network
+# Bridge Finance Network Website
 
-Official website repository.
+Sites-compatible public website scaffold for Bridge Finance Network.
 
-## Frontend
-
-This is a Next.js project.
-
-Run the development server:
+## Commands
 
 ```bash
 npm run dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser.
+The build emits a Cloudflare Worker-compatible artifact at `dist/server/index.js`
+and static assets at `dist/server/public`.
 
-## Backend
+## Source Notes
 
-Run the FastAPI server:
-
-```bash
-uvicorn backend.app.main:app --reload
-```
+- Product scope and copy direction come from `BFN Website Mastersheet`.
+- Slack search found `#all-bfn`, but no discoverable Figma URL or detailed website thread.
+- The generated hero image lives in `public/assets/bfn-hero-source.png`; the page uses the compressed `public/assets/bfn-hero.jpg`.
+- Secrets from source documents are intentionally excluded. Put real runtime keys in Sites environment settings, not in this repo.
