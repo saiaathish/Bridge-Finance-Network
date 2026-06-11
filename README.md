@@ -1,6 +1,6 @@
-# Bridge Finance Network
+# Bridge Finance Network Website
 
-Official website repository.
+Sites-compatible public website scaffold for Bridge Finance Network.
 
 ## Frontend
 
@@ -11,13 +11,13 @@ Run the development server:
 
 ```bash
 npm run dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser.
+The build emits a Cloudflare Worker-compatible artifact at `dist/server/index.js`
+and static assets at `dist/server/public`.
 
-## Backend
-
-Run the FastAPI server:
+## Source Notes
 
 ```bash
 ## Learn More
