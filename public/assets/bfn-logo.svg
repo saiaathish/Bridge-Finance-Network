@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 190" role="img" aria-labelledby="title">
+  <title id="title">Bridge Finance Network</title>
+  <g fill="#06234a">
+    <path d="M28 24h72v34c0 32-27 56-72 64V42c0-10 8-18 18-18z"/>
+    <path d="M164 24h74c10 0 18 8 18 18v64h-54c-34 0-58-9-74-27-13-15-21-34-23-55z"/>
+    <path d="M28 132h58c45 0 74 20 86 48H46c-10 0-18-8-18-18z"/>
+    <path d="M196 132h60v30c0 10-8 18-18 18h-94v-18c0-18 20-30 52-30z"/>
+  </g>
+  <g fill="#000000" font-family="Inter, Arial Black, Arial, Helvetica, sans-serif" font-weight="900">
+    <text x="288" y="70" font-size="52">Bridge</text>
+    <text x="288" y="123" font-size="52">Finance</text>
+    <text x="288" y="176" font-size="52">Network</text>
+  </g>
+</svg>

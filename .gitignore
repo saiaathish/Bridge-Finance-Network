@@ -7,6 +7,7 @@ __pycache__/
 
 # dependencies
 /node_modules
+/node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -24,10 +25,12 @@ __pycache__/
 
 # production
 /build
+dist/
 
 # misc
 .DS_Store
 *.pem
+*.zip
 
 # debug
 npm-debug.log*
