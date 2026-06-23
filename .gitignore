@@ -22,6 +22,8 @@ __pycache__/
 /.next/
 /out/
 
+node_modules/
+
 # production
 /build
 dist/
