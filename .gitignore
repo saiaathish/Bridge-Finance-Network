@@ -23,6 +23,7 @@ __pycache__/
 /out/
 
 node_modules/
+.next/
 
 # production
 /build
