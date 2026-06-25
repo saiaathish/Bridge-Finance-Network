@@ -2,14 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/lib/data";
 import { Menu, X } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { toast } from "sonner";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const location = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -21,6 +25,36 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        toast.error(error.message);
+      } else {
+        toast.success("Signed out successfully!");
+        router.push("/");
+      }
+    } catch (err: any) {
+      toast.error("Failed to sign out. Please try again.");
+    }
+  };
 
   return (
     <header
@@ -70,26 +104,46 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/login"
-            className={`px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-              scrolled
-                ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)]"
-                : "text-white/80 hover:text-white"
-            }`}
-          >
-            Sign In
-          </Link>
-          <Link
-            href="/open-roles"
-            className={`px-5 py-2.5 text-sm font-semibold rounded-lg transition-all duration-300 active:scale-[0.97] ${
-              scrolled
-                ? "bg-[oklch(0.60_0.15_175)] text-white hover:bg-[oklch(0.65_0.15_175)]"
-                : "bg-white text-[oklch(0.15_0.03_260)] hover:bg-white/90"
-            }`}
-          >
-            Join BFN
-          </Link>
+          {user ? (
+            <>
+              <span className={`text-xs ${scrolled ? "text-[oklch(0.30_0.02_260)]" : "text-white/60"}`}>
+                {user.email}
+              </span>
+              <button
+                onClick={handleSignOut}
+                className={`px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer bg-transparent border-none ${
+                  scrolled
+                    ? "text-[oklch(0.30_0.02_260)] hover:text-red-500"
+                    : "text-white/80 hover:text-red-400"
+                }`}
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className={`px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                  scrolled
+                    ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)]"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/open-roles"
+                className={`px-5 py-2.5 text-sm font-semibold rounded-lg transition-all duration-300 active:scale-[0.97] ${
+                  scrolled
+                    ? "bg-[oklch(0.60_0.15_175)] text-white hover:bg-[oklch(0.65_0.15_175)]"
+                    : "bg-white text-[oklch(0.15_0.03_260)] hover:bg-white/90"
+                }`}
+              >
+                Join BFN
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -131,26 +185,46 @@ export default function Navbar() {
                 scrolled ? "border-black/10" : "border-white/10"
               }`}
             >
-              <Link
-                href="/login"
-                className={`px-4 py-3 text-center rounded-lg transition-colors ${
-                  scrolled
-                    ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)]"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/open-roles"
-                className={`px-4 py-3 text-center font-semibold rounded-lg ${
-                  scrolled
-                    ? "bg-[oklch(0.60_0.15_175)] text-white"
-                    : "bg-white text-[oklch(0.15_0.03_260)]"
-                }`}
-              >
-                Join BFN
-              </Link>
+              {user ? (
+                <>
+                  <span className={`px-4 py-2 text-xs text-center ${scrolled ? "text-[oklch(0.30_0.02_260)]" : "text-white/60"}`}>
+                    {user.email}
+                  </span>
+                  <button
+                    onClick={handleSignOut}
+                    className={`w-full px-4 py-3 text-center rounded-lg transition-colors cursor-pointer bg-transparent border-none ${
+                      scrolled
+                        ? "text-[oklch(0.30_0.02_260)] hover:text-red-500"
+                        : "text-white/80 hover:text-red-400"
+                    }`}
+                  >
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className={`px-4 py-3 text-center rounded-lg transition-colors ${
+                      scrolled
+                        ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)]"
+                        : "text-white/80 hover:text-white"
+                    }`}
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/open-roles"
+                    className={`px-4 py-3 text-center font-semibold rounded-lg ${
+                      scrolled
+                        ? "bg-[oklch(0.60_0.15_175)] text-white"
+                        : "bg-white text-[oklch(0.15_0.03_260)]"
+                    }`}
+                  >
+                    Join BFN
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -158,3 +232,4 @@ export default function Navbar() {
     </header>
   );
 }
+
