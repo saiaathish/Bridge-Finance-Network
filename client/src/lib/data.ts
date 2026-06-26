@@ -2,7 +2,6 @@
 
 export const stats = [
   { value: 200, suffix: "+", label: "Student Members" },
-  { value: 3, suffix: "", label: "Active Chapters" },
   { value: 50, suffix: "+", label: "Opportunities" },
   { value: 4, suffix: "", label: "Member Paths" },
 ];
@@ -29,29 +28,8 @@ export const paths = [
   {
     number: "04",
     title: "Lead",
-    description: "Chapter roles, team work, local events, and student projects.",
+    description: "Team work, local events, and student projects.",
     icon: "Users",
-  },
-];
-
-export const chapters = [
-  {
-    state: "MO",
-    school: "Marquette High School",
-    city: "Chesterfield, MO",
-    founded: "2024",
-  },
-  {
-    state: "FL",
-    school: "Middleton High School",
-    city: "Tampa, FL",
-    founded: "2024",
-  },
-  {
-    state: "NJ",
-    school: "Bridgewater-Raritan High School",
-    city: "Bridgewater, NJ",
-    founded: "2025",
   },
 ];
 
@@ -101,14 +79,6 @@ export const faqItems = [
   },
 ];
 
-export const portfolio = [
-  { ticker: "AAPL", company: "Apple Inc.", entry: 178.50, current: 195.20, thesis: "Strong services growth and iPhone cycle momentum." },
-  { ticker: "MSFT", company: "Microsoft Corp.", entry: 380.00, current: 425.50, thesis: "AI integration across enterprise products driving revenue expansion." },
-  { ticker: "JPM", company: "JPMorgan Chase", entry: 195.00, current: 212.80, thesis: "Net interest income growth and strong capital markets activity." },
-  { ticker: "V", company: "Visa Inc.", entry: 275.00, current: 298.40, thesis: "Cross-border travel recovery and digital payments secular trend." },
-  { ticker: "AMZN", company: "Amazon.com", entry: 155.00, current: 185.60, thesis: "AWS margin expansion and advertising revenue acceleration." },
-  { ticker: "GS", company: "Goldman Sachs", entry: 420.00, current: 465.30, thesis: "M&A advisory pipeline recovery and asset management growth." },
-];
 
 export const events = [
   {
@@ -123,21 +93,9 @@ export const events = [
     description: "Live session with a VP from a bulge bracket bank on recruiting and day-to-day.",
     type: "Speaker",
   },
-  {
-    title: "Chapter Leadership Summit",
-    date: "August 5, 2026",
-    description: "National virtual meetup for all chapter leads to plan the fall semester.",
-    type: "Meeting",
-  },
 ];
 
 export const blogPosts = [
-  {
-    title: "BFN Launches Third Chapter in New Jersey",
-    date: "June 2025",
-    category: "Announcement",
-    excerpt: "Bridgewater-Raritan High School becomes the newest addition to the BFN chapter network.",
-  },
   {
     title: "Spring Stock Pitch Competition Recap",
     date: "May 2025",
@@ -166,8 +124,6 @@ export const navLinks = [
   { label: "About", href: "/about" },
   { label: "Team", href: "/team" },
   { label: "Opportunities", href: "/opportunities" },
-  { label: "Chapters", href: "/chapters" },
   { label: "Partners", href: "/partners" },
-  { label: "Portfolio", href: "/portfolio" },
   { label: "Apply", href: "/open-roles" },
 ];
