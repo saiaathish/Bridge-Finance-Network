@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
-import { stats, paths, chapters, opportunities } from "@/lib/data";
+import { stats, paths, opportunities } from "@/lib/data";
 import { BookOpen, Search, Target, Users, Lock, ArrowRight, ChevronRight, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -39,7 +39,6 @@ function StatCounter({ value, suffix, label, delay }: { value: number; suffix: s
 export default function Home() {
   const { ref: heroRef, isInView: heroVisible } = useInView();
   const { ref: pathsRef, isInView: pathsVisible } = useInView();
-  const { ref: chaptersRef, isInView: chaptersVisible } = useInView();
   const { ref: oppRef, isInView: oppVisible } = useInView();
   const { ref: ctaRef, isInView: ctaVisible } = useInView();
   const { ref: proofRef, isInView: proofVisible } = useInView();
@@ -108,7 +107,7 @@ export default function Home() {
                 heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              Build real finance skills, access curated internships and competitions, publish research, and lead a chapter at your school — all before your first college class.
+              Build real finance skills, access curated internships and competitions, publish research, and lead strategic projects — all before your first college class.
             </p>
 
             <div
@@ -159,7 +158,7 @@ export default function Home() {
       {/* Stats Section */}
       <section className="bg-[oklch(0.13_0.03_260)] pt-8 pb-20">
         <div className="container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
             {stats.map((stat, i) => (
               <StatCounter key={stat.label} {...stat} delay={i * 100} />
             ))}
@@ -199,7 +198,7 @@ export default function Home() {
                     pathsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                 >
-                  From learning fundamentals to leading your own chapter, BFN gives you the structure, resources, and community to build real experience.
+                  From learning fundamentals to refining advanced case study work, BFN gives you the structure, resources, and community to build real experience.
                 </p>
 
                 <div className={`mt-8 transition-all duration-700 delay-300 ${pathsVisible ? "opacity-100" : "opacity-0"}`}>
@@ -263,10 +262,6 @@ export default function Home() {
                     200+ students already building their edge.
                   </p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10">
-                  <TrendingUp size={16} className="text-[oklch(0.75_0.15_175)]" />
-                  <span className="text-sm text-white/80 font-medium">3 chapters across 3 states</span>
-                </div>
               </div>
             </div>
           </div>
@@ -327,70 +322,6 @@ export default function Home() {
                 >
                   Unlock <ChevronRight size={13} />
                 </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Chapters */}
-      <section className="relative py-24 bg-[oklch(0.98_0.002_260)]">
-        <div className="absolute top-0 left-0 right-0 -mt-1">
-          <svg viewBox="0 0 1440 50" fill="none" className="w-full" preserveAspectRatio="none">
-            <path d="M0 50L0 0L1440 50Z" fill="oklch(0.13 0.03 260)" />
-          </svg>
-        </div>
-
-        <div ref={chaptersRef} className="container pt-8">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-            <div>
-              <span
-                className={`inline-flex items-center gap-2 text-[oklch(0.75_0.15_175)] text-sm font-semibold uppercase tracking-wider mb-4 transition-all duration-600 ${
-                  chaptersVisible ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <div className="w-8 h-[2px] bg-[oklch(0.75_0.15_175)]" />
-                Chapters & Leadership
-              </span>
-              <h2
-                className={`font-display text-3xl md:text-4xl font-bold text-[oklch(0.15_0.03_260)] transition-all duration-600 delay-100 ${
-                  chaptersVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              >
-                Built locally. Connected nationally.
-              </h2>
-            </div>
-            <Link
-              href="/chapters"
-              className={`inline-flex items-center gap-2 text-[oklch(0.65_0.15_175)] font-medium hover:text-[oklch(0.55_0.15_175)] transition-all duration-500 ${
-                chaptersVisible ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              Explore all chapters <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {chapters.map((chapter, i) => (
-              <div
-                key={chapter.school}
-                className={`group p-7 rounded-xl bg-white border border-[oklch(0.92_0.005_260)] hover:border-[oklch(0.75_0.15_175/0.3)] hover:shadow-xl hover:shadow-[oklch(0.75_0.15_175/0.05)] transition-all duration-300 hover:-translate-y-1 ${
-                  chaptersVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-                style={{ transitionDelay: `${200 + i * 100}ms` }}
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-[oklch(0.15_0.03_260)] flex items-center justify-center">
-                    <span className="font-display font-bold text-[oklch(0.75_0.15_175)] text-lg">{chapter.state}</span>
-                  </div>
-                  <div className="px-2.5 py-1 rounded-full bg-[oklch(0.90_0.08_80)] text-[oklch(0.45_0.15_80)] text-xs font-semibold">
-                    Est. {chapter.founded}
-                  </div>
-                </div>
-                <h3 className="font-display font-semibold text-[oklch(0.15_0.03_260)] text-lg mb-1">
-                  {chapter.school}
-                </h3>
-                <p className="text-sm text-[oklch(0.45_0.02_260)]">{chapter.city}</p>
               </div>
             ))}
           </div>
