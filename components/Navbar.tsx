@@ -73,11 +73,11 @@ export default function Navbar() {
             className="w-9 h-9 transition-all duration-500 group-hover:scale-110"
           />
           <span
-            className={`font-display font-bold text-lg hidden sm:block transition-colors duration-500 ${
+            className={`font-display font-bold text-lg sm:block transition-colors duration-500 ${
               scrolled ? "text-[oklch(0.15_0.03_260)]" : "text-white"
             }`}
           >
-            BFN
+            Bridge Finance Network
           </span>
         </Link>
 
