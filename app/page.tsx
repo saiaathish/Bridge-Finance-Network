@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
-import { stats, paths, opportunities } from "@/lib/data";
-import { BookOpen, Search, Target, Users, Lock, ArrowRight, ChevronRight, TrendingUp } from "lucide-react";
+import { stats, paths } from "@/lib/data";
+import { BookOpen, Search, Target, Users, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -39,7 +39,6 @@ function StatCounter({ value, suffix, label, delay }: { value: number; suffix: s
 export default function Home() {
   const { ref: heroRef, isInView: heroVisible } = useInView();
   const { ref: pathsRef, isInView: pathsVisible } = useInView();
-  const { ref: oppRef, isInView: oppVisible } = useInView();
   const { ref: ctaRef, isInView: ctaVisible } = useInView();
   const { ref: proofRef, isInView: proofVisible } = useInView();
 
@@ -121,12 +120,6 @@ export default function Home() {
               >
                 Apply to Join <ArrowRight size={18} />
               </Link>
-              <Link
-                href="/opportunities"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white font-medium rounded-lg hover:bg-white/5 hover:border-white/40 transition-all duration-200"
-              >
-                View Opportunities
-              </Link>
             </div>
 
             <div
@@ -135,7 +128,7 @@ export default function Home() {
               }`}
             >
               <div className="flex -space-x-2">
-                {[1,2,3,4,5].map(i => (
+                {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="w-8 h-8 rounded-full bg-[oklch(0.20_0.03_260)] border-2 border-[oklch(0.12_0.03_260)] flex items-center justify-center">
                     <span className="text-[10px] font-bold text-[oklch(0.75_0.15_175)]">{String.fromCharCode(64 + i)}</span>
                   </div>
@@ -264,66 +257,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Opportunities Preview */}
-      <section className="py-24 bg-[oklch(0.13_0.03_260)] relative">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(oklch(0.75 0.15 175) 1px, transparent 1px), linear-gradient(90deg, oklch(0.75 0.15 175) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-
-        <div ref={oppRef} className="container relative">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-14 gap-4">
-            <div>
-              <span
-                className={`inline-flex items-center gap-2 text-[oklch(0.75_0.15_80)] text-sm font-semibold uppercase tracking-wider mb-4 transition-all duration-600 ${
-                  oppVisible ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <Lock size={12} /> Member Exclusive
-              </span>
-              <h2
-                className={`font-display text-3xl md:text-4xl font-bold text-white transition-all duration-600 delay-100 ${
-                  oppVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              >
-                Curated opportunities, unlocked after review.
-              </h2>
-            </div>
-            <p
-              className={`text-white/50 max-w-md transition-all duration-600 delay-200 ${
-                oppVisible ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              Approved members get access to internships, competitions, programs, and resources vetted by our team.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {opportunities.map((opp, i) => (
-              <div
-                key={opp.category}
-                className={`group relative p-6 rounded-xl bg-[oklch(0.18_0.03_260)] border border-white/5 hover:border-[oklch(0.75_0.15_175/0.3)] transition-all duration-300 hover:-translate-y-1 ${
-                  oppVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-                style={{ transitionDelay: `${300 + i * 80}ms` }}
-              >
-                <div className="absolute top-4 right-4 text-white/15">
-                  <Lock size={14} />
-                </div>
-                <div className="w-12 h-12 rounded-lg bg-[oklch(0.75_0.15_175/0.1)] flex items-center justify-center mb-4 group-hover:bg-[oklch(0.75_0.15_175/0.2)] transition-colors">
-                  <span className="text-xl font-display font-bold text-[oklch(0.75_0.15_175)]">{opp.count}</span>
-                </div>
-                <h3 className="font-display font-semibold text-white mb-1">{opp.category}</h3>
-                <p className="text-xs text-white/40 mb-4">Sign in to access full listings</p>
-                <Link
-                  href="/login"
-                  className="text-sm text-[oklch(0.75_0.15_175)] hover:text-[oklch(0.80_0.15_175)] inline-flex items-center gap-1 transition-colors font-medium"
-                >
-                  Unlock <ChevronRight size={13} />
-                </Link>
-              </div>
-            ))}
           </div>
         </div>
       </section>
