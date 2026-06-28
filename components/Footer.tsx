@@ -53,7 +53,7 @@ export default function Footer() {
               Access
             </h4>
             <div className="flex flex-col gap-2.5">
-              <Link href="/open-roles" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Apply to Join</Link>
+              <Link href="/open-roles" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Join Now</Link>
               <Link href="/login" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Member Access</Link>
               <Link href="/contact" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Contact</Link>
               <Link href="/faq" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">FAQ</Link>
