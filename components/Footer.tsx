@@ -18,7 +18,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-relaxed text-white/50">
-              Student-led nonprofit expanding access to finance education, curated opportunities, competitions, chapters, and practical career preparation.
+              Student-led nonprofit expanding access to finance education, curated opportunities, competitions, and practical career preparation.
             </p>
           </div>
 
