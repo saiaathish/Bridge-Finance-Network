@@ -169,5 +169,4 @@ export const navLinks = [
   { label: "Chapters", href: "/chapters" },
   { label: "Partners", href: "/partners" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Apply", href: "/open-roles" },
 ];

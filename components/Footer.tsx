@@ -31,7 +31,6 @@ export default function Footer() {
               <Link href="/about" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">About</Link>
               <Link href="/team" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Team</Link>
               <Link href="/partners" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Partners</Link>
-              <Link href="/chapters" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Chapters</Link>
             </div>
           </div>
 
@@ -43,7 +42,6 @@ export default function Footer() {
             <div className="flex flex-col gap-2.5">
               <Link href="/opportunities" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Opportunities</Link>
               <Link href="/resources" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Resources</Link>
-              <Link href="/portfolio" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Portfolio</Link>
               <Link href="/blog" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Blog</Link>
               <Link href="/events" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Events</Link>
             </div>
@@ -55,7 +53,7 @@ export default function Footer() {
               Access
             </h4>
             <div className="flex flex-col gap-2.5">
-              <Link href="/open-roles" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Apply to Join</Link>
+              <Link href="/open-roles" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Join Now</Link>
               <Link href="/login" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Member Access</Link>
               <Link href="/contact" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">Contact</Link>
               <Link href="/faq" className="text-sm hover:text-[oklch(0.75_0.15_175)] transition-colors">FAQ</Link>
