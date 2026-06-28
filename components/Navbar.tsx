@@ -140,7 +140,7 @@ export default function Navbar() {
                     : "bg-white text-[oklch(0.15_0.03_260)] hover:bg-white/90"
                 }`}
               >
-                Join BFN
+                Join Now
               </Link>
             </>
           )}
@@ -221,7 +221,7 @@ export default function Navbar() {
                         : "bg-white text-[oklch(0.15_0.03_260)]"
                     }`}
                   >
-                    Join BFN
+                    Join Now
                   </Link>
                 </>
               )}
@@ -232,4 +232,3 @@ export default function Navbar() {
     </header>
   );
 }
-
