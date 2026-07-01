@@ -3,8 +3,26 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from supabase import create_client
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="BFN")
+
+origins = [
+    "http://localhost:3000",  # Next.js local development server
+    "https://bridgefinance.network",  # Production domain
+]
+
+# uvicorn main:app --reload --port 8000 (for local development)
+# uvicorn main:app --host --port 8000 (for production deployment)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
+
 
 load_dotenv()
 
