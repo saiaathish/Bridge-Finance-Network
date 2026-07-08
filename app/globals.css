@@ -212,3 +212,11 @@
   0%, 100% { box-shadow: 0 0 20px oklch(0.75 0.15 175 / 0.3); }
   50% { box-shadow: 0 0 40px oklch(0.75 0.15 175 / 0.6); }
 }
+
+.homepage-shader * {
+  cursor: none;
+}
+.homepage-shader {
+  background: oklch(0.12 0 0);
+  color: oklch(0.98 0 0);
+}
