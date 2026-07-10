@@ -16,7 +16,7 @@ export default function Navbar() {
   const router = useRouter();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -58,25 +58,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        scrolled
-          ? "bg-[oklch(0.93_0.07_85/0.97)] backdrop-blur-xl shadow-md shadow-black/10"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-150 ${
+        scrolled ? "bg-card/95 border-b border-border" : "bg-transparent"
       }`}
     >
-      <nav className="container flex items-center justify-between h-16 md:h-20">
+      <nav className="container flex items-center justify-between h-[72px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group" title="Bridge Finance Network">
-          <img
-            src="/bfn-logo.png"
-            alt="Bridge Finance Network"
-            className="w-9 h-9 transition-all duration-500 group-hover:scale-110"
-          />
-          <span
-            className={`font-display font-bold text-lg sm:block transition-colors duration-500 ${
-              scrolled ? "text-[oklch(0.15_0.03_260)]" : "text-white"
-            }`}
-          >
+        <Link href="/" className="flex items-center gap-3" title="Bridge Finance Network">
+          <img src="/bfn-logo.png" alt="Bridge Finance Network" className="w-9 h-9" />
+          <span className="font-sans font-semibold text-lg text-foreground sm:block">
             Bridge Finance Network
           </span>
         </Link>
@@ -87,14 +77,10 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+              className={`px-3 py-2 text-sm font-semibold rounded-lg transition-colors duration-150 ${
                 location === link.href
-                  ? scrolled
-                    ? "text-[oklch(0.55_0.15_175)] bg-[oklch(0.75_0.15_175/0.15)]"
-                    : "text-[oklch(0.75_0.15_175)] bg-white/10"
-                  : scrolled
-                  ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)] hover:bg-black/5"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
+                  ? "text-foreground bg-card border border-border"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {link.label}
@@ -106,16 +92,10 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           {user ? (
             <>
-              <span className={`text-xs ${scrolled ? "text-[oklch(0.30_0.02_260)]" : "text-white/60"}`}>
-                {user.email}
-              </span>
+              <span className="text-xs text-muted-foreground">{user.email}</span>
               <button
                 onClick={handleSignOut}
-                className={`px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer bg-transparent border-none ${
-                  scrolled
-                    ? "text-[oklch(0.30_0.02_260)] hover:text-red-500"
-                    : "text-white/80 hover:text-red-400"
-                }`}
+                className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-destructive transition-colors duration-150 cursor-pointer bg-transparent border-none"
               >
                 Sign Out
               </button>
@@ -124,21 +104,13 @@ export default function Navbar() {
             <>
               <Link
                 href="/login"
-                className={`px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                  scrolled
-                    ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)]"
-                    : "text-white/80 hover:text-white"
-                }`}
+                className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors duration-150"
               >
                 Sign In
               </Link>
               <Link
                 href="/open-roles"
-                className={`px-5 py-2.5 text-sm font-semibold rounded-lg transition-all duration-300 active:scale-[0.97] ${
-                  scrolled
-                    ? "bg-[oklch(0.60_0.15_175)] text-white hover:bg-[oklch(0.65_0.15_175)]"
-                    : "bg-white text-[oklch(0.15_0.03_260)] hover:bg-white/90"
-                }`}
+                className="btn-ghost px-5 py-2.5 text-sm font-semibold"
               >
                 Join Now
               </Link>
@@ -149,9 +121,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden p-2 transition-colors duration-300 ${
-            scrolled ? "text-[oklch(0.15_0.03_260)]" : "text-white"
-          }`}
+          className="lg:hidden p-2 text-foreground transition-colors duration-150"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -159,44 +129,24 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div
-          className={`lg:hidden backdrop-blur-xl border-t ${
-            scrolled
-              ? "bg-[oklch(0.93_0.07_85/0.98)] border-black/10"
-              : "bg-[oklch(0.15_0.03_260/0.96)] border-white/10"
-          }`}
-        >
+        <div className="lg:hidden bg-background border-t border-border">
           <div className="container py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-3 rounded-lg transition-colors ${
-                  scrolled
-                    ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)] hover:bg-black/5"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
+                className="px-4 py-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-card transition-colors duration-150"
               >
                 {link.label}
               </Link>
             ))}
-            <div
-              className={`mt-4 pt-4 flex flex-col gap-2 border-t ${
-                scrolled ? "border-black/10" : "border-white/10"
-              }`}
-            >
+            <div className="mt-4 pt-4 flex flex-col gap-2 border-t border-border">
               {user ? (
                 <>
-                  <span className={`px-4 py-2 text-xs text-center ${scrolled ? "text-[oklch(0.30_0.02_260)]" : "text-white/60"}`}>
-                    {user.email}
-                  </span>
+                  <span className="px-4 py-2 text-xs text-center text-muted-foreground">{user.email}</span>
                   <button
                     onClick={handleSignOut}
-                    className={`w-full px-4 py-3 text-center rounded-lg transition-colors cursor-pointer bg-transparent border-none ${
-                      scrolled
-                        ? "text-[oklch(0.30_0.02_260)] hover:text-red-500"
-                        : "text-white/80 hover:text-red-400"
-                    }`}
+                    className="w-full px-4 py-3 text-center rounded-lg text-muted-foreground hover:text-destructive transition-colors duration-150 cursor-pointer bg-transparent border-none"
                   >
                     Sign Out
                   </button>
@@ -205,22 +155,11 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/login"
-                    className={`px-4 py-3 text-center rounded-lg transition-colors ${
-                      scrolled
-                        ? "text-[oklch(0.30_0.02_260)] hover:text-[oklch(0.15_0.03_260)]"
-                        : "text-white/80 hover:text-white"
-                    }`}
+                    className="px-4 py-3 text-center rounded-lg text-muted-foreground hover:text-foreground transition-colors duration-150"
                   >
                     Sign In
                   </Link>
-                  <Link
-                    href="/open-roles"
-                    className={`px-4 py-3 text-center font-semibold rounded-lg ${
-                      scrolled
-                        ? "bg-[oklch(0.60_0.15_175)] text-white"
-                        : "bg-white text-[oklch(0.15_0.03_260)]"
-                    }`}
-                  >
+                  <Link href="/open-roles" className="btn-ghost px-4 py-3 text-center font-semibold">
                     Join Now
                   </Link>
                 </>

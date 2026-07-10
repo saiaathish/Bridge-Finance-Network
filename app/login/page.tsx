@@ -55,46 +55,47 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <section className="pt-32 pb-24 bg-[oklch(0.15_0.03_260)] min-h-screen flex items-center">
-        <div className="container max-w-md mx-auto">
+      <section className="hero-fade relative overflow-hidden pt-32 pb-24 min-h-screen flex items-center">
+        <div className="sky-beam pointer-events-none absolute bottom-0 right-0 top-0 w-full md:w-[55%]" />
+        <div className="container max-w-md mx-auto relative">
           <div className="text-center mb-8">
             <img
               src="/bfn-logo.png"
               alt="Bridge Finance Network"
               className="w-12 h-12 mx-auto mb-4"
             />
-            <h1 className="font-display text-2xl font-bold text-white mb-2">
+            <h1 className="font-display text-2xl font-medium text-foreground mb-2">
               {isSignUp ? "Create Member Account" : "Member Access"}
             </h1>
-            <p className="text-white/60 text-sm">
+            <p className="text-muted-foreground text-sm">
               {isSignUp
                 ? "Register a new Bridge Finance Network account."
                 : "Sign in to your Bridge Finance Network portal account."}
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-[oklch(0.20_0.03_260)] border border-white/5">
+          <form onSubmit={handleSubmit} className="p-8 rounded-xl bg-white border border-border">
             <div className="mb-4">
-              <label className="block text-sm font-medium text-white/70 mb-1.5">Email Address</label>
+              <label className="block text-sm font-semibold text-foreground mb-1.5">Email Address</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg bg-[oklch(0.15_0.03_260)] border border-white/10 text-white placeholder-white/30 focus:border-[oklch(0.75_0.15_175)] focus:ring-2 focus:ring-[oklch(0.75_0.15_175/0.2)] outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded border border-border bg-card text-foreground placeholder-muted-foreground/60 focus:border-ring focus:ring-2 focus:ring-ring/20 outline-none transition-all"
                 placeholder="you@email.com"
                 required
               />
             </div>
             <div className="mb-6">
-              <label className="block text-sm font-medium text-white/70 mb-1.5">Password</label>
+              <label className="block text-sm font-semibold text-foreground mb-1.5">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg bg-[oklch(0.15_0.03_260)] border border-white/10 text-white placeholder-white/30 focus:border-[oklch(0.75_0.15_175)] focus:ring-2 focus:ring-[oklch(0.75_0.15_175/0.2)] outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded border border-border bg-card text-foreground placeholder-muted-foreground/60 focus:border-ring focus:ring-2 focus:ring-ring/20 outline-none transition-all"
                 placeholder="••••••••"
                 required
               />
@@ -102,14 +103,14 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-[oklch(0.75_0.15_175)] text-[oklch(0.15_0.03_260)] font-semibold rounded-lg hover:bg-[oklch(0.80_0.15_175)] transition-all duration-200 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Processing..." : isSignUp ? "Register" : "Sign In"}
             </button>
 
             {!isSignUp && (
               <div className="mt-4 text-center">
-                <a href="#" className="text-sm text-white/50 hover:text-[oklch(0.75_0.15_175)] transition-colors">
+                <a href="#" className="text-sm text-muted-foreground hover:text-signal transition-colors duration-150">
                   Forgot password?
                 </a>
               </div>
@@ -117,13 +118,13 @@ export default function Login() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-white/50 text-sm">
+            <p className="text-muted-foreground text-sm">
               {isSignUp ? (
                 <>
                   Already have an account?{" "}
                   <button
                     onClick={() => setIsSignUp(false)}
-                    className="text-[oklch(0.75_0.15_175)] hover:underline font-medium bg-transparent border-none outline-none cursor-pointer"
+                    className="text-signal hover:underline font-semibold bg-transparent border-none outline-none cursor-pointer"
                   >
                     Sign In
                   </button>
@@ -133,12 +134,12 @@ export default function Login() {
                   Don&apos;t have an account?{" "}
                   <button
                     onClick={() => setIsSignUp(true)}
-                    className="text-[oklch(0.75_0.15_175)] hover:underline font-medium bg-transparent border-none outline-none cursor-pointer"
+                    className="text-signal hover:underline font-semibold bg-transparent border-none outline-none cursor-pointer"
                   >
                     Register here
                   </button>
                   {" or "}
-                  <Link href="/open-roles" className="text-[oklch(0.75_0.15_175)] hover:underline font-medium">
+                  <Link href="/open-roles" className="text-signal hover:underline font-semibold">
                     Apply to Join
                   </Link>
                 </>

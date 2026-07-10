@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import { useRef } from "react"
 
 interface MagneticButtonProps {
   children: React.ReactNode
@@ -11,6 +10,8 @@ interface MagneticButtonProps {
   onClick?: () => void
 }
 
+// Flat button per DESIGN.md: 8px radius, 0.15s color/border hover only —
+// no scale, bounce, or magnetic drift.
 export function MagneticButton({
   children,
   className = "",
@@ -18,43 +19,10 @@ export function MagneticButton({
   size = "default",
   onClick,
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null)
-  const positionRef = useRef({ x: 0, y: 0 })
-  const rafRef = useRef<number>()
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!ref.current) return
-
-    const rect = ref.current.getBoundingClientRect()
-    const x = e.clientX - rect.left - rect.width / 2
-    const y = e.clientY - rect.top - rect.height / 2
-
-    positionRef.current = { x: x * 0.15, y: y * 0.15 }
-
-    if (rafRef.current) cancelAnimationFrame(rafRef.current)
-    rafRef.current = requestAnimationFrame(() => {
-      if (ref.current) {
-        ref.current.style.transform = `translate3d(${positionRef.current.x}px, ${positionRef.current.y}px, 0)`
-      }
-    })
-  }
-
-  const handleMouseLeave = () => {
-    positionRef.current = { x: 0, y: 0 }
-    if (rafRef.current) cancelAnimationFrame(rafRef.current)
-    rafRef.current = requestAnimationFrame(() => {
-      if (ref.current) {
-        ref.current.style.transform = "translate3d(0px, 0px, 0)"
-      }
-    })
-  }
-
   const variants = {
-    primary:
-      "bg-foreground/95 text-background hover:bg-foreground backdrop-blur-md hover:scale-[1.02] active:scale-[0.98]",
-    secondary:
-      "bg-foreground/5 text-foreground hover:bg-foreground/10 backdrop-blur-xl border border-foreground/10 hover:border-foreground/20",
-    ghost: "bg-transparent text-foreground hover:bg-foreground/5 backdrop-blur-sm",
+    primary: "bg-primary text-primary-foreground border border-transparent hover:bg-primary/90",
+    secondary: "bg-transparent text-foreground border border-border hover:border-muted-foreground",
+    ghost: "bg-transparent text-foreground border border-border hover:border-muted-foreground",
   }
 
   const sizes = {
@@ -64,23 +32,16 @@ export function MagneticButton({
 
   return (
     <button
-      ref={ref}
       onClick={onClick}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className={`
-        relative overflow-hidden rounded-full font-medium
-        transition-all duration-300 ease-out will-change-transform
+        rounded-lg font-semibold
+        transition-colors duration-150 ease-out
         ${variants[variant]}
         ${sizes[size]}
         ${className}
       `}
-      style={{
-        transform: "translate3d(0px, 0px, 0)",
-        contain: "layout style paint",
-      }}
     >
-      <span className="relative z-10">{children}</span>
+      {children}
     </button>
   )
 }

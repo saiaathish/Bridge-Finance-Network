@@ -1,14 +1,25 @@
 "use client"
 
 import { useReveal } from "@/hooks/use-reveal"
+import { wordReveal } from "@/lib/motion"
+import { useEffect, useRef } from "react"
 
 export function TeamSection() {
   const { ref, isVisible } = useReveal(0.3)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    if (!headingRef.current) return
+    const tween = wordReveal(headingRef.current)
+    return () => {
+      tween.kill()
+    }
+  }, [])
 
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="w-full px-6 py-20 md:px-12 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
@@ -16,10 +27,10 @@ export function TeamSection() {
             isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
           }`}
         >
-          <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          <h2 ref={headingRef} className="mb-2 font-display text-5xl font-medium tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Our Team
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Students leading the desks</p>
+          <p className="font-mono text-sm text-muted-foreground md:text-base">/ Students leading the desks</p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-x-12 md:gap-y-12">
@@ -62,12 +73,12 @@ export function TeamSection() {
                 className={`group transition-all duration-700 ${getRevealClass()}`}
                 style={{ transitionDelay: `${i * 150}ms` }}
               >
-                <div className="mb-4 flex aspect-square items-center justify-center rounded-2xl border border-foreground/15 bg-foreground/10 backdrop-blur-md transition-all duration-300 group-hover:scale-[1.03] group-hover:bg-foreground/20">
-                  <span className="font-sans text-4xl font-light text-foreground/70 md:text-5xl">0{i + 1}</span>
+                <div className="hover-wiggle mb-4 flex aspect-square items-center justify-center rounded-xl border border-border bg-card transition-colors duration-150 group-hover:border-muted-foreground">
+                  <span className="wiggle-target font-mono text-4xl text-muted-foreground md:text-5xl">0{i + 1}</span>
                 </div>
-                <h3 className="mb-1 font-sans text-lg font-light text-foreground md:text-xl">{member.name}</h3>
-                <p className="mb-2 font-mono text-xs text-foreground/60">{member.role}</p>
-                <p className="text-sm leading-relaxed text-foreground/80">{member.detail}</p>
+                <h3 className="mb-1 font-sans text-lg font-medium text-foreground md:text-xl">{member.name}</h3>
+                <p className="mb-2 font-mono text-xs text-muted-foreground">{member.role}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{member.detail}</p>
               </div>
             )
           })}

@@ -8,7 +8,7 @@ export function ApproachSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="w-full overflow-x-clip px-6 py-20 md:px-12 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
@@ -19,11 +19,11 @@ export function ApproachSection() {
                 isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
               }`}
             >
-              <p className="mb-4 font-mono text-sm text-foreground/60 md:text-base">/ The Wall Street standard</p>
-              <h2 className="font-sans text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
+              <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ The Wall Street standard</p>
+              <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
                 We operate like
                 <br />
-                a real <span className="text-foreground/40">firm.</span>
+                a real <span className="text-muted-foreground">firm.</span>
               </h2>
             </div>
 
@@ -86,12 +86,12 @@ export function ApproachSection() {
                   }}
                 >
                   <div className="mb-1 flex items-center gap-3">
-                    <span className="font-mono text-xs text-foreground/60">0{i + 1}</span>
+                    <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
                     <h3 className="font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-1 md:text-2xl">
                       {item.desk}
                     </h3>
                   </div>
-                  <p className="font-mono text-xs text-foreground/60 md:text-sm">{item.detail}</p>
+                  <p className="font-mono text-xs text-muted-foreground md:text-sm">{item.detail}</p>
                 </div>
               )
             })}

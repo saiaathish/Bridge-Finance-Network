@@ -11,7 +11,7 @@ export function ContactSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="w-full overflow-x-clip px-4 py-20 md:px-12 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-24">
@@ -21,12 +21,12 @@ export function ContactSection() {
                 isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
               }`}
             >
-              <h2 className="mb-2 font-sans text-4xl font-light leading-[1.05] tracking-tight text-foreground md:mb-3 md:text-7xl lg:text-8xl">
+              <h2 className="mb-2 font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:mb-3 md:text-7xl lg:text-8xl">
                 Apply
                 <br />
                 to join
               </h2>
-              <p className="font-mono text-xs text-foreground/60 md:text-base">/ Start with the public application</p>
+              <p className="font-mono text-xs text-muted-foreground md:text-base">/ Start with the public application</p>
             </div>
 
             <div className="space-y-4 md:space-y-8">
@@ -38,8 +38,8 @@ export function ContactSection() {
                 style={{ transitionDelay: "200ms" }}
               >
                 <div className="mb-1 flex items-center gap-2">
-                  <Mail className="h-3 w-3 text-foreground/60" />
-                  <span className="font-mono text-xs text-foreground/60">Email</span>
+                  <Mail className="h-3 w-3 text-muted-foreground" />
+                  <span className="font-mono text-xs text-muted-foreground">Email</span>
                 </div>
                 <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
                   bridgefinancenetwork@gmail.com
@@ -53,8 +53,8 @@ export function ContactSection() {
                 style={{ transitionDelay: "350ms" }}
               >
                 <div className="mb-1 flex items-center gap-2">
-                  <MapPin className="h-3 w-3 text-foreground/60" />
-                  <span className="font-mono text-xs text-foreground/60">Reach</span>
+                  <MapPin className="h-3 w-3 text-muted-foreground" />
+                  <span className="font-mono text-xs text-muted-foreground">Reach</span>
                 </div>
                 <p className="text-base text-foreground md:text-2xl">Nationwide, USA</p>
               </div>
@@ -69,7 +69,7 @@ export function ContactSection() {
                   <a
                     key={social}
                     href="#"
-                    className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
+                    className="border-b border-transparent font-mono text-xs text-muted-foreground transition-all hover:border-foreground/60 hover:text-foreground/90"
                   >
                     {social}
                   </a>
@@ -81,12 +81,12 @@ export function ContactSection() {
           {/* Right side - Application call to action */}
           <div className="flex flex-col justify-center">
             <div
-              className={`rounded-2xl border border-foreground/20 bg-foreground/10 p-6 backdrop-blur-md transition-all duration-700 md:p-8 ${
+              className={`rounded-xl border border-border bg-white p-6 transition-all duration-700 md:p-8 ${
                 isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
               }`}
               style={{ transitionDelay: "300ms" }}
             >
-              <p className="mb-2 font-mono text-xs text-foreground/60">Membership Application</p>
+              <p className="mb-2 font-mono text-xs text-muted-foreground">Membership Application</p>
               <h3 className="mb-4 font-sans text-2xl font-light leading-snug tracking-tight text-foreground md:text-3xl">
                 Join the next cohort of analysts
               </h3>
@@ -114,9 +114,9 @@ export function ContactSection() {
                 className="w-full"
                 onClick={() => window.open(APPLICATION_URL, "_blank")}
               >
-                <span className="flex items-center justify-center gap-2">
+                <span className="group flex items-center justify-center gap-2">
                   Start Application
-                  <ArrowUpRight className="h-4 w-4" />
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
               </MagneticButton>
             </div>
