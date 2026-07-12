@@ -4,66 +4,66 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
+import { sectionEntrance } from "@/lib/motion";
+import { PageHero } from "@/components/page-hero";
+import { useLayoutEffect, useRef } from "react";
 
-function ImpactStat({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) {
+function ImpactStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const { ref, isInView } = useInView();
   const count = useCountUp(value, 2000, isInView);
 
   return (
-    <div
-      ref={ref}
-      className="p-8 rounded-2xl bg-white border border-[oklch(0.92_0.005_260)] text-center"
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <div className="font-display text-5xl md:text-6xl font-bold text-[oklch(0.65_0.15_175)] mb-2">
+    <div ref={ref} data-card className="gsap-hidden p-8 rounded-xl bg-white border border-border text-center">
+      <div className="font-mono text-5xl md:text-6xl text-foreground mb-2">
         {count}{suffix}
       </div>
-      <div className="text-sm text-[oklch(0.45_0.02_260)] uppercase tracking-wider font-medium">{label}</div>
+      <div className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">{label}</div>
     </div>
   );
 }
 
 export default function Impact() {
-  const { ref, isInView } = useInView();
+  const statsRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const tweens = [
+      statsRef.current && sectionEntrance(statsRef.current, "[data-card]"),
+      panelRef.current && sectionEntrance(panelRef.current, "[data-row]"),
+    ];
+    return () => {
+      tweens.forEach((t) => t && t.kill());
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <section className="pt-32 pb-20 bg-[oklch(0.15_0.03_260)]">
-        <div className="container">
-          <span className="inline-block text-[oklch(0.75_0.15_175)] text-sm font-semibold uppercase tracking-wider mb-4">
-            Our Impact
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl mb-4">
-            Measuring what matters.
-          </h1>
-          <p className="text-lg text-white/60 max-w-2xl">
-            Since our founding, BFN has grown into a national network of students building real finance experience.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        kicker="Our Impact"
+        title="Measuring what matters."
+        accent="matters."
+        subtitle="Since our founding, BFN has grown into a national network of students building real finance experience."
+      />
 
-      <section className="py-24 bg-[oklch(0.98_0.002_260)]">
-        <div ref={ref} className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <ImpactStat value={200} suffix="+" label="Student Members" delay={0} />
-            <ImpactStat value={3} suffix="" label="Active Chapters" delay={100} />
-            <ImpactStat value={3} suffix="" label="States Represented" delay={200} />
-            <ImpactStat value={50} suffix="+" label="Opportunities Curated" delay={300} />
+      {/* Stats — Haze band, white data cards */}
+      <section className="py-20 md:py-24 bg-card">
+        <div className="container">
+          <div ref={statsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <ImpactStat value={200} suffix="+" label="Student Members" />
+            <ImpactStat value={3} suffix="" label="Active Chapters" />
+            <ImpactStat value={3} suffix="" label="States Represented" />
+            <ImpactStat value={50} suffix="+" label="Opportunities Curated" />
           </div>
 
-          <div
-            className={`p-10 rounded-2xl bg-[oklch(0.15_0.03_260)] transition-all duration-700 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
+          <div ref={panelRef} className="p-10 rounded-xl bg-white border border-border">
             <div className="grid md:grid-cols-2 gap-10 items-center">
-              <div>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+              <div data-row className="gsap-hidden">
+                <h2 className="font-display text-2xl md:text-3xl font-medium text-foreground mb-4">
                   Growing every semester
                 </h2>
-                <p className="text-white/60 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   BFN is expanding to new schools, adding more curated opportunities, and building deeper curriculum every month. Our goal is to make high-quality finance education accessible to any motivated student, regardless of their school or background.
                 </p>
               </div>
@@ -73,9 +73,9 @@ export default function Impact() {
                   { label: "New opportunities added monthly", value: "10+" },
                   { label: "Guest speaker sessions completed", value: "8" },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center justify-between p-4 rounded-lg bg-[oklch(0.20_0.03_260)] border border-white/5">
-                    <span className="text-sm text-white/70">{item.label}</span>
-                    <span className="font-display font-bold text-[oklch(0.75_0.15_175)]">{item.value}</span>
+                  <div key={item.label} data-row className="gsap-hidden flex items-center justify-between p-4 rounded-lg bg-card border border-border">
+                    <span className="text-sm text-muted-foreground">{item.label}</span>
+                    <span className="font-mono text-signal">{item.value}</span>
                   </div>
                 ))}
               </div>

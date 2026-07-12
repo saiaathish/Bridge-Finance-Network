@@ -40,49 +40,66 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --color-navy: oklch(0.15 0.03 260);
-  --color-navy-light: oklch(0.20 0.03 260);
-  --color-teal: oklch(0.75 0.15 175);
-  --color-gold: oklch(0.75 0.15 80);
-  --color-slate: oklch(0.55 0.02 260);
+  --font-sans: 'Figtree', system-ui, sans-serif;
+  --font-display: 'EB Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --color-canvas: var(--bfn-canvas);
+  --color-haze: var(--bfn-haze);
+  --color-ink: var(--bfn-ink);
+  --color-ink-secondary: var(--bfn-ink-secondary);
+  --color-signal: var(--bfn-signal);
+  --color-gain: var(--bfn-gain);
+  --color-loss: var(--bfn-loss);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(0.98 0.002 260);
-  --foreground: oklch(0.15 0.03 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.03 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.03 260);
-  --primary: oklch(0.75 0.15 175);
-  --primary-foreground: oklch(0.15 0.03 260);
-  --secondary: oklch(0.95 0.005 260);
-  --secondary-foreground: oklch(0.3 0.02 260);
-  --muted: oklch(0.95 0.005 260);
-  --muted-foreground: oklch(0.55 0.02 260);
-  --accent: oklch(0.95 0.01 175);
-  --accent-foreground: oklch(0.15 0.03 260);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.90 0.005 260);
-  --input: oklch(0.90 0.005 260);
-  --ring: oklch(0.75 0.15 175);
-  --chart-1: oklch(0.75 0.15 175);
-  --chart-2: oklch(0.65 0.12 175);
-  --chart-3: oklch(0.75 0.15 80);
-  --chart-4: oklch(0.55 0.10 260);
-  --chart-5: oklch(0.45 0.08 260);
-  --sidebar: oklch(0.15 0.03 260);
-  --sidebar-foreground: oklch(0.90 0.005 260);
-  --sidebar-primary: oklch(0.75 0.15 175);
-  --sidebar-primary-foreground: oklch(0.15 0.03 260);
-  --sidebar-accent: oklch(0.20 0.03 260);
-  --sidebar-accent-foreground: oklch(0.90 0.005 260);
-  --sidebar-border: oklch(0.25 0.03 260);
-  --sidebar-ring: oklch(0.75 0.15 175);
+  /* BFN design tokens — DESIGN.md */
+  --bfn-canvas: #FAFAF8;
+  --bfn-haze: #F5F5F5;
+  --bfn-ink: #1B1B1B;
+  --bfn-ink-secondary: #5B5F6B;
+  --bfn-hairline: rgba(0, 0, 0, 0.1);
+  --bfn-signal: #2B7FFF;
+  --bfn-gain: #3FAE72;
+  --bfn-loss: #D9564B;
+  --bfn-sky-a: #4FA8E8;
+  --bfn-sky-b: #8FD3F4;
+  --bfn-sky-c: #F2B463;
+  --bfn-gradient-sky: linear-gradient(100deg, var(--bfn-sky-a), var(--bfn-sky-b) 45%, var(--bfn-sky-c));
+
+  --radius: 0.75rem;
+  --background: var(--bfn-canvas);
+  --foreground: var(--bfn-ink);
+  --card: var(--bfn-haze);
+  --card-foreground: var(--bfn-ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--bfn-ink);
+  --primary: var(--bfn-ink);
+  --primary-foreground: var(--bfn-canvas);
+  --secondary: var(--bfn-haze);
+  --secondary-foreground: var(--bfn-ink);
+  --muted: var(--bfn-haze);
+  --muted-foreground: var(--bfn-ink-secondary);
+  --accent: var(--bfn-haze);
+  --accent-foreground: var(--bfn-ink);
+  --destructive: var(--bfn-loss);
+  --destructive-foreground: #ffffff;
+  --border: var(--bfn-hairline);
+  --input: var(--bfn-hairline);
+  --ring: var(--bfn-signal);
+  --chart-1: var(--bfn-sky-a);
+  --chart-2: var(--bfn-sky-b);
+  --chart-3: var(--bfn-sky-c);
+  --chart-4: var(--bfn-gain);
+  --chart-5: var(--bfn-ink-secondary);
+  --sidebar: var(--bfn-haze);
+  --sidebar-foreground: var(--bfn-ink);
+  --sidebar-primary: var(--bfn-ink);
+  --sidebar-primary-foreground: var(--bfn-canvas);
+  --sidebar-accent: #ffffff;
+  --sidebar-accent-foreground: var(--bfn-ink);
+  --sidebar-border: var(--bfn-hairline);
+  --sidebar-ring: var(--bfn-signal);
 }
 
 @layer base {
@@ -135,23 +152,217 @@
   }
 
   .font-display {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--font-display);
   }
 
-  .text-gradient {
-    background: linear-gradient(135deg, oklch(0.75 0.15 175), oklch(0.65 0.12 200));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* One italic accent word per headline, max once per page section (DESIGN.md) */
+  .accent-word {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
   }
 
-  .bg-navy {
-    background-color: oklch(0.15 0.03 260);
+  /* Haze card: flat, border-only depth — no shadow anywhere */
+  .card-haze {
+    background-color: var(--bfn-haze);
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 12px;
+    padding: 20px;
   }
 
-  .bg-navy-light {
-    background-color: oklch(0.20 0.03 260);
+  /* Pure white card reserved for real data tables (BFN Portfolio) */
+  .card-data {
+    background-color: #ffffff;
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 12px;
   }
+
+  /* Ghost nav button */
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 8px;
+    color: var(--bfn-ink);
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    border-color: var(--bfn-ink-secondary);
+  }
+
+  /* Underline link */
+  .link-underline {
+    color: var(--bfn-signal);
+    border-bottom: 2px solid var(--bfn-signal);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  /* Locked-state card: Haze card + subtle diagonal hatch, no dark overlay */
+  .card-locked {
+    background-color: var(--bfn-haze);
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0 12px,
+      rgba(0, 0, 0, 0.025) 12px 13px
+    );
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 12px;
+  }
+
+  /* Tier badges — token-derived tints, no raw hex in components */
+  .tier-intern {
+    background-color: color-mix(in srgb, var(--bfn-ink-secondary) 12%, white);
+    color: var(--bfn-ink-secondary);
+  }
+  .tier-analyst {
+    background-color: color-mix(in srgb, var(--bfn-sky-a) 16%, white);
+    color: color-mix(in srgb, var(--bfn-sky-a) 70%, var(--bfn-ink));
+  }
+  .tier-associate {
+    background-color: color-mix(in srgb, var(--bfn-signal) 14%, white);
+    color: var(--bfn-signal);
+  }
+  .tier-senior {
+    background-color: color-mix(in srgb, var(--bfn-sky-c) 25%, white);
+    color: color-mix(in srgb, var(--bfn-sky-c) 55%, var(--bfn-ink));
+  }
+
+  /* Sky gradient band — signature element only: hero band, tier-ladder track,
+     section dividers. Never a page or card background. */
+  .sky-band {
+    background-image: var(--bfn-gradient-sky);
+    background-size: 200% 100%;
+    animation: skyDrift 60s linear infinite alternate;
+  }
+
+  /* Hidden-before-GSAP state: applied in JSX so animated elements are
+     invisible on first paint; GSAP flips visibility as its first act. */
+  .gsap-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Deliberate cinematic opening on the hero container */
+  .hero-fade {
+    animation: fadeIn 0.3s ease-out both;
+  }
+
+  /* Sunrise sky filling the right half of the hero — full bleed to the top
+     and right edges, feathering leftward into the canvas. Multi-stop
+     dawn-to-gold gradient whose angle, position, and horizon drift slowly. */
+  .sky-beam {
+    background-image: linear-gradient(
+      var(--sunrise-angle, 160deg),
+      #35578C 0%,
+      #4FA8E8 var(--sunrise-lift, 22%),
+      #8FD3F4 45%,
+      #CFE9E2 58%,
+      #FBE3B8 70%,
+      #F2B463 84%,
+      #E8955F 100%
+    );
+    background-size: 160% 160%;
+    background-position: 50% 100%;
+    animation:
+      sunriseAngle 45s ease-in-out infinite alternate,
+      sunriseRise 60s ease-in-out infinite alternate;
+    -webkit-mask-image: linear-gradient(250deg, black 42%, transparent 80%);
+    mask-image: linear-gradient(250deg, black 42%, transparent 80%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sky-band,
+    .sky-beam,
+    .stat-marquee-track {
+      animation: none;
+    }
+  }
+}
+
+@property --sunrise-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 160deg;
+}
+
+@property --sunrise-lift {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 22%;
+}
+
+@keyframes sunriseAngle {
+  from { --sunrise-angle: 145deg; }
+  to { --sunrise-angle: 195deg; }
+}
+
+@keyframes sunriseRise {
+  0% {
+    background-position: 50% 100%;
+    --sunrise-lift: 30%;
+  }
+  100% {
+    background-position: 50% 0%;
+    --sunrise-lift: 14%;
+  }
+}
+
+/* Stat row marquee — continuous ticker, pauses on hover */
+.stat-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.stat-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+.stat-marquee:hover .stat-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Hover micro-interactions */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+.hover-wiggle:hover .wiggle-target {
+  animation: wiggle 0.4s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-wiggle:hover .wiggle-target {
+    animation: none;
+  }
+}
+
+/* Typewriter caret for the hero headline */
+.type-caret::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  margin-left: 0.08em;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: caretBlink 1s steps(2) infinite;
+}
+.type-caret.type-done::after {
+  opacity: 0;
+  animation: none;
+}
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+@keyframes skyDrift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
 }
 
 @layer utilities {
@@ -208,7 +419,3 @@
   50% { transform: translateY(-10px); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.75 0.15 175 / 0.3); }
-  50% { box-shadow: 0 0 40px oklch(0.75 0.15 175 / 0.6); }
-}
