@@ -202,14 +202,26 @@ export default function Home() {
         </MagneticButton>
       </nav>
 
-      {/* Hero — warm canvas on the left, full-bleed sunrise sky on the right */}
+      {/* Hero — full-bleed sunrise sky across the entire viewport */}
       <section
         ref={registerSection("hero")}
         className="hero-fade relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pb-20 pt-28 md:px-12"
       >
         {/* Extends 40% above the hero so the downward parallax drift never
             exposes a blank strip along the clipped top edge */}
-        <div ref={skyRef} className="sky-beam pointer-events-none absolute -top-[40%] bottom-0 right-0 w-full md:w-[62%]" />
+        <div ref={skyRef} className="sky-beam pointer-events-none absolute -top-[40%] bottom-0 inset-x-0" />
+
+        {/* Brand mark watermark, sitting quietly in the sunrise sky's empty span */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-full items-center justify-center md:flex md:w-1/2 md:-translate-y-[10%]"
+        >
+          <img
+            src="/bfn-logo.png"
+            alt=""
+            className="h-[42%] max-h-[400px] w-auto opacity-[0.5] mix-blend-multiply [mask-image:radial-gradient(closest-side,black_55%,transparent_100%)]"
+          />
+        </div>
 
         <div ref={heroRef} className="relative mx-auto w-full max-w-7xl">
           <div data-hero-lead className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5">

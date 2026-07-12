@@ -55,7 +55,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground inner-page">
       <Navbar />
 
       <section className="hero-fade relative overflow-hidden pt-32 pb-24 min-h-screen flex items-center">
