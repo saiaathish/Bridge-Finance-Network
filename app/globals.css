@@ -102,6 +102,29 @@
   --sidebar-ring: var(--bfn-signal);
 }
 
+/* Non-landing brand accent — logo-inspired navy, scoped to `.inner-page`
+   (every route except `/`) so the landing page's bright signal-blue is
+   never touched. Re-declares only the tokens derived from --bfn-signal /
+   --bfn-hairline / --bfn-haze; everything else (ink, canvas, primary/
+   buttons) is inherited unchanged so CTAs stay ink, not navy. */
+.inner-page {
+  --bfn-signal: #134A94;
+  --bfn-hairline: rgba(19, 74, 148, 0.35);
+  --bfn-haze: color-mix(in srgb, var(--bfn-signal) 8%, #ffffff);
+
+  --card: var(--bfn-haze);
+  --card-foreground: var(--bfn-ink);
+  --secondary: var(--bfn-haze);
+  --muted: var(--bfn-haze);
+  --accent: var(--bfn-haze);
+  --border: var(--bfn-hairline);
+  --input: var(--bfn-hairline);
+  --ring: var(--bfn-signal);
+  --sidebar: var(--bfn-haze);
+  --sidebar-border: var(--bfn-hairline);
+  --sidebar-ring: var(--bfn-signal);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

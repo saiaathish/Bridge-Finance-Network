@@ -37,7 +37,7 @@ export default function Impact() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground inner-page">
       <Navbar />
 
       <PageHero
