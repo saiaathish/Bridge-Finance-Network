@@ -174,7 +174,7 @@ export function sectionEntrance(container: Element, itemSelector: string): gsap.
 
 /**
  * Landing-hero sky parallax + fade: the gradient moves at a fraction of
- * scroll velocity for depth, then fades and compresses as the next content
+ * scroll velocity for depth, then fades as the next content
  * zone (fadeTrigger) enters at 80% viewport. Additive to the CSS drift
  * loops; skipped entirely under prefers-reduced-motion.
  */
@@ -211,12 +211,10 @@ export function heroSkyParallax(sky: Element, fadeTrigger: Element): gsap.MatchM
       // Fade + compress as the next zone arrives. The fade spans from the
       // next band entering at 80% viewport until it reaches 15% — a
       // proportional range, so the sky only fully releases once the next
-      // band actually dominates the screen (a fixed 200–300px range
-      // finished while the hero still filled most of the viewport,
-      // leaving its right half blank).
+      // band actually dominates the screen. Keep scale at 1: scaling this
+      // full-bleed layer exposes blank edges while it is still visible.
       gsap.to(sky, {
         opacity: 0,
-        scale: 0.85,
         ease: "none",
         scrollTrigger: {
           trigger: fadeTrigger,
