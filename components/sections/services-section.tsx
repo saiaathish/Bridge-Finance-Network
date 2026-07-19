@@ -3,6 +3,7 @@
 import { useReveal } from "@/hooks/use-reveal"
 import { wordReveal } from "@/lib/motion"
 import { useEffect, useRef } from "react"
+import Link from "next/link"
 
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -31,7 +32,7 @@ export function ServicesSection() {
             What BFN Organizes
           </h2>
           <p className="font-mono text-sm text-muted-foreground md:text-base">
-            / One clear path for students entering finance
+            / Clear paths for students entering finance.
           </p>
         </div>
 
@@ -62,6 +63,21 @@ export function ServicesSection() {
           ))}
         </div>
       </div>
+
+      <Link
+      href="/login"
+      className="mt-16 block rounded-xl border border-border bg-background p-8 transition-all duration-300 hover:-translate-y-1 hover:border-foreground md:p-10"
+    >
+      <div className="mb-4 flex items-center gap-3">
+        <span className="font-mono text-xs text-muted-foreground">
+          BFN FLAGSHIP PROGRAM
+        </span>
+      </div>
+
+      <h3 className="font-sans text-3xl font-light text-foreground md:text-4xl">
+        Investment Track
+      </h3>
+    </Link>
     </section>
   )
 }

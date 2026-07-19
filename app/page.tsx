@@ -107,10 +107,8 @@ function StatMarquee() {
 // independent because each destination uses its stable section key.
 const NAV_ITEMS = [
   { label: "Home", key: "hero" },
-  { label: "About", key: "about" },
   { label: "Approach", key: "approach" },
   { label: "Programs", key: "programs" },
-  { label: "Team", key: "team" },
   { label: "Apply", key: "contact" },
 ] as const;
 
