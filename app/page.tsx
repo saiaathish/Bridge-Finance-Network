@@ -10,8 +10,10 @@ import { APPLICATION_URL } from "@/lib/constants"
 import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion"
 import { useRef, useEffect, useLayoutEffect, useState } from "react"
 
+// Single source of truth — both marquee copies render from this array, so
+// the duplicated clone can never drift from the live set.
 const HERO_STATS = [
-  { value: "200+", label: "Student Members" },
+  { value: "220+", label: "Student Members" },
   { value: "4", label: "Coverage Desks" },
   { value: "4", label: "Member Paths" },
 ]
@@ -65,19 +67,28 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
   )
 }
 
-// Stat row as a continuous marquee ticker; duplicated once so the loop is
-// seamless at translateX(-50%).
+// Ticker rail (§2). A quiet, continuous market-ticker reference: tabular
+// figures, hairline rules between stats, consistent baseline alignment.
+// Duplicated once so the loop is seamless at translateX(-50%); both copies
+// render from HERO_STATS so they cannot drift apart.
 function StatMarquee() {
+  const label = HERO_STATS.map((s) => `${s.value} ${s.label}`).join(", ")
+
   return (
-    <div className="stat-marquee border-t border-border pt-8" aria-label="200+ Student Members, 4 Coverage Desks, 4 Member Paths">
+    <div className="stat-marquee border-t border-border pt-6" aria-label={label}>
       <div className="stat-marquee-track" aria-hidden="true">
         {[0, 1].map((copy) => (
-          <div key={copy} className="flex shrink-0 items-center">
+          <div key={copy} className="flex shrink-0 items-stretch">
             {HERO_STATS.map((stat) => (
-              <div key={`${copy}-${stat.label}`} className="flex items-baseline gap-3 pr-16">
-                <span className="font-mono text-2xl text-foreground md:text-3xl">{stat.value}</span>
-                <span className="text-sm font-semibold text-muted-foreground">{stat.label}</span>
-                <span className="pl-10 font-mono text-muted-foreground/50">✦</span>
+              <div
+                key={`${copy}-${stat.label}`}
+                // Hairline rule replaces the old glyph sprite separators
+                className="flex items-baseline gap-3 border-l border-border pl-6 pr-10"
+              >
+                <span className="tabular-figures text-2xl text-foreground md:text-3xl">
+                  {stat.value}
+                </span>
+                <span className="text-sm font-medium text-muted-foreground">{stat.label}</span>
               </div>
             ))}
           </div>

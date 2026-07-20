@@ -360,19 +360,20 @@
   }
 }
 
-/* Stat row marquee — continuous ticker, pauses on hover */
+/* Ticker rail — quiet and continuous. No hover-pause: with only three
+   stats the cycle is short, and pause-on-hover reads as jitter, not polish.
+   Max-width tightens the loop so it no longer feels padded out to fill
+   space it does not need. */
 .stat-marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  max-width: 46rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
 }
 .stat-marquee-track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 28s linear infinite;
-}
-.stat-marquee:hover .stat-marquee-track {
-  animation-play-state: paused;
+  animation: marqueeScroll 18s linear infinite;
 }
 
 @keyframes marqueeScroll {

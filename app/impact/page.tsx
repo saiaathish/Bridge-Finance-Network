@@ -51,7 +51,7 @@ export default function Impact() {
       <section className="py-20 md:py-24 bg-card">
         <div className="container">
           <div ref={statsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <ImpactStat value={200} suffix="+" label="Student Members" />
+            <ImpactStat value={220} suffix="+" label="Student Members" />
             <ImpactStat value={3} suffix="" label="Active Chapters" />
             <ImpactStat value={3} suffix="" label="States Represented" />
             <ImpactStat value={50} suffix="+" label="Opportunities Curated" />

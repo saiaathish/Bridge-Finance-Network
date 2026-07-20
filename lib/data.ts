@@ -1,7 +1,7 @@
 // BFN Site Data — all content managed here
 
 export const stats = [
-  { value: 200, suffix: "+", label: "Student Members" },
+  { value: 220, suffix: "+", label: "Student Members" },
   { value: 3, suffix: "", label: "Active Chapters" },
   { value: 50, suffix: "+", label: "Opportunities" },
   { value: 4, suffix: "", label: "Member Paths" },
