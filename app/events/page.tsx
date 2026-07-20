@@ -40,7 +40,7 @@ export default function Events() {
       />
 
       {/* Events list — Haze band */}
-      <section className="py-20 md:py-24 bg-card">
+      <section className="py-20 md:py-24 band-haze">
         <div className="container max-w-4xl">
           <h2 ref={headingRef} className="font-display text-2xl font-medium text-foreground mb-8">
             Upcoming

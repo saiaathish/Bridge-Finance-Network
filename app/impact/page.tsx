@@ -48,7 +48,7 @@ export default function Impact() {
       />
 
       {/* Stats — Haze band, white data cards */}
-      <section className="py-20 md:py-24 bg-card">
+      <section className="py-20 md:py-24 band-haze">
         <div className="container">
           <div ref={statsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <ImpactStat value={220} suffix="+" label="Student Members" />

@@ -49,7 +49,7 @@ export function PageHero({ kicker, title, accent, subtitle, children, divider = 
   return (
     <>
       <section className="hero-fade relative overflow-hidden pt-36 pb-20">
-        <div className="sky-beam pointer-events-none absolute bottom-0 right-0 top-0 w-full md:w-[55%]" />
+        <div className="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true" />
         <div ref={rootRef} className="container relative">
           <span data-hero-lead className="gsap-hidden inline-block font-mono text-signal text-sm font-semibold uppercase tracking-wider mb-4">
             {kicker}

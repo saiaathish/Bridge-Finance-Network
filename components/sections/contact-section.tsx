@@ -81,7 +81,7 @@ export function ContactSection() {
           {/* Right side - Application call to action */}
           <div className="flex flex-col justify-center">
             <div
-              className={`rounded-xl border border-border bg-white p-6 transition-all duration-700 md:p-8 ${
+              className={`rounded-xl border border-border bg-white/85 p-6 transition-all duration-700 md:p-8 ${
                 isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
               }`}
               style={{ transitionDelay: "300ms" }}

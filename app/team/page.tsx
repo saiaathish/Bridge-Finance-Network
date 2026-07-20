@@ -50,7 +50,7 @@ export default function Team() {
       />
 
       {/* Directory — Haze band, white cards */}
-      <section className="py-20 md:py-24 bg-card">
+      <section className="py-20 md:py-24 band-haze">
         <div className="container">
           <div className="flex flex-wrap gap-2 mb-10">
             {teams.map((team) => (

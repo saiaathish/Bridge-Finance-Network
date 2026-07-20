@@ -37,7 +37,7 @@ export default function Blog() {
       />
 
       {/* Posts — Haze band, white cards */}
-      <section className="py-20 md:py-24 bg-card">
+      <section className="py-20 md:py-24 band-haze">
         <div ref={listRef} className="container max-w-4xl">
           {blogPosts.length > 0 && (
             <div

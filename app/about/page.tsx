@@ -69,7 +69,7 @@ export default function About() {
       </section>
 
       {/* Founder — Haze band */}
-      <section className="py-20 md:py-24 bg-card">
+      <section className="py-20 md:py-24 band-haze">
         <div ref={founderRef} className="container">
           <div className="max-w-4xl mx-auto">
             <span

@@ -59,7 +59,7 @@ export default function Login() {
       <Navbar />
 
       <section className="hero-fade relative overflow-hidden pt-32 pb-24 min-h-screen flex items-center">
-        <div className="sky-beam pointer-events-none absolute bottom-0 right-0 top-0 w-full md:w-[55%]" />
+        <div className="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container max-w-md mx-auto relative">
           <div className="text-center mb-8">
             <img

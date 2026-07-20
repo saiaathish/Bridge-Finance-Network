@@ -36,7 +36,7 @@ export default function FAQ() {
       />
 
       {/* Questions — Haze band */}
-      <section className="py-16 md:py-20 bg-card">
+      <section className="py-16 md:py-20 band-haze">
         <div className="container max-w-3xl">
           <div ref={statsRef} className="grid grid-cols-3 gap-4 mb-12">
             {[

@@ -28,6 +28,7 @@ precision mediump float;
 #endif
 
 uniform vec3 u_colors[8];
+uniform float u_colorWeights[8]; // per-colour dominance (gold > blue)
 uniform vec4 u_scene;      // resolution.xy, time, colour count
 uniform vec4 u_shape;      // scale, intensity, paramA, warp
 uniform vec4 u_surface;    // detail, contrast, brightness, saturation
@@ -183,7 +184,12 @@ vec3 shade(vec2 uv, vec2 p, float t) {
     vec2 c = vec2(
       sin(t * (0.21 + fi * 0.071) + fi * 2.4 + u_seed),
       cos(t * (0.17 + fi * 0.093) + fi * 1.7)) * (0.45 + u_intensity * 0.35);
-    float w = exp(-dot(p - c, p - c) * 6.0);
+    // Per-colour weighting: gold dominates more of the cycle, blue reads as
+    // an accent rather than a co-equal colour. Scaling the falloff as well as
+    // the weight shrinks the blue blob's AREA, not just its opacity, so the
+    // heavy-blue phase occupies less of the frame and less of the cycle.
+    float cw = u_colorWeights[i];
+    float w = exp(-dot(p - c, p - c) * (6.0 / max(cw, 0.15))) * cw;
     acc += u_colors[i] * w;
     total += w;
   }
@@ -272,6 +278,14 @@ void main() {
 }
 `;
 
+/**
+ * Colour dominance. A deliberate departure from the spec's even weighting —
+ * per REDESIGN-HANDOFF.md this is now a live design call, not a spec to match.
+ * Gold (#FFBF00, #F3B007) carries the cycle; blue (#2600FB) is an accent;
+ * the near-black holds the depth without going murky.
+ */
+const COLOR_WEIGHTS = new Float32Array([1.35, 0.85, 1.3, 0.58, 0, 0, 0, 0]);
+
 // Spec palette (low → high): #FFBF00, #050514, #F3B007, #2600FB
 const COLORS = new Float32Array([
   1.0, 0.749, 0.0,
@@ -343,6 +357,7 @@ export function MeshDriftShader() {
 
     const loc = {
       colors: gl.getUniformLocation(prog, "u_colors"),
+      colorWeights: gl.getUniformLocation(prog, "u_colorWeights"),
       scene: gl.getUniformLocation(prog, "u_scene"),
       shape: gl.getUniformLocation(prog, "u_shape"),
       surface: gl.getUniformLocation(prog, "u_surface"),
@@ -354,6 +369,7 @@ export function MeshDriftShader() {
 
     // Static uniforms — exact spec values.
     gl.uniform3fv(loc.colors, COLORS);
+    gl.uniform1fv(loc.colorWeights, COLOR_WEIGHTS);
     gl.uniform4f(loc.shape, 1.2, 0.72, 0.77, 0.31);
     gl.uniform4f(loc.surface, 2.37, 1.08, 0.05, 1.24);
     gl.uniform4f(loc.finish, 0.44, 0.21, 0.005, 0.06);

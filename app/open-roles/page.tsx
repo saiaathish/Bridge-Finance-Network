@@ -44,7 +44,7 @@ export default function OpenRoles() {
       </PageHero>
 
       {/* Openings — Haze band */}
-      <section className="py-16 md:py-20 bg-card">
+      <section className="py-16 md:py-20 band-haze">
         <div className="container max-w-4xl">
           <h2 ref={rolesHeadingRef} className="font-display text-2xl font-medium text-foreground mb-8">
             Current Openings

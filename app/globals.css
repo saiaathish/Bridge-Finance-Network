@@ -213,7 +213,31 @@
      homepage. Text-dense inner pages are quieter (higher canvas mix) than the
      homepage hero, but never cut to flat colour. */
   .page-surface {
-    background-color: color-mix(in srgb, var(--bfn-canvas) 86%, transparent);
+    background-color: color-mix(in srgb, var(--bfn-canvas) 72%, transparent);
+  }
+
+  /* Section band. Translucent, NOT opaque — opaque bands made the page read
+     as shader / white / shader / white instead of one continuous field.
+     The tonal step between .page-surface and .band-haze still gives the page
+     its rhythm, but the shader now flows behind every band uninterrupted. */
+  .band-haze {
+    background-color: color-mix(in srgb, var(--bfn-haze) 56%, transparent);
+  }
+
+  /* Hero legibility scrim. Static gradient — deliberately NOT animated and
+     NOT tied to the shader's cycle: it must hold up no matter where the
+     blobs currently sit. Opaque toward the base canvas colour behind the
+     text column, fully transparent on the far side so the shader still
+     reads at full strength where there is no copy. */
+  .hero-scrim {
+    background-image: linear-gradient(
+      100deg,
+      var(--bfn-canvas) 0%,
+      color-mix(in srgb, var(--bfn-canvas) 94%, transparent) 22%,
+      color-mix(in srgb, var(--bfn-canvas) 70%, transparent) 42%,
+      color-mix(in srgb, var(--bfn-canvas) 28%, transparent) 62%,
+      transparent 80%
+    );
   }
 
   /* Haze card: flat, border-only depth — no shadow anywhere */

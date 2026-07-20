@@ -7,7 +7,7 @@ import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MagneticButton } from "@/components/magnetic-button"
 import { APPLICATION_URL } from "@/lib/constants"
-import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion"
+import { heroIntro, typewriter } from "@/lib/motion"
 import { useRef, useEffect, useLayoutEffect, useState } from "react"
 
 // Single source of truth — both marquee copies render from this array, so
@@ -111,7 +111,6 @@ const NAV_ITEMS = [
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
-  const skyRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
   const [activeKey, setActiveKey] = useState("hero")
   const [scrolled, setScrolled] = useState(false)
@@ -131,18 +130,6 @@ export default function Home() {
     if (!heroRef.current) return
     heroIntro(heroRef.current.querySelectorAll("[data-hero-item]"))
   }
-
-  // Sky parallax (0.3x desktop / 0.15x mobile) + fade-out as the About band
-  // enters at 80% viewport.
-  useEffect(() => {
-    if (!skyRef.current) return
-    const aboutEl = sectionRefs.current["about"]
-    if (!aboutEl) return
-    const mm = heroSkyParallax(skyRef.current, aboutEl)
-    return () => {
-      mm?.revert()
-    }
-  }, [])
 
   useEffect(() => {
     const onScroll = () => {
@@ -213,16 +200,18 @@ export default function Home() {
         </MagneticButton>
       </nav>
 
-      {/* Hero — warm canvas on the left, full-bleed sunrise sky on the right */}
+      {/* Hero — Mesh Drift reads at full strength on the right, scrimmed
+          toward the base canvas behind the text column on the left */}
       <section
         ref={registerSection("hero")}
         className="hero-fade relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pb-20 pt-28 md:px-12"
       >
-        {/* Extends 40% above the hero so the downward parallax drift never
-            exposes a blank strip along the clipped top edge */}
-        <div ref={skyRef} className="sky-beam pointer-events-none absolute -top-[40%] bottom-0 right-0 w-full md:w-[62%]" />
+        {/* Legibility scrim. Replaces the old .sky-beam sunrise gradient,
+            which was a second animated background painting over the shader
+            in the hero only — Mesh Drift supersedes it (§3). */}
+        <div className="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true" />
 
-        <div ref={heroRef} className="relative mx-auto w-full max-w-7xl">
+        <div ref={heroRef} className="relative z-10 mx-auto w-full max-w-7xl">
           <div data-hero-lead className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5">
             <p className="signature-ui text-xs font-medium tracking-[0.14em] text-muted-foreground">
               STUDENT-LED NONPROFIT FINANCE NETWORK
@@ -254,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* About story — Haze band */}
-      <div ref={registerSection("about")} className="w-full bg-card">
+      <div ref={registerSection("about")} className="w-full band-haze">
         <AboutSection scrollToSection={scrollToSection} />
       </div>
 
@@ -264,7 +253,7 @@ export default function Home() {
       </div>
 
       {/* Programs — Haze band */}
-      <div ref={registerSection("programs")} className="w-full bg-card">
+      <div ref={registerSection("programs")} className="w-full band-haze">
         <ServicesSection />
       </div>
 
@@ -274,7 +263,7 @@ export default function Home() {
       </div>
 
       {/* Apply CTA — Haze band */}
-      <div ref={registerSection("contact")} className="w-full bg-card">
+      <div ref={registerSection("contact")} className="w-full band-haze">
         <ContactSection />
       </div>
     </main>

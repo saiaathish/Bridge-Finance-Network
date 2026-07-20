@@ -40,7 +40,7 @@ export default function Contact() {
       />
 
       {/* Contact — Haze band */}
-      <section className="py-20 md:py-24 bg-card">
+      <section className="py-20 md:py-24 band-haze">
         <div ref={bodyRef} className="container max-w-5xl">
           <div className="grid lg:grid-cols-5 gap-12">
             <div data-card className="gsap-hidden lg:col-span-2">
