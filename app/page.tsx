@@ -45,7 +45,7 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
   return (
     <h1
       ref={ref}
-      className={`type-caret ${done ? "type-done" : ""} mb-6 font-display text-5xl font-medium leading-[1.08] tracking-tight text-foreground md:text-7xl lg:text-[84px]`}
+      className={`type-caret ${done ? "type-done" : ""} signature-display mb-6 text-6xl text-foreground md:text-8xl lg:text-[120px]`}
       aria-label="Bridge Finance Network"
     >
       {HEADLINE_LINES.map((line, li) => (
@@ -213,12 +213,14 @@ export default function Home() {
 
         <div ref={heroRef} className="relative mx-auto w-full max-w-7xl">
           <div data-hero-lead className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5">
-            <p className="font-mono text-xs text-muted-foreground">STUDENT-LED NONPROFIT FINANCE NETWORK</p>
+            <p className="signature-ui text-xs font-medium tracking-[0.14em] text-muted-foreground">
+              STUDENT-LED NONPROFIT FINANCE NETWORK
+            </p>
           </div>
 
           <TypewriterHeadline onDone={revealHeroRest} />
 
-          <p data-hero-item className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          <p data-hero-item className="signature-ui gsap-hidden mb-10 max-w-xl text-lg text-muted-foreground md:text-xl">
             <span className="text-pretty">
               A student-led nonprofit helping motivated students build finance skills, find credible opportunities,
               compete, publish research, and lead local chapters.
