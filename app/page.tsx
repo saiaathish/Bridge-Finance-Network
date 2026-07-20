@@ -164,7 +164,7 @@ export default function Home() {
   }
 
   return (
-    <main className="relative w-full bg-background text-foreground">
+    <main className="relative w-full text-foreground">
       <nav
         className={`fixed left-0 right-0 top-0 z-50 flex h-[72px] items-center justify-between px-6 transition-colors duration-150 md:px-12 ${
           scrolled ? "border-b border-border bg-card/95" : "bg-transparent"

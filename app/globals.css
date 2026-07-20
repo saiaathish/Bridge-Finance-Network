@@ -106,8 +106,14 @@
   * {
     @apply border-border outline-ring/50;
   }
+  /* Base colour lives on html, NOT body — an opaque body paints over the
+     fixed z-index:-10 shader canvas and hides it completely. */
+  html {
+    background-color: var(--background);
+  }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
+    background-color: transparent;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -160,6 +166,15 @@
     font-family: 'EB Garamond', Georgia, serif;
     font-style: italic;
     font-weight: 400;
+  }
+
+  /* Route-level surface. Deliberately translucent rather than opaque so the
+     Mesh Drift shader stays visibly present and CONTINUOUS on every route —
+     an opaque page wrapper is what made the shader vanish outside the
+     homepage. Text-dense inner pages are quieter (higher canvas mix) than the
+     homepage hero, but never cut to flat colour. */
+  .page-surface {
+    background-color: color-mix(in srgb, var(--bfn-canvas) 86%, transparent);
   }
 
   /* Haze card: flat, border-only depth — no shadow anywhere */

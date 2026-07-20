@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import { MeshDriftShader } from "@/components/mesh-drift-shader";
 
 export const metadata: Metadata = {
   title: "Bridge Finance Network",
@@ -24,6 +25,8 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* Mounted once here so the WebGL context survives route changes */}
+        <MeshDriftShader />
         <Providers>{children}</Providers>
       </body>
     </html>

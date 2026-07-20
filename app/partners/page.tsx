@@ -24,7 +24,7 @@ export default function Partners() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen page-surface text-foreground">
       <Navbar />
 
       <PageHero
