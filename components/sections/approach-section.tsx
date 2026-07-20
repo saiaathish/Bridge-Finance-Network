@@ -15,31 +15,27 @@ export function ApproachSection() {
           {/* Left side - Narrative */}
           <div>
             <div
-              className={`mb-6 transition-all duration-700 md:mb-10 ${
-                isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
-              }`}
+              className={`mb-6 transition-all duration-700 md:mb-10 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
+                }`}
             >
-              <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ The Wall Street standard</p>
+              <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ Building real skills</p>
               <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-                We operate like
+                We teach the
                 <br />
-                a real <span className="text-muted-foreground">firm.</span>
+                entrance for <span className="text-muted-foreground">Finance.</span>
               </h2>
             </div>
 
             <div
-              className={`space-y-4 transition-all duration-700 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              }`}
+              className={`space-y-4 transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                }`}
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                BFN is built to mirror the desks, deadlines, and deliverables of high finance. Members don&apos;t just
-                study markets, they replicate the actual workflow of a Wall Street firm.
+                BFN is a structured pathway into finance built for students with no prior experience. Members don&apos;t just read about markets, they research real companies, build investment theses, and present stock pitches to a live committee.
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                From pitch books and DCF models to live coverage and investment memos, every project is held to the
-                same standard expected on a real trading floor or banking desk.
+                Every assignment is designed to develop the analytical habits that matter in finance: asking the right questions, backing your thesis with data, and communicating your ideas clearly.
               </p>
             </div>
           </div>
@@ -48,23 +44,23 @@ export function ApproachSection() {
           <div className="flex flex-col justify-center space-y-5 md:space-y-7">
             {[
               {
-                desk: "Investment Banking",
-                detail: "Pitch books, valuation models, and live deal teardowns.",
+                desk: "Financial Research",
+                detail: "Company deep dives, industry analysis, and investment theses.",
                 direction: "right",
               },
               {
-                desk: "Equity Research",
-                detail: "Coverage initiations, earnings notes, and price targets.",
+                desk: "Stock Pitching",
+                detail: "Price targets, relative valuation, and live pitch presentations.",
                 direction: "left",
               },
               {
-                desk: "Markets & Trading",
-                detail: "Macro views, trade ideas, and risk-managed pitches.",
+                desk: "Financial Literacy",
+                detail: "Markets, accounting fundamentals, and basics of financing.",
                 direction: "right",
               },
               {
-                desk: "Private Capital",
-                detail: "LBO models, diligence memos, and IC presentations.",
+                desk: "Professional Development",
+                detail: "Guest speakers, networking opportunities, and real-world exposure to the finance industry.",
                 direction: "left",
               },
             ].map((item, i) => {
@@ -101,3 +97,4 @@ export function ApproachSection() {
     </section>
   )
 }
+
