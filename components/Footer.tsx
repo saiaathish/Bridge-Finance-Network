@@ -28,8 +28,6 @@ export default function Footer() {
               Organization
             </h4>
             <div className="flex flex-col gap-2.5">
-              <Link href="/about" className="text-sm hover:text-signal transition-colors">About</Link>
-              <Link href="/team" className="text-sm hover:text-signal transition-colors">Team</Link>
               <Link href="/partners" className="text-sm hover:text-signal transition-colors">Partners</Link>
             </div>
           </div>
@@ -41,7 +39,6 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-2.5">
               <Link href="/opportunities" className="text-sm hover:text-signal transition-colors">Opportunities</Link>
-              <Link href="/resources" className="text-sm hover:text-signal transition-colors">Resources</Link>
               <Link href="/blog" className="text-sm hover:text-signal transition-colors">Blog</Link>
               <Link href="/events" className="text-sm hover:text-signal transition-colors">Events</Link>
             </div>
@@ -56,7 +53,6 @@ export default function Footer() {
               <Link href="/open-roles" className="text-sm hover:text-signal transition-colors">Join Now</Link>
               <Link href="/login" className="text-sm hover:text-signal transition-colors">Member Access</Link>
               <Link href="/contact" className="text-sm hover:text-signal transition-colors">Contact</Link>
-              <Link href="/faq" className="text-sm hover:text-signal transition-colors">FAQ</Link>
             </div>
           </div>
         </div>
