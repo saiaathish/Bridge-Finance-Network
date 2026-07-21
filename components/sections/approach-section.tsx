@@ -1,6 +1,8 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { useReveal } from "@/hooks/use-reveal"
+import { scrubTextFill } from "@/lib/motion"
 import { Ledger, type LedgerItem } from "@/components/ledger"
 
 /**
@@ -42,6 +44,13 @@ const DESKS: LedgerItem[] = [
 
 export function ApproachSection() {
   const { ref, isVisible } = useReveal(0.3)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    if (!headingRef.current) return
+    const st = scrubTextFill(headingRef.current)
+    return () => st?.kill()
+  }, [])
 
   return (
     <section ref={ref} className="w-full overflow-x-clip px-6 py-20 md:px-12 md:py-24 lg:px-16">
@@ -56,8 +65,11 @@ export function ApproachSection() {
             <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">
               / The Wall Street standard
             </p>
-            <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              We operate like a real <span className="text-muted-foreground">firm.</span>
+            <h2
+              ref={headingRef}
+              className="text-fill font-display text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl lg:text-6xl"
+            >
+              We operate like a real firm.
             </h2>
           </div>
           <p

@@ -151,6 +151,37 @@ export function wordReveal(el: HTMLElement): gsap.core.Tween {
 }
 
 /**
+ * Scroll-scrubbed colour reveal on text (§4). The element carries a two-tone
+ * `background-clip: text` gradient (`.text-fill`); this scrubs its
+ * background-position tied directly to scroll progress so the copy visibly
+ * "fills in" with colour as it passes through the viewport, rather than
+ * fading in already-coloured. Under reduced motion it snaps to fully filled.
+ *
+ * Returns the ScrollTrigger so the caller can kill it on cleanup.
+ */
+export function scrubTextFill(el: Element): ScrollTrigger | null {
+  if (prefersReducedMotion()) {
+    gsap.set(el, { backgroundPositionX: "0%" })
+    return null
+  }
+  const tween = gsap.fromTo(
+    el,
+    { backgroundPositionX: "100%" },
+    {
+      backgroundPositionX: "0%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 82%",
+        end: "top 38%",
+        scrub: true,
+      },
+    },
+  )
+  return tween.scrollTrigger ?? null
+}
+
+/**
  * Staggered section entrance: items rise, scale, and settle with a varied
  * stagger (not a flat fade-up). One trigger per section container.
  */
