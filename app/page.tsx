@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/sections/services-section"
 import { TeamSection } from "@/components/sections/team-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
+import { PullFigure } from "@/components/pull-figure"
 import { MagneticButton } from "@/components/magnetic-button"
 import { APPLICATION_URL } from "@/lib/constants"
 import { heroIntro, typewriter } from "@/lib/motion"
@@ -245,6 +246,18 @@ export default function Home() {
       {/* About story — Haze band */}
       <div ref={registerSection("about")} className="w-full band-haze">
         <AboutSection scrollToSection={scrollToSection} />
+      </div>
+
+      {/* Pull-figure break — full-bleed pacing beat between the narrative
+          About band and the dense Approach ledger. Reinforces "connected
+          nationally" with the real member count. */}
+      <div className="w-full">
+        <PullFigure
+          eyebrow="The national network"
+          value={220}
+          suffix="+"
+          caption="Students building finance skills, finding credible opportunities, and leading chapters across the country."
+        />
       </div>
 
       {/* Approach — canvas */}
