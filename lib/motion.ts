@@ -13,6 +13,27 @@ export function prefersReducedMotion(): boolean {
 }
 
 /**
+ * Link a tween's ScrollTrigger to its own teardown (§4).
+ *
+ * gsap's `tween.kill()` does NOT kill an attached ScrollTrigger — the trigger
+ * keeps listening and recalculating on every scroll after the component that
+ * created it has unmounted, which is the single biggest cause of scroll jank
+ * accumulating across route changes. Callers throughout the app only ever call
+ * `.kill()` on the returned tween, so we override that one instance method to
+ * also kill the trigger. Centralising it here fixes every caller at once.
+ */
+function linkTriggerToKill(tween: gsap.core.Tween): gsap.core.Tween {
+  const st = tween.scrollTrigger
+  if (!st) return tween
+  const origKill = tween.kill.bind(tween)
+  tween.kill = ((...args: Parameters<typeof origKill>) => {
+    st.kill()
+    return origKill(...args)
+  }) as typeof tween.kill
+  return tween
+}
+
+/**
  * Page-load hero intro: headline + subhead fade up. One shot only.
  * Pass the elements in visual order; they stagger 0.08s.
  */
@@ -36,20 +57,22 @@ export function heroIntro(targets: gsap.TweenTarget): gsap.core.Tween {
  * viewport entry. Cards within a section do NOT get their own trigger.
  */
 export function scrollReveal(target: gsap.DOMTarget): gsap.core.Tween {
-  return gsap.fromTo(
-    target,
-    { y: 24, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.6,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: target as gsap.DOMTarget,
-        start: "top 80%",
-        once: true,
+  return linkTriggerToKill(
+    gsap.fromTo(
+      target,
+      { y: 24, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.6,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: target as gsap.DOMTarget,
+          start: "top 80%",
+          once: true,
+        },
       },
-    },
+    ),
   )
 }
 
@@ -77,18 +100,20 @@ export function statCounter(
     return gsap.to(state, { value: endValue, duration: 0 })
   }
 
-  return gsap.to(state, {
-    value: endValue,
-    duration: 1.2,
-    ease: "power2.out",
-    ...(immediate ? {} : { scrollTrigger: { trigger: el, start: "top 80%", once: true } }),
-    onUpdate: () => {
-      el.textContent = format(state.value)
-    },
-    onComplete: () => {
-      el.textContent = format(endValue)
-    },
-  })
+  return linkTriggerToKill(
+    gsap.to(state, {
+      value: endValue,
+      duration: 1.2,
+      ease: "power2.out",
+      ...(immediate ? {} : { scrollTrigger: { trigger: el, start: "top 80%", once: true } }),
+      onUpdate: () => {
+        el.textContent = format(state.value)
+      },
+      onComplete: () => {
+        el.textContent = format(endValue)
+      },
+    }),
+  )
 }
 
 /**
@@ -136,17 +161,19 @@ export function wordReveal(el: HTMLElement): gsap.core.Tween {
   }
   const words = el.querySelectorAll("[data-word]")
   const reduced = prefersReducedMotion()
-  return gsap.fromTo(
-    words,
-    { y: 24, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.5,
-      ease: "power3.out",
-      stagger: reduced ? 0 : 0.06,
-      scrollTrigger: { trigger: el, start: "top 80%", once: true },
-    },
+  return linkTriggerToKill(
+    gsap.fromTo(
+      words,
+      { y: 24, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.5,
+        ease: "power3.out",
+        stagger: reduced ? 0 : 0.06,
+        scrollTrigger: { trigger: el, start: "top 80%", once: true },
+      },
+    ),
   )
 }
 
@@ -188,18 +215,20 @@ export function scrubTextFill(el: Element): ScrollTrigger | null {
 export function sectionEntrance(container: Element, itemSelector: string): gsap.core.Tween {
   const items = container.querySelectorAll(itemSelector)
   const reduced = prefersReducedMotion()
-  return gsap.fromTo(
-    items,
-    { y: 32, autoAlpha: 0, scale: 0.97 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      scale: 1,
-      duration: 0.7,
-      ease: "power3.out",
-      stagger: reduced ? 0 : { each: 0.1, from: "start" },
-      scrollTrigger: { trigger: container, start: "top 80%", once: true },
-    },
+  return linkTriggerToKill(
+    gsap.fromTo(
+      items,
+      { y: 32, autoAlpha: 0, scale: 0.97 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: reduced ? 0 : { each: 0.1, from: "start" },
+        scrollTrigger: { trigger: container, start: "top 80%", once: true },
+      },
+    ),
   )
 }
 
@@ -271,14 +300,16 @@ export function tierLadderFill(el: Element, fraction = 1): gsap.core.Tween {
   if (prefersReducedMotion()) {
     return gsap.set(el, { width: target }) as unknown as gsap.core.Tween
   }
-  return gsap.fromTo(
-    el,
-    { width: "0%" },
-    {
-      width: target,
-      duration: 1,
-      ease: "power2.inOut",
-      scrollTrigger: { trigger: el, start: "top 80%", once: true },
-    },
+  return linkTriggerToKill(
+    gsap.fromTo(
+      el,
+      { width: "0%" },
+      {
+        width: target,
+        duration: 1,
+        ease: "power2.inOut",
+        scrollTrigger: { trigger: el, start: "top 80%", once: true },
+      },
+    ),
   )
 }
