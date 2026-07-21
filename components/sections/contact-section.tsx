@@ -78,10 +78,13 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Right side - Application call to action */}
-          <div className="flex flex-col justify-center">
+          {/* Right side — application card. OFFSET/OVERLAP moment (§1): the
+              one deliberate bit of asymmetry on the page. Pulled up to overlap
+              the headline row and bled past the container's right edge on
+              large screens so it breaks out of the grid. Used once, here only. */}
+          <div className="relative z-10 flex flex-col justify-center md:-mt-16 lg:-mt-24 lg:mr-[-3rem] xl:mr-[-5.5rem]">
             <div
-              className={`rounded-xl border border-border bg-white/85 p-6 transition-all duration-700 md:p-8 ${
+              className={`rounded-xl border border-border bg-white/90 p-6 transition-all duration-700 md:p-8 ${
                 isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
               }`}
               style={{ transitionDelay: "300ms" }}
