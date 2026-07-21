@@ -1,101 +1,79 @@
 "use client"
 
 import { useReveal } from "@/hooks/use-reveal"
+import { Ledger, type LedgerItem } from "@/components/ledger"
+
+/**
+ * Approach — the "we operate like a real firm" section.
+ *
+ * Template: LEDGER/DATA-GRID (§1). Deliberately NOT the headline-left /
+ * prose-right split it used to share with the About section directly above
+ * it. A compact statement caps the section, then the four coverage desks
+ * render as a real term-sheet line-item table — the natural home for the
+ * fintech alignment instinct, and the section's single dominant focal point.
+ */
+
+const DESKS: LedgerItem[] = [
+  {
+    label: "Investment Banking",
+    descriptor: "Pitch books, valuation models, and live deal teardowns.",
+    detail: "Comps, DCF, and precedent transactions held to sell-side standards.",
+    tag: "Desk 01",
+  },
+  {
+    label: "Equity Research",
+    descriptor: "Coverage initiations, earnings notes, and price targets.",
+    detail: "Published with a rating, thesis, and downside case — like a real note.",
+    tag: "Desk 02",
+  },
+  {
+    label: "Markets & Trading",
+    descriptor: "Macro views, trade ideas, and risk-managed pitches.",
+    detail: "Every idea carries an entry, a stop, and a sizing rationale.",
+    tag: "Desk 03",
+  },
+  {
+    label: "Private Capital",
+    descriptor: "LBO models, diligence memos, and IC presentations.",
+    detail: "Returns bridged across entry, leverage, and exit multiple.",
+    tag: "Desk 04",
+  },
+]
 
 export function ApproachSection() {
   const { ref, isVisible } = useReveal(0.3)
 
   return (
-    <section
-      ref={ref}
-      className="w-full overflow-x-clip px-6 py-20 md:px-12 md:py-24 lg:px-16"
-    >
+    <section ref={ref} className="w-full overflow-x-clip px-6 py-20 md:px-12 md:py-24 lg:px-16">
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
-          {/* Left side - Narrative */}
-          <div>
-            <div
-              className={`mb-6 transition-all duration-700 md:mb-10 ${
-                isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
-              }`}
-            >
-              <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ The Wall Street standard</p>
-              <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-                We operate like
-                <br />
-                a real <span className="text-muted-foreground">firm.</span>
-              </h2>
-            </div>
-
-            <div
-              className={`space-y-4 transition-all duration-700 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              }`}
-              style={{ transitionDelay: "200ms" }}
-            >
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                BFN is built to mirror the desks, deadlines, and deliverables of high finance. Members don&apos;t just
-                study markets, they replicate the actual workflow of a Wall Street firm.
-              </p>
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                From pitch books and DCF models to live coverage and investment memos, every project is held to the
-                same standard expected on a real trading floor or banking desk.
-              </p>
-            </div>
+        {/* Statement cap — compact, so the ledger stays the focal point */}
+        <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end md:gap-16">
+          <div
+            className={`transition-all duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
+            }`}
+          >
+            <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">
+              / The Wall Street standard
+            </p>
+            <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              We operate like a real <span className="text-muted-foreground">firm.</span>
+            </h2>
           </div>
+          <p
+            className={`max-w-sm text-sm leading-relaxed text-foreground/90 transition-all duration-700 md:text-base ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            }`}
+            style={{ transitionDelay: "150ms" }}
+          >
+            Members don&apos;t just study markets — they replicate the workflow of a Wall Street
+            firm across four coverage desks, each held to the standard of a real trading floor.
+          </p>
+        </div>
 
-          {/* Right side - Practice areas */}
-          <div className="flex flex-col justify-center space-y-5 md:space-y-7">
-            {[
-              {
-                desk: "Investment Banking",
-                detail: "Pitch books, valuation models, and live deal teardowns.",
-                direction: "right",
-              },
-              {
-                desk: "Equity Research",
-                detail: "Coverage initiations, earnings notes, and price targets.",
-                direction: "left",
-              },
-              {
-                desk: "Markets & Trading",
-                detail: "Macro views, trade ideas, and risk-managed pitches.",
-                direction: "right",
-              },
-              {
-                desk: "Private Capital",
-                detail: "LBO models, diligence memos, and IC presentations.",
-                direction: "left",
-              },
-            ].map((item, i) => {
-              const getRevealClass = () => {
-                if (!isVisible) {
-                  return item.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
-                }
-                return "translate-x-0 opacity-100"
-              }
-
-              return (
-                <div
-                  key={i}
-                  className={`group border-l border-foreground/30 pl-4 transition-all duration-700 hover:border-foreground/60 md:pl-8 ${getRevealClass()}`}
-                  style={{
-                    transitionDelay: `${300 + i * 150}ms`,
-                    marginLeft: i % 2 === 0 ? "0" : "auto",
-                    maxWidth: i % 2 === 0 ? "100%" : "90%",
-                  }}
-                >
-                  <div className="mb-1 flex items-center gap-3">
-                    <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
-                    <h3 className="font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-1 md:text-2xl">
-                      {item.desk}
-                    </h3>
-                  </div>
-                  <p className="font-mono text-xs text-muted-foreground md:text-sm">{item.detail}</p>
-                </div>
-              )
-            })}
-          </div>
+        {/* The four desks as a term-sheet line-item table */}
+        <div className="mt-12 md:mt-16">
+          <Ledger items={DESKS} />
         </div>
       </div>
     </section>

@@ -207,6 +207,109 @@
     font-feature-settings: "tnum" 1;
   }
 
+  /* ── Ledger / line-item table (§1) ───────────────────────────────────
+     A term-sheet-style list: hairline row rules, a tabular index gutter, a
+     strict two-column body (label + right-aligned tag), and a detail line
+     that expands on hover/focus. Alignment discipline is the whole point —
+     the index gutter is a fixed width so every label starts on the same
+     vertical line down the table. */
+  .ledger {
+    border-top: 1px solid var(--bfn-hairline);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.25rem 0.5rem 1.25rem 0.25rem;
+    border-bottom: 1px solid var(--bfn-hairline);
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+  }
+  @media (min-width: 768px) {
+    .ledger-row {
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+  }
+  .ledger-row:hover {
+    background-color: color-mix(in srgb, var(--bfn-ink) 3%, transparent);
+    padding-left: 0.75rem;
+  }
+  .ledger-index {
+    font-size: 0.8125rem;
+    line-height: 1.9;
+    color: var(--bfn-ink-secondary);
+    padding-top: 0.15rem;
+  }
+  .ledger-body {
+    min-width: 0;
+  }
+  .ledger-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .ledger-label {
+    font-family: var(--font-anthropic-sans), 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--bfn-ink);
+    transition: transform 0.25s ease;
+  }
+  @media (min-width: 768px) {
+    .ledger-label { font-size: 1.5rem; }
+  }
+  .group:hover .ledger-label {
+    transform: translateX(3px);
+  }
+  .ledger-tag {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--bfn-ink-secondary);
+    white-space: nowrap;
+  }
+  .ledger-descriptor {
+    margin-top: 0.35rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--bfn-ink-secondary);
+    max-width: 46ch;
+  }
+  /* Detail line: collapsed by default, expands on hover/focus-within. Uses
+     grid-rows 0fr→1fr so it animates height without a fixed magic number. */
+  .ledger-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0;
+    font-family: var(--font-anthropic-mono), 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--bfn-signal);
+    opacity: 0;
+    overflow: hidden;
+    transition: grid-template-rows 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  }
+  .ledger-detail > * {
+    min-height: 0;
+  }
+  .ledger-row:hover .ledger-detail,
+  .ledger-row:focus-within .ledger-detail {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ledger-row,
+    .ledger-label,
+    .ledger-detail { transition: none; }
+  }
+
   /* Route-level surface. Deliberately translucent rather than opaque so the
      Mesh Drift shader stays visibly present and CONTINUOUS on every route —
      an opaque page wrapper is what made the shader vanish outside the
