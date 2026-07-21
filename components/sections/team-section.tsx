@@ -2,6 +2,7 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 import { wordReveal } from "@/lib/motion"
+import gsap from "gsap"
 import { useEffect, useRef } from "react"
 
 /**
@@ -27,10 +28,11 @@ export function TeamSection() {
 
   useEffect(() => {
     if (!headingRef.current) return
-    const tween = wordReveal(headingRef.current)
-    return () => {
-      tween.kill()
-    }
+    // gsap.context so the wordReveal ScrollTrigger is reverted on unmount (§4).
+    const ctx = gsap.context(() => {
+      if (headingRef.current) wordReveal(headingRef.current)
+    })
+    return () => ctx.revert()
   }, [])
 
   return (
