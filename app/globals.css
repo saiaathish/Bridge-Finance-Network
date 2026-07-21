@@ -431,6 +431,89 @@
     .path-node { transition: none; }
   }
 
+  /* ── Data card (§1) ──────────────────────────────────────────────────
+     A strict-internal-grid card for parallel entities (desk leads, team,
+     programs): glyph node + tier tag on a shared baseline, name, role, a
+     hairline divider, and a tabular stat footer. Every card is the same
+     internal skeleton so a row of them lines up field-for-field — the
+     alignment discipline that reads as actually precise. */
+  .data-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    background-color: var(--bfn-haze);
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .data-card:hover {
+    border-color: var(--bfn-ink-secondary);
+    transform: translateY(-2px);
+  }
+  .data-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .data-card-glyph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 10px;
+    background-color: var(--bfn-ink);
+    color: var(--bfn-canvas);
+    font-family: var(--font-anthropic-mono), 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.9375rem;
+  }
+  .data-card-tier {
+    font-family: var(--font-anthropic-mono), 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bfn-ink-secondary);
+  }
+  .data-card-name {
+    font-family: var(--font-anthropic-sans), 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--bfn-ink);
+    margin-bottom: 0.25rem;
+  }
+  .data-card-role {
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--bfn-ink-secondary);
+  }
+  .data-card-foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bfn-hairline);
+  }
+  .data-card-foot-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--bfn-ink-secondary);
+  }
+  .data-card-foot-value {
+    font-family: var(--font-anthropic-mono), 'JetBrains Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 1rem;
+    color: var(--bfn-ink);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .data-card { transition: border-color 0.2s ease; }
+  }
+
   /* Haze card: flat, border-only depth — no shadow anywhere */
   .card-haze {
     background-color: var(--bfn-haze);
