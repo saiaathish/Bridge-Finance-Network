@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ScrollRefresh } from "@/components/scroll-refresh";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <ThemeProvider defaultTheme="light">
           <TooltipProvider>
             <Toaster />
+            <ScrollRefresh />
             {children}
           </TooltipProvider>
         </ThemeProvider>
