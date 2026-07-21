@@ -343,6 +343,94 @@
     );
   }
 
+  /* ── Stepped path (§1) ───────────────────────────────────────────────
+     A connected rail of numbered nodes for a genuine sequence (Learn → Find
+     → Practice → Lead). The connecting line is drawn as a hairline behind the
+     nodes: horizontal on desktop, vertical down the node gutter on mobile. */
+  .path {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .path {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+  .path-step {
+    position: relative;
+    padding-left: 3.25rem;
+  }
+  @media (min-width: 768px) {
+    .path-step {
+      padding-left: 0;
+      padding-top: 3.5rem;
+    }
+  }
+  /* The rail. Mobile: a vertical hairline down the node column. Desktop: a
+     horizontal hairline across the top, node-to-node. */
+  .path-step::before {
+    content: "";
+    position: absolute;
+    background-color: var(--bfn-hairline);
+  }
+  .path-step:not(:last-child)::before {
+    left: 1.1875rem;
+    top: 2.75rem;
+    width: 1px;
+    bottom: -2.5rem;
+  }
+  @media (min-width: 768px) {
+    .path-step:not(:last-child)::before {
+      left: 1.25rem;
+      top: 1.25rem;
+      right: -2rem;
+      width: auto;
+      bottom: auto;
+      height: 1px;
+    }
+  }
+  .path-node {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 9999px;
+    background-color: var(--bfn-canvas);
+    font-size: 0.8125rem;
+    color: var(--bfn-signal);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .path-step:hover .path-node {
+    border-color: var(--bfn-signal);
+  }
+  .path-title {
+    font-family: var(--font-anthropic-sans), 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--bfn-ink);
+    margin-bottom: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    .path-title { font-size: 2rem; }
+  }
+  .path-desc {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--bfn-ink-secondary);
+    max-width: 22ch;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .path-node { transition: none; }
+  }
+
   /* Haze card: flat, border-only depth — no shadow anywhere */
   .card-haze {
     background-color: var(--bfn-haze);
