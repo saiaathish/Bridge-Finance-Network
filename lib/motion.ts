@@ -232,6 +232,27 @@ export function heroSkyParallax(sky: Element, fadeTrigger: Element): gsap.MatchM
 }
 
 /**
+ * Immediate (non-scroll-gated) fade-up for content that swaps in response
+ * to a user action — e.g. a tab switch — rather than scroll position.
+ * Same easing/duration as sectionEntrance for a consistent feel.
+ */
+export function contentSwitch(targets: gsap.TweenTarget, options: { instant?: boolean } = {}): gsap.core.Tween {
+  const reduced = prefersReducedMotion()
+  const instant = options.instant ?? false
+  return gsap.fromTo(
+    targets,
+    { y: 16, autoAlpha: 0 },
+    {
+      y: 0,
+      autoAlpha: 1,
+      duration: instant ? 0 : 0.45,
+      ease: "power3.out",
+      stagger: instant || reduced ? 0 : 0.06,
+    },
+  )
+}
+
+/**
  * Tier-ladder gradient track fill, left-to-right on scroll-into-view.
  * `fraction` is 0–1 progress along the ladder.
  */

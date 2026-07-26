@@ -164,7 +164,7 @@ export const openRoles = [
 
 export const navLinks = [
   { label: "About", href: "/about" },
-  { label: "Team", href: "/team" },
+  { label: "Directory", href: "/directory" },
   { label: "Opportunities", href: "/opportunities" },
   { label: "Chapters", href: "/chapters" },
   { label: "Partners", href: "/partners" },

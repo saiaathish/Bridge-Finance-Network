@@ -2,10 +2,10 @@
 
 import { ApproachSection } from "@/components/sections/approach-section"
 import { ServicesSection } from "@/components/sections/services-section"
-import { TeamSection } from "@/components/sections/team-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MagneticButton } from "@/components/magnetic-button"
+import { HomeHeader } from "@/components/HomeHeader"
 import { APPLICATION_URL } from "@/lib/constants"
 import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion"
 import { useRef, useEffect, useLayoutEffect, useState } from "react"
@@ -87,23 +87,11 @@ function StatMarquee() {
   )
 }
 
-// Nav order is unchanged; sections are keyed so the band order below can
-// differ from nav order.
-const NAV_ITEMS = [
-  { label: "Home", key: "hero" },
-  { label: "Approach", key: "approach" },
-  { label: "Programs", key: "programs" },
-  { label: "Team", key: "team" },
-  { label: "About", key: "about" },
-  { label: "Apply", key: "contact" },
-] as const
-
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
   const skyRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
   const [activeKey, setActiveKey] = useState("hero")
-  const [scrolled, setScrolled] = useState(false)
 
   // Badge fades up immediately; subhead/CTAs/stat ticker follow once the
   // typewriter headline finishes. useLayoutEffect: runs before paint so
@@ -135,7 +123,6 @@ export default function Home() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 24)
       const marker = window.scrollY + window.innerHeight * 0.4
       let current = "hero"
       for (const key of Object.keys(sectionRefs.current)) {
@@ -153,54 +140,13 @@ export default function Home() {
     sectionRefs.current[key]?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
-  // Sections still call scrollToSection with the old numeric indices.
-  const scrollToSection = (index: number) => {
-    const keys = ["hero", "approach", "programs", "team", "about", "contact"]
-    scrollToKey(keys[index] ?? "hero")
-  }
-
   const registerSection = (key: string) => (el: HTMLElement | null) => {
     sectionRefs.current[key] = el
   }
 
   return (
     <main className="relative w-full bg-background text-foreground">
-      <nav
-        className={`fixed left-0 right-0 top-0 z-50 flex h-[72px] items-center justify-between px-6 transition-colors duration-150 md:px-12 ${
-          scrolled ? "border-b border-border bg-card/95" : "bg-transparent"
-        }`}
-      >
-        <button onClick={() => scrollToKey("hero")} className="flex items-center">
-          <img
-            src="/bridge-finance-logo.png"
-            alt="Bridge Finance Network logo"
-            className="h-10 w-auto object-contain"
-          />
-        </button>
-
-        <div className="hidden items-center gap-8 md:flex">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.key}
-              onClick={() => scrollToKey(item.key)}
-              className={`group relative font-sans text-sm font-semibold transition-colors duration-150 ${
-                activeKey === item.key ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {item.label}
-              <span
-                className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-150 ${
-                  activeKey === item.key ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              />
-            </button>
-          ))}
-        </div>
-
-        <MagneticButton variant="ghost" onClick={() => window.open(APPLICATION_URL, "_blank")}>
-          Apply to Join
-        </MagneticButton>
-      </nav>
+      <HomeHeader activeKey={activeKey} onNavigate={scrollToKey} />
 
       {/* Hero — full-bleed sunrise sky across the entire viewport */}
       <section
@@ -253,27 +199,22 @@ export default function Home() {
       </section>
 
       {/* About story — Haze band */}
-      <div ref={registerSection("about")} className="w-full bg-card">
-        <AboutSection scrollToSection={scrollToSection} />
+      <div id="about" ref={registerSection("about")} className="w-full bg-card">
+        <AboutSection />
       </div>
 
       {/* Approach — canvas */}
-      <div ref={registerSection("approach")} className="w-full">
+      <div id="approach" ref={registerSection("approach")} className="w-full">
         <ApproachSection />
       </div>
 
       {/* Programs — Haze band */}
-      <div ref={registerSection("programs")} className="w-full bg-card">
+      <div id="programs" ref={registerSection("programs")} className="w-full bg-card">
         <ServicesSection />
       </div>
 
-      {/* Team preview — canvas */}
-      <div ref={registerSection("team")} className="w-full">
-        <TeamSection />
-      </div>
-
       {/* Apply CTA — Haze band */}
-      <div ref={registerSection("contact")} className="w-full bg-card">
+      <div id="contact" ref={registerSection("contact")} className="w-full bg-card">
         <ContactSection />
       </div>
     </main>

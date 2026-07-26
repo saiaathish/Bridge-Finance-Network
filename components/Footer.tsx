@@ -29,7 +29,7 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-2.5">
               <Link href="/about" className="text-sm hover:text-signal transition-colors">About</Link>
-              <Link href="/team" className="text-sm hover:text-signal transition-colors">Team</Link>
+              <Link href="/directory" className="text-sm hover:text-signal transition-colors">Directory</Link>
               <Link href="/partners" className="text-sm hover:text-signal transition-colors">Partners</Link>
             </div>
           </div>
