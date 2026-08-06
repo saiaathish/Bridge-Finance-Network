@@ -2,12 +2,9 @@
 
 import type React from "react"
 
-interface MagneticButtonProps {
-  children: React.ReactNode
-  className?: string
+interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost"
   size?: "default" | "lg"
-  onClick?: () => void
 }
 
 // Flat button per DESIGN.md: 8px radius, 0.15s color/border hover only —
@@ -18,6 +15,7 @@ export function MagneticButton({
   variant = "primary",
   size = "default",
   onClick,
+  ...rest
 }: MagneticButtonProps) {
   const variants = {
     primary: "bg-[#153B63] text-white border border-transparent hover:bg-[#123354]",
@@ -40,6 +38,7 @@ export function MagneticButton({
         ${sizes[size]}
         ${className}
       `}
+      {...rest}
     >
       {children}
     </button>

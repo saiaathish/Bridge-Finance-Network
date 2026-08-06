@@ -4,7 +4,6 @@ import Link from "next/link"
 import { Mail, MapPin, ArrowUpRight } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
-import { APPLICATION_URL } from "@/lib/constants"
 
 const QUICK_LINKS = [
   { label: "About", href: "/about" },
@@ -120,7 +119,11 @@ export function ContactSection() {
                 variant="primary"
                 size="lg"
                 className="w-full"
-                onClick={() => window.open(APPLICATION_URL, "_blank")}
+                data-fillout-id="nWRnBTFVZHus"
+                data-fillout-embed-type="popup"
+                data-fillout-dynamic-resize
+                data-fillout-inherit-parameters
+                data-fillout-popup-size="medium"
               >
                 <span className="group flex items-center justify-center gap-2">
                   Start Application

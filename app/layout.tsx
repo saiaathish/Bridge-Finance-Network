@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
@@ -25,6 +26,12 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>{children}</Providers>
+        {/* Fillout embed — turns [data-fillout-embed-type="popup"] elements
+            (e.g. the Start Application button) into popup triggers */}
+        <Script
+          src="https://server.fillout.com/embed/v1/"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
