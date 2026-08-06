@@ -1,9 +1,17 @@
 "use client"
 
+import Link from "next/link"
 import { Mail, MapPin, ArrowUpRight } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
 import { APPLICATION_URL } from "@/lib/constants"
+
+const QUICK_LINKS = [
+  { label: "About", href: "/about" },
+  { label: "Directory", href: "/directory" },
+  { label: "Resources", href: "/resources" },
+  { label: "FAQ", href: "/faq" },
+]
 
 export function ContactSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -59,7 +67,22 @@ export function ContactSection() {
                 <p className="text-base text-foreground md:text-2xl">Nationwide, USA</p>
               </div>
 
-
+              <div
+                className={`flex gap-2 pt-2 transition-all duration-700 md:pt-4 ${
+                  isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+                }`}
+                style={{ transitionDelay: "500ms" }}
+              >
+                {QUICK_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="border-b border-transparent font-mono text-xs text-muted-foreground transition-all hover:border-foreground/60 hover:text-foreground/90"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 

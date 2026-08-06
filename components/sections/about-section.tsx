@@ -1,11 +1,13 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useReveal } from "@/hooks/use-reveal"
 import { APPLICATION_URL } from "@/lib/constants"
 
-export function AboutSection({ scrollToSection }: { scrollToSection?: (index: number) => void }) {
+export function AboutSection() {
   const { ref, isVisible } = useReveal(0.3)
+  const router = useRouter()
 
   return (
     <section ref={ref} className="w-full px-4 py-20 md:px-12 md:py-24 lg:px-16">
@@ -45,7 +47,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               <MagneticButton size="lg" variant="primary" onClick={() => window.open(APPLICATION_URL, "_blank")}>
                 Apply to Join
               </MagneticButton>
-              <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(3)}>
+              <MagneticButton size="lg" variant="secondary" onClick={() => router.push("/directory")}>
                 Meet the Team
               </MagneticButton>
             </div>
