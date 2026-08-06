@@ -1,46 +1,46 @@
-"use client"
+"use client";
 
-import { ApproachSection } from "@/components/sections/approach-section"
-import { ServicesSection } from "@/components/sections/services-section"
-import { AboutSection } from "@/components/sections/about-section"
-import { ContactSection } from "@/components/sections/contact-section"
-import { MagneticButton } from "@/components/magnetic-button"
-import { HomeHeader } from "@/components/HomeHeader"
-import { APPLICATION_URL } from "@/lib/constants"
-import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion"
-import { useRef, useEffect, useLayoutEffect, useState } from "react"
+import { ApproachSection } from "@/components/sections/approach-section";
+import { ServicesSection } from "@/components/sections/services-section";
+import { AboutSection } from "@/components/sections/about-section";
+import { ContactSection } from "@/components/sections/contact-section";
+import { MagneticButton } from "@/components/magnetic-button";
+import { HomeHeader } from "@/components/HomeHeader";
+import { APPLICATION_URL } from "@/lib/constants";
+import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion";
+import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
 const HERO_STATS = [
   { value: "200+", label: "Student Members" },
   { value: "4", label: "Coverage Desks" },
   { value: "4", label: "Member Paths" },
-]
+];
 
 // Headline broken into char spans for the typewriter reveal; "Finance"
 // keeps the italic accent treatment.
 const HEADLINE_LINES: { text: string; accent?: boolean }[][] = [
   [{ text: "Bridge " }, { text: "Finance", accent: true }],
   [{ text: "Network" }],
-]
+];
 
 function TypewriterHeadline({ onDone }: { onDone: () => void }) {
-  const ref = useRef<HTMLHeadingElement>(null)
-  const [done, setDone] = useState(false)
+  const ref = useRef<HTMLHeadingElement>(null);
+  const [done, setDone] = useState(false);
 
   // useLayoutEffect so GSAP claims the hidden elements before first paint
   useLayoutEffect(() => {
-    if (!ref.current) return
+    if (!ref.current) return;
     const tween = typewriter(ref.current, {
       onComplete: () => {
-        setDone(true)
-        onDone()
+        setDone(true);
+        onDone();
       },
-    })
+    });
     return () => {
-      tween.kill()
-    }
+      tween.kill();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   return (
     <h1
@@ -51,10 +51,14 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
       {HEADLINE_LINES.map((line, li) => (
         <span key={li} className="block">
           {line.map((part, pi) => (
-            <span key={pi} className={part.accent ? "accent-word" : undefined} aria-hidden="true">
+            <span
+              key={pi}
+              className={part.accent ? "accent-word" : undefined}
+              aria-hidden="true"
+            >
               {part.text.split("").map((char, ci) => (
                 <span key={ci} data-char className="gsap-hidden">
-                  {char === " " ? " " : char}
+                  {char === " " ? " " : char}
                 </span>
               ))}
             </span>
@@ -62,87 +66,104 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
         </span>
       ))}
     </h1>
-  )
+  );
 }
 
 // Stat row as a continuous marquee ticker; duplicated once so the loop is
 // seamless at translateX(-50%).
 function StatMarquee() {
   return (
-    <div className="stat-marquee border-t border-border pt-8" aria-label="200+ Student Members, 4 Coverage Desks, 4 Member Paths">
+    <div
+      className="stat-marquee border-t border-border pt-8"
+      aria-label="200+ Student Members, 4 Coverage Desks, 4 Member Paths"
+    >
       <div className="stat-marquee-track" aria-hidden="true">
-        {[0, 1].map((copy) => (
+        {[0, 1].map(copy => (
           <div key={copy} className="flex shrink-0 items-center">
-            {HERO_STATS.map((stat) => (
-              <div key={`${copy}-${stat.label}`} className="flex items-baseline gap-3 pr-16">
-                <span className="font-mono text-2xl text-foreground md:text-3xl">{stat.value}</span>
-                <span className="text-sm font-semibold text-muted-foreground">{stat.label}</span>
-                <span className="pl-10 font-mono text-muted-foreground/50">✦</span>
+            {HERO_STATS.map(stat => (
+              <div
+                key={`${copy}-${stat.label}`}
+                className="flex items-baseline gap-3 pr-16"
+              >
+                <span className="font-mono text-2xl text-foreground md:text-3xl">
+                  {stat.value}
+                </span>
+                <span className="text-sm font-semibold text-muted-foreground">
+                  {stat.label}
+                </span>
+                <span className="pl-10 font-mono text-muted-foreground/50">
+                  ✦
+                </span>
               </div>
             ))}
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const skyRef = useRef<HTMLDivElement>(null)
-  const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
-  const [activeKey, setActiveKey] = useState("hero")
+  const heroRef = useRef<HTMLDivElement>(null);
+  const skyRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+  const [activeKey, setActiveKey] = useState("hero");
 
   // Badge fades up immediately; subhead/CTAs/stat ticker follow once the
   // typewriter headline finishes. useLayoutEffect: runs before paint so
   // there is no visible-then-hidden flash.
   useLayoutEffect(() => {
-    if (!heroRef.current) return
-    const tween = heroIntro(heroRef.current.querySelectorAll("[data-hero-lead]"))
+    if (!heroRef.current) return;
+    const tween = heroIntro(
+      heroRef.current.querySelectorAll("[data-hero-lead]")
+    );
     return () => {
-      tween.kill()
-    }
-  }, [])
+      tween.kill();
+    };
+  }, []);
 
   const revealHeroRest = () => {
-    if (!heroRef.current) return
-    heroIntro(heroRef.current.querySelectorAll("[data-hero-item]"))
-  }
+    if (!heroRef.current) return;
+    heroIntro(heroRef.current.querySelectorAll("[data-hero-item]"));
+  };
 
   // Sky parallax (0.3x desktop / 0.15x mobile) + fade-out as the About band
   // enters at 80% viewport.
   useEffect(() => {
-    if (!skyRef.current) return
-    const aboutEl = sectionRefs.current["about"]
-    if (!aboutEl) return
-    const mm = heroSkyParallax(skyRef.current, aboutEl)
+    if (!skyRef.current) return;
+    const aboutEl = sectionRefs.current["about"];
+    if (!aboutEl) return;
+    const mm = heroSkyParallax(skyRef.current, aboutEl);
     return () => {
-      mm?.revert()
-    }
-  }, [])
+      mm?.revert();
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
-      const marker = window.scrollY + window.innerHeight * 0.4
-      let current = "hero"
+      const marker = window.scrollY + window.innerHeight * 0.4;
+      let current = "hero";
       for (const key of Object.keys(sectionRefs.current)) {
-        const el = sectionRefs.current[key]
-        if (el && el.offsetTop <= marker) current = key
+        const el = sectionRefs.current[key];
+        if (el && el.offsetTop <= marker) current = key;
       }
-      setActiveKey(current)
-    }
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+      setActiveKey(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scrollToKey = (key: string) => {
-    sectionRefs.current[key]?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
+    sectionRefs.current[key]?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   const registerSection = (key: string) => (el: HTMLElement | null) => {
-    sectionRefs.current[key] = el
-  }
+    sectionRefs.current[key] = el;
+  };
 
   return (
     <main className="relative w-full bg-background text-foreground">
@@ -170,23 +191,43 @@ export default function Home() {
         </div>
 
         <div ref={heroRef} className="relative mx-auto w-full max-w-7xl">
-          <div data-hero-lead className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5">
-            <p className="font-mono text-xs text-muted-foreground">STUDENT-LED NONPROFIT FINANCE NETWORK</p>
+          <div
+            data-hero-lead
+            className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5"
+          >
+            <p className="font-mono text-xs text-muted-foreground">
+              STUDENT-LED NONPROFIT FINANCE NETWORK
+            </p>
           </div>
 
           <TypewriterHeadline onDone={revealHeroRest} />
 
-          <p data-hero-item className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          <p
+            data-hero-item
+            className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+          >
             <span className="text-pretty">
-              A student-led nonprofit helping motivated students build finance skills, find credible opportunities,
-              compete, publish research, and lead local chapters.
+              A student-led nonprofit helping motivated students build finance
+              skills, find credible opportunities, compete, publish research,
+              and lead local chapters.
             </span>
           </p>
-          <div data-hero-item className="gsap-hidden mb-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <MagneticButton size="lg" variant="primary" onClick={() => window.open(APPLICATION_URL, "_blank")}>
+          <div
+            data-hero-item
+            className="gsap-hidden mb-12 flex flex-col gap-4 sm:flex-row sm:items-center"
+          >
+            <MagneticButton
+              size="lg"
+              variant="primary"
+              onClick={() => window.open(APPLICATION_URL, "_blank")}
+            >
               Apply to Join
             </MagneticButton>
-            <MagneticButton size="lg" variant="secondary" onClick={() => scrollToKey("programs")}>
+            <MagneticButton
+              size="lg"
+              variant="secondary"
+              onClick={() => scrollToKey("programs")}
+            >
               View Opportunities
             </MagneticButton>
           </div>
@@ -218,5 +259,5 @@ export default function Home() {
         <ContactSection />
       </div>
     </main>
-  )
+  );
 }

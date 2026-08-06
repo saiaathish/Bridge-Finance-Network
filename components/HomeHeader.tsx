@@ -6,16 +6,17 @@ import { usePathname } from "next/navigation"
 import { MagneticButton } from "@/components/magnetic-button"
 import { APPLICATION_URL } from "@/lib/constants"
 
-// Nav order is unchanged; on the homepage itself sections are keyed so the
-// band order below can differ from nav order. "Directory" is the only item
-// that always leaves the page — the full team directory lives at
-// /directory, not in an on-page section.
+// Nav order keeps About beside Home in the primary navigation; on the
+// homepage itself sections are keyed so the band order below can differ
+// from nav order. "Directory" is the only item that always leaves the
+// page — the full team directory lives at /directory, not in an on-page
+// section.
 export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
+  { label: "About", key: "about" },
   { label: "Approach", key: "approach" },
   { label: "Programs", key: "programs" },
   { label: "Directory", key: "directory", href: "/directory" },
-  { label: "About", key: "about" },
   { label: "Apply", key: "contact" },
 ] as const
 
@@ -61,11 +62,11 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
     >
       {onNavigate ? (
         <button onClick={() => onNavigate("hero")} className="flex items-center">
-          <img src="/bridge-finance-logo.png" alt="Bridge Finance Network logo" className="h-10 w-auto object-contain" />
+          <img src="/bfn-logo.png" alt="Bridge Finance Network mark" className="h-12 w-12 object-contain" />
         </button>
       ) : (
         <Link href="/" className="flex items-center">
-          <img src="/bridge-finance-logo.png" alt="Bridge Finance Network logo" className="h-10 w-auto object-contain" />
+          <img src="/bfn-logo.png" alt="Bridge Finance Network mark" className="h-12 w-12 object-contain" />
         </Link>
       )}
 
