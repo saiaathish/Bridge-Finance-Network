@@ -1,9 +1,10 @@
+import Image from "next/image";
 import { User } from "lucide-react";
 import type { TeamMember } from "@/lib/team-data";
 
 export function TeamMemberCard({ member }: { member: TeamMember }) {
-  // Photo placeholders are a C-Suite-only treatment — every other subteam
-  // gets a simpler, more compact card with no reserved photo space.
+  // Portraits are a C-Suite-only treatment — every other subteam gets a
+  // simpler, more compact card with no reserved photo space.
   const showPhoto = member.category === "C-Suite";
 
   return (
@@ -13,13 +14,28 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
     >
       {showPhoto && (
         <div
-          aria-hidden="true"
-          className="wiggle-target flex h-24 w-24 flex-none flex-col items-center justify-center gap-1 rounded-full border border-border bg-card"
+          className="wiggle-target flex size-32 flex-none items-center justify-center overflow-hidden rounded-full border border-border bg-card"
         >
-          <User size={26} className="text-muted-foreground" strokeWidth={1.5} />
-          <span className="px-2 font-mono text-[9px] uppercase leading-tight tracking-wider text-muted-foreground">
-            Photo Coming Soon
-          </span>
+          {member.photo ? (
+            <Image
+              src={member.photo}
+              alt={`Portrait of ${member.name}, ${member.title ?? "C-Suite executive"}`}
+              width={128}
+              height={128}
+              sizes="128px"
+              className="h-full w-full object-cover object-center"
+            />
+          ) : (
+            <div
+              aria-hidden="true"
+              className="flex h-full w-full flex-col items-center justify-center gap-1"
+            >
+              <User size={26} className="text-muted-foreground" strokeWidth={1.5} />
+              <span className="px-2 font-mono text-[9px] uppercase leading-tight tracking-wider text-muted-foreground">
+                Photo Coming Soon
+              </span>
+            </div>
+          )}
         </div>
       )}
 
