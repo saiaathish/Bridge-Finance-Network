@@ -18,6 +18,8 @@ export interface TeamMember {
   name: string;
   /** Omitted for members who should show no position line (e.g. interns). */
   title?: string;
+  /** Public portrait path for members with a profile image. */
+  photo?: string;
   category: TeamCategory;
   school?: string;
   /** Hierarchy tag (Lead, Manager, Senior Associate, Associate) — shown as a
@@ -34,7 +36,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "malhar-sawant",
     name: "Malhar Sawant",
-    title: "Founder & Managing Partner",
+    title: "Chief Executive Officer",
+    photo: "/team/malhar-sawant.png",
     category: "C-Suite",
     description: [
       "Malhar founded Bridge Finance Network with a mission to build the next generation of financial talent. With a focus on high finance and financial education, he leads BFN's vision, executes on high-level strategy, and ensures students have access to the best possible experience.",
@@ -43,7 +46,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "andrew-fu",
     name: "Andrew Fu",
-    title: "MD of Internal Affairs & Operations",
+    title: "Chief Operating Officer",
+    photo: "/team/andrew-fu.png",
     category: "C-Suite",
     description: [
       "Andrew brings three years of experience as a Student Government Treasurer and an intern at Human Resources Administration.",
@@ -53,7 +57,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "carol-sun",
     name: "Carol Sun",
-    title: "MD of Media, Design, & Graphics",
+    title: "Chief Marketing Officer",
+    photo: "/team/carol-sun.png",
     category: "C-Suite",
     description: [
       "Carol is a DECA International qualifier and grew a simulated investment portfolio from $100K to $560K in just six months.",
@@ -63,7 +68,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "emily-tai",
     name: "Emily Tai",
-    title: "MD of Finance & Accounting",
+    title: "Chief Financial Officer",
+    photo: "/team/emily-tai.png",
     category: "C-Suite",
     description: [
       "Emily is a rising senior at Brooklyn Technical High School with a passion for finance and organizational management.",
@@ -73,7 +79,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "sai-karthik",
     name: "Sai Karthik",
-    title: "MD of Technology & AI",
+    title: "Chief Technology Officer",
+    photo: "/team/sai-karthik.png",
     category: "C-Suite",
     description: [
       "Sai is a rising senior at Marquette High School with deep experience in artificial intelligence and technical systems.",
@@ -83,7 +90,8 @@ export const teamMembers: TeamMember[] = [
   {
     id: "anderson-overkamp",
     name: "Anderson Overkamp",
-    title: "MD of Experiential Programs & Development",
+    title: "Chief Investment Officer",
+    photo: "/team/anderson-overkamp.png",
     category: "C-Suite",
     description: [
       "Anderson began his finance journey as a self-directed stock market investor and equity researcher, documenting his analysis through his own website and blog.",
