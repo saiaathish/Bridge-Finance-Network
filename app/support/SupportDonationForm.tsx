@@ -14,14 +14,15 @@ export function SupportDonationForm() {
     const host = formRef.current?.querySelector<HTMLElement>("givebutter-widget");
     if (!host) return;
 
-    let animationFrame: number | undefined;
     let cancelled = false;
     let revealed = false;
+    let checkTimer: number | undefined;
     const reveal = () => {
       if (cancelled || revealed) return;
       revealed = true;
       setIsReady(true);
       resizeObserver.disconnect();
+      if (checkTimer !== undefined) window.clearInterval(checkTimer);
     };
 
     const resizeObserver = new ResizeObserver(([entry]) => {
@@ -30,17 +31,17 @@ export function SupportDonationForm() {
     resizeObserver.observe(host);
 
     const checkForMountedForm = () => {
-      animationFrame = window.requestAnimationFrame(() => {
-        if (host.getBoundingClientRect().height >= GIVEBUTTER_READY_HEIGHT) reveal();
-      });
+      if (host.getBoundingClientRect().height >= GIVEBUTTER_READY_HEIGHT) reveal();
     };
 
+    checkTimer = window.setInterval(checkForMountedForm, 100);
+    checkForMountedForm();
     void window.customElements.whenDefined("givebutter-widget").then(checkForMountedForm);
 
     return () => {
       cancelled = true;
       resizeObserver.disconnect();
-      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      if (checkTimer !== undefined) window.clearInterval(checkTimer);
     };
   }, []);
 
