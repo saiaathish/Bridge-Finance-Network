@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { HomeHeader } from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
+import { SupportDonationForm } from "./SupportDonationForm";
 import styles from "./support.module.css";
 
 export const metadata: Metadata = {
@@ -37,21 +37,10 @@ export default function SupportPage() {
               </p>
             </div>
             <section
-              className={`${styles.enterRight} w-full max-w-[440px] lg:justify-self-end`}
+              className="w-full max-w-[440px] lg:justify-self-end"
               aria-label="Donate securely through Givebutter"
             >
-              <div
-                aria-label="Givebutter donation form for Bridge Finance Network"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    '<givebutter-widget id="pEZRrA" align="center"></givebutter-widget>',
-                }}
-              />
-              <Script
-                id="givebutter-widget-library"
-                src="https://widgets.givebutter.com/latest.umd.cjs?acct=oqqzGtUZxCPk9GXa&p=other"
-                strategy="afterInteractive"
-              />
+              <SupportDonationForm />
             </section>
           </div>
         </section>
