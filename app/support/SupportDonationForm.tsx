@@ -15,13 +15,13 @@ export function SupportDonationForm() {
     if (!host) return;
 
     let animationFrame: number | undefined;
+    let cancelled = false;
     let revealed = false;
     const reveal = () => {
-      if (revealed) return;
+      if (cancelled || revealed) return;
       revealed = true;
       setIsReady(true);
       resizeObserver.disconnect();
-      window.clearTimeout(fallbackTimer);
     };
 
     const resizeObserver = new ResizeObserver(([entry]) => {
@@ -36,11 +36,10 @@ export function SupportDonationForm() {
     };
 
     void window.customElements.whenDefined("givebutter-widget").then(checkForMountedForm);
-    const fallbackTimer = window.setTimeout(reveal, 2500);
 
     return () => {
+      cancelled = true;
       resizeObserver.disconnect();
-      window.clearTimeout(fallbackTimer);
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
     };
   }, []);
@@ -48,14 +47,31 @@ export function SupportDonationForm() {
   return (
     <div
       ref={formRef}
-      className={isReady ? styles.enterRight : styles.enterRightPending}
+      className={`${styles.donationStage} ${styles.enterRight}`}
+      aria-busy={!isReady}
     >
+      <div className={`${styles.donationForm} ${isReady ? styles.donationFormReady : styles.donationFormPending}`}>
+        <div
+          aria-label="Givebutter donation form for Bridge Finance Network"
+          dangerouslySetInnerHTML={{
+            __html: '<givebutter-widget id="pEZRrA" align="center"></givebutter-widget>',
+          }}
+        />
+      </div>
       <div
-        aria-label="Givebutter donation form for Bridge Finance Network"
-        dangerouslySetInnerHTML={{
-          __html: '<givebutter-widget id="pEZRrA" align="center"></givebutter-widget>',
-        }}
-      />
+        className={`${styles.donationPlaceholder} ${isReady ? styles.donationPlaceholderHidden : ""}`}
+        aria-hidden="true"
+      >
+        <span className={styles.placeholderHeading} />
+        <span className={styles.placeholderToggle} />
+        <div className={styles.placeholderAmounts}>
+          {Array.from({ length: 6 }, (_, index) => (
+            <span key={index} />
+          ))}
+        </div>
+        <span className={styles.placeholderField} />
+        <span className={styles.placeholderButton} />
+      </div>
       <Script
         id="givebutter-widget-library"
         src="https://widgets.givebutter.com/latest.umd.cjs?acct=oqqzGtUZxCPk9GXa&p=other"
