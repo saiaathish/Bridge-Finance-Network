@@ -7,7 +7,7 @@ import styles from "./support.module.css";
 export const metadata: Metadata = {
   title: "Support BFN | Bridge Finance Network",
   description:
-    "Support Bridge Finance Network's work expanding access to finance education, opportunities, and practical career preparation for high school students.",
+    "Be part of BFN's mission by helping high school students turn ambition into opportunity through support for finance education and career preparation.",
 };
 
 export default function SupportPage() {
@@ -31,9 +31,9 @@ export default function SupportPage() {
               </h1>
 
               <p className="max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-                Bridge Finance Network is a student-led nonprofit expanding access
-                to finance education, curated opportunities, and practical career
-                preparation for high school students across the country.
+                Be part of BFN&apos;s mission—your support helps high school students
+                turn ambition into opportunity through finance education and career
+                preparation.
               </p>
             </div>
             <section
