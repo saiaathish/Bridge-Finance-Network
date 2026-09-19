@@ -1,0 +1,136 @@
+.enterLeft,
+.enterRight {
+  will-change: opacity, transform;
+}
+
+.enterLeft {
+  animation: support-enter-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.enterRight {
+  animation: support-enter-right 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+}
+
+.donationStage {
+  position: relative;
+  min-height: 508px;
+}
+
+.donationForm > div {
+  width: 100%;
+}
+
+.donationFormPending {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.donationFormReady {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+.donationPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 30px;
+  border: 1px solid var(--bfn-hairline);
+  border-radius: 16px;
+  background: #ffffff;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.donationPlaceholderHidden {
+  opacity: 0;
+}
+
+.placeholderHeading,
+.placeholderToggle,
+.placeholderField,
+.placeholderButton,
+.placeholderAmounts span {
+  display: block;
+  border-radius: 8px;
+  background: var(--bfn-haze);
+}
+
+.placeholderHeading {
+  align-self: center;
+  width: 42%;
+  height: 22px;
+  margin-bottom: 14px;
+}
+
+.placeholderToggle {
+  width: 100%;
+  height: 46px;
+}
+
+.placeholderAmounts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.placeholderAmounts span {
+  height: 50px;
+}
+
+.placeholderField {
+  width: 100%;
+  height: 48px;
+  margin-top: 2px;
+}
+
+.placeholderButton {
+  width: 100%;
+  height: 52px;
+  margin-top: auto;
+  background: color-mix(in srgb, var(--bfn-signal) 35%, var(--bfn-haze));
+}
+
+@keyframes support-enter-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes support-enter-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enterLeft,
+  .enterRight {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  .donationFormReady,
+  .donationPlaceholder {
+    transition: none;
+  }
+}
