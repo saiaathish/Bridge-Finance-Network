@@ -4,7 +4,7 @@ import type React from "react"
 
 interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost"
-  size?: "default" | "lg"
+  size?: "compact" | "default" | "lg"
 }
 
 // Flat button per DESIGN.md: 8px radius, 0.15s color/border hover only —
@@ -24,6 +24,7 @@ export function MagneticButton({
   }
 
   const sizes = {
+    compact: "px-3 py-2.5 text-sm min-[480px]:px-6",
     default: "px-6 py-2.5 text-sm",
     lg: "px-8 py-3.5 text-base",
   }

@@ -114,9 +114,26 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
         })}
       </div>
 
-      <MagneticButton variant="ghost" onClick={() => window.open(APPLICATION_URL, "_blank")}>
-        Apply to Join
-      </MagneticButton>
+      <div className="flex shrink-0 items-center gap-2">
+        <Link
+          href="/support"
+          aria-current={pathname === "/support" ? "page" : undefined}
+          className={`rounded-lg border px-3 py-2.5 text-sm font-semibold transition-colors duration-150 min-[480px]:px-6 ${
+            pathname === "/support"
+              ? "border-[#153B63] text-[#153B63]"
+              : "border-border text-foreground hover:border-muted-foreground"
+          }`}
+        >
+          Support Us
+        </Link>
+        <MagneticButton
+          size="compact"
+          variant="ghost"
+          onClick={() => window.open(APPLICATION_URL, "_blank")}
+        >
+          Apply to Join
+        </MagneticButton>
+      </div>
     </nav>
   )
 }
