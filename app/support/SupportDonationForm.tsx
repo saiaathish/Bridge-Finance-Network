@@ -4,6 +4,8 @@ import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import styles from "./support.module.css";
 
+const GIVEBUTTER_READY_HEIGHT = 200;
+
 export function SupportDonationForm() {
   const formRef = useRef<HTMLDivElement>(null);
   const [isReady, setIsReady] = useState(false);
@@ -23,13 +25,13 @@ export function SupportDonationForm() {
     };
 
     const resizeObserver = new ResizeObserver(([entry]) => {
-      if (entry.contentRect.height > 0) reveal();
+      if (entry.contentRect.height >= GIVEBUTTER_READY_HEIGHT) reveal();
     });
     resizeObserver.observe(host);
 
     const checkForMountedForm = () => {
       animationFrame = window.requestAnimationFrame(() => {
-        if (host.getBoundingClientRect().height > 0) reveal();
+        if (host.getBoundingClientRect().height >= GIVEBUTTER_READY_HEIGHT) reveal();
       });
     };
 
