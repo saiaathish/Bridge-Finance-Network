@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container py-16">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Bridge Finance Network. All rights reserved.
+            &copy; {new Date().getFullYear()} Bridge Finance Network · 501(c)(3) nonprofit organization. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a

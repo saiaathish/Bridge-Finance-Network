@@ -6,7 +6,7 @@ import { Providers } from "@/components/Providers";
 export const metadata: Metadata = {
   title: "Bridge Finance Network",
   description:
-    "Student-led nonprofit expanding access to finance education, curated opportunities, competitions, chapters, and practical career preparation.",
+    "Student-led 501(c)(3) nonprofit expanding access to finance education, curated opportunities, competitions, chapters, and practical career preparation.",
 };
 
 export default function RootLayout({

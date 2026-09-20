@@ -352,7 +352,7 @@ export default function Home() {
             className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             <span className="text-pretty">
-              A student-led nonprofit helping motivated students build finance
+              A student-led 501(c)(3) nonprofit helping motivated students build finance
               skills, find credible opportunities, compete, publish research,
               and lead local chapters.
             </span>
