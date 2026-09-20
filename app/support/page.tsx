@@ -30,11 +30,48 @@ export default function SupportPage() {
                 <span className="accent-word">finance.</span>
               </h1>
 
-              <p className="max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-                Be part of BFN&apos;s mission—your support helps high school students
-                turn ambition into opportunity through finance education and career
-                preparation.
-              </p>
+              <div className="mt-7 max-w-[34rem]">
+                <p className="mb-3 font-mono text-xs tracking-wide text-muted-foreground">
+                  Your donation helps us:
+                </p>
+                <ul
+                  className="grid gap-x-6 gap-y-2.5 sm:grid-cols-2"
+                  aria-label="How donations help"
+                >
+                  {[
+                    "Expand access to real-world finance education",
+                    "Bring industry professionals and mentors to students",
+                    "Provide educational resources and programming",
+                    "Build a stronger, more financially literate generation",
+                  ].map(benefit => (
+                    <li
+                      key={benefit}
+                      className="flex items-start gap-2 text-sm leading-snug text-muted-foreground"
+                    >
+                      <span
+                        className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#153B63]"
+                        aria-hidden="true"
+                      />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">
+                  <p>
+                    BFN is built around a simple idea: access to finance should
+                    not be limited by where you go to school or who you know.
+                  </p>
+                  <p className="mt-2">
+                    Your support helps us expand that access and give more
+                    students the opportunity to learn, connect, and build.
+                  </p>
+                </div>
+
+                <p className="mt-5 font-display text-xl font-medium leading-tight text-foreground">
+                  Invest in the next generation of finance. Donate today.
+                </p>
+              </div>
             </div>
             <section
               className="w-full max-w-[440px] lg:justify-self-end"
