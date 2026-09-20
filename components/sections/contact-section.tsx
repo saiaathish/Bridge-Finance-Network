@@ -6,10 +6,10 @@ import { useReveal } from "@/hooks/use-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
 
 const QUICK_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "Directory", href: "/directory" },
-  { label: "Resources", href: "/resources" },
-  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "#about" },
+  { label: "Approach", href: "#approach" },
+  { label: "Programs", href: "#programs" },
+  { label: "Apply", href: "#contact" },
 ]
 
 export function ContactSection() {
