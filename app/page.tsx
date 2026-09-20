@@ -7,13 +7,41 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
 import { APPLICATION_URL } from "@/lib/constants";
-import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion";
+import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
+import { ClipboardList, GraduationCap, Users } from "lucide-react";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
-const HERO_STATS = [
-  { value: "200+", label: "Student Members" },
-  { value: "4", label: "Coverage Desks" },
-  { value: "4", label: "Member Paths" },
+const FEATURED_PARTNERS = [
+  {
+    name: "Wells Fargo",
+    src: "/partners/wells-fargo.svg",
+    className: "w-40 sm:w-44",
+  },
+  {
+    name: "Goldman Sachs",
+    src: "/partners/goldman-sachs.svg",
+    className: "h-12 sm:h-[3.25rem]",
+  },
+  {
+    name: "Crédit Agricole",
+    src: "/partners/credit-agricole.svg",
+    className: "w-44 sm:w-48",
+  },
+  {
+    name: "Principal Financial Group",
+    src: "/partners/principal-financial-group.svg",
+    className: "h-10 sm:h-11",
+  },
+  {
+    name: "Wall Street Oasis",
+    src: "/partners/wall-street-oasis.svg",
+    className: "h-12 sm:h-[3.25rem]",
+  },
+  {
+    name: "StreetSmart Careers",
+    src: "/partners/streetsmart-careers.svg",
+    className: "w-40 sm:w-44",
+  },
 ];
 
 // Headline broken into char spans for the typewriter reveal; "Finance"
@@ -69,37 +97,154 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
   );
 }
 
-// Stat row as a continuous marquee ticker; duplicated once so the loop is
-// seamless at translateX(-50%).
-function StatMarquee() {
+// Logo row as a continuous marquee; duplicated once so the loop is seamless
+// at translateX(-50%). The readable label provides the accessible context,
+// while the animated duplicate stays out of the accessibility tree.
+function IndustryLogoMarquee() {
   return (
-    <div
-      className="stat-marquee border-t border-border pt-8"
-      aria-label="200+ Student Members, 4 Coverage Desks, 4 Member Paths"
+    <section
+      className="border-t border-border pt-6 sm:pt-8"
+      aria-labelledby="industry-featured-title"
     >
-      <div className="stat-marquee-track" aria-hidden="true">
-        {[0, 1].map(copy => (
-          <div key={copy} className="flex shrink-0 items-center">
-            {HERO_STATS.map(stat => (
-              <div
-                key={`${copy}-${stat.label}`}
-                className="flex items-baseline gap-3 pr-16"
-              >
-                <span className="font-mono text-2xl text-foreground md:text-3xl">
-                  {stat.value}
-                </span>
-                <span className="text-sm font-semibold text-muted-foreground">
-                  {stat.label}
-                </span>
-                <span className="pl-10 font-mono text-muted-foreground/50">
-                  ✦
-                </span>
-              </div>
-            ))}
-          </div>
-        ))}
+      <h2
+        id="industry-featured-title"
+        className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:text-xs"
+      >
+        Industry Professionals Featured at BFN
+      </h2>
+      <p className="sr-only">
+        Professionals featured at Bridge Finance Network include{" "}
+        {FEATURED_PARTNERS.map(partner => partner.name).join(", ")}.
+      </p>
+      <div className="industry-logo-marquee mt-5">
+        <div className="industry-logo-marquee-track" aria-hidden="true">
+          {[0, 1].map(copy => (
+            <div
+              key={copy}
+              className="flex shrink-0 items-center gap-6 pr-6 sm:gap-8 sm:pr-8"
+            >
+              {FEATURED_PARTNERS.map(partner => (
+                <div
+                  key={`${copy}-${partner.name}`}
+                  className="flex h-16 w-44 shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-44"
+                >
+                  <img
+                    src={partner.src}
+                    alt=""
+                    className={`max-h-full max-w-full object-contain ${partner.className}`}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
+  );
+}
+
+const BFN_STATS = [
+  {
+    value: 4,
+    suffix: "",
+    label: "Coverage Desks",
+    detail: "Student-led teams covering core finance verticals.",
+    icon: Users,
+  },
+  {
+    value: 400,
+    suffix: "+",
+    label: "Student Members",
+    detail: "A growing network of motivated students across chapters.",
+    icon: GraduationCap,
+  },
+  {
+    value: 50,
+    suffix: "+",
+    label: "Curated Opportunities",
+    detail: "Competitions, research, leadership, and career resources.",
+    icon: ClipboardList,
+  },
+];
+
+function BfnByNumbers() {
+  const numberRefs = useRef<Array<HTMLSpanElement | null>>([]);
+
+  useLayoutEffect(() => {
+    const tweens = BFN_STATS.map((stat, index) => {
+      const element = numberRefs.current[index];
+      return element
+        ? statCounter(element, stat.value)
+        : null;
+    });
+
+    return () => {
+      tweens.forEach(tween => tween?.kill());
+    };
+  }, []);
+
+  return (
+    <section
+      className="border-t border-border bg-card px-6 py-12 md:px-12 md:py-14"
+      aria-labelledby="bfn-by-numbers-title"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="flex items-center justify-center gap-4">
+          <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
+          <h2
+            id="bfn-by-numbers-title"
+            className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-xs"
+          >
+            BFN by the numbers
+          </h2>
+          <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+          {BFN_STATS.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <article
+                key={stat.label}
+                className="rounded-xl border border-signal/20 bg-background/80 p-6 sm:p-7"
+              >
+                <div className="flex items-start gap-5">
+                  <span
+                    className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal"
+                    aria-hidden="true"
+                  >
+                    <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-5xl font-medium leading-none tracking-tight text-foreground sm:text-[3.5rem]">
+                      <span
+                        ref={element => {
+                          numberRefs.current[index] = element;
+                        }}
+                        aria-hidden="true"
+                      >
+                        0
+                      </span>
+                      <span aria-hidden="true">{stat.suffix}</span>
+                      <span className="sr-only">
+                        {stat.value}
+                        {stat.suffix}
+                      </span>
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl font-medium leading-tight text-foreground">
+                      {stat.label}
+                    </h3>
+                    <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                      {stat.detail}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -109,7 +254,7 @@ export default function Home() {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const [activeKey, setActiveKey] = useState("hero");
 
-  // Badge fades up immediately; subhead/CTAs/stat ticker follow once the
+  // Badge fades up immediately; subhead/CTAs/logo carousel follow once the
   // typewriter headline finishes. useLayoutEffect: runs before paint so
   // there is no visible-then-hidden flash.
   useLayoutEffect(() => {
@@ -207,7 +352,7 @@ export default function Home() {
             className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             <span className="text-pretty">
-              A student-led nonprofit helping motivated students build finance
+              A student-led 501(c)(3) nonprofit helping motivated students build finance
               skills, find credible opportunities, compete, publish research,
               and lead local chapters.
             </span>
@@ -232,12 +377,14 @@ export default function Home() {
             </MagneticButton>
           </div>
 
-          {/* Live stat ticker inside the hero */}
+          {/* Industry-professional logo carousel inside the hero */}
           <div data-hero-item className="gsap-hidden">
-            <StatMarquee />
+            <IndustryLogoMarquee />
           </div>
         </div>
       </section>
+
+      <BfnByNumbers />
 
       {/* About story — Haze band */}
       <div id="about" ref={registerSection("about")} className="w-full bg-card">

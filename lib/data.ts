@@ -65,7 +65,7 @@ export const opportunities = [
 export const faqItems = [
   {
     question: "What is Bridge Finance Network?",
-    answer: "BFN is a student-led nonprofit helping motivated high school students build finance skills, find credible opportunities, compete in case competitions, publish research, and lead local chapters. We provide the structure and access that most students don't get until college.",
+    answer: "BFN is a student-led 501(c)(3) nonprofit helping motivated high school students build finance skills, find credible opportunities, compete in case competitions, publish research, and lead local chapters. We provide the structure and access that most students don't get until college.",
   },
   {
     question: "Do I need finance experience to join?",
