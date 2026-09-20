@@ -7,7 +7,8 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
 import { APPLICATION_URL } from "@/lib/constants";
-import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion";
+import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
+import { ClipboardList, GraduationCap, Users } from "lucide-react";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
 const FEATURED_PARTNERS = [
@@ -136,6 +137,111 @@ function IndustryLogoMarquee() {
               ))}
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const BFN_STATS = [
+  {
+    value: 4,
+    suffix: "",
+    label: "Coverage Desks",
+    detail: "Student-led teams covering core finance verticals.",
+    icon: Users,
+  },
+  {
+    value: 400,
+    suffix: "+",
+    label: "Student Members",
+    detail: "A growing network of motivated students across chapters.",
+    icon: GraduationCap,
+  },
+  {
+    value: 50,
+    suffix: "+",
+    label: "Curated Opportunities",
+    detail: "Competitions, research, leadership, and career resources.",
+    icon: ClipboardList,
+  },
+];
+
+function BfnByNumbers() {
+  const numberRefs = useRef<Array<HTMLSpanElement | null>>([]);
+
+  useLayoutEffect(() => {
+    const tweens = BFN_STATS.map((stat, index) => {
+      const element = numberRefs.current[index];
+      return element
+        ? statCounter(element, stat.value)
+        : null;
+    });
+
+    return () => {
+      tweens.forEach(tween => tween?.kill());
+    };
+  }, []);
+
+  return (
+    <section
+      className="border-t border-border bg-card px-6 py-12 md:px-12 md:py-14"
+      aria-labelledby="bfn-by-numbers-title"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="flex items-center justify-center gap-4">
+          <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
+          <h2
+            id="bfn-by-numbers-title"
+            className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-xs"
+          >
+            BFN by the numbers
+          </h2>
+          <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+          {BFN_STATS.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <article
+                key={stat.label}
+                className="rounded-xl border border-signal/20 bg-background/80 p-6 sm:p-7"
+              >
+                <div className="flex items-start gap-5">
+                  <span
+                    className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal"
+                    aria-hidden="true"
+                  >
+                    <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-5xl font-medium leading-none tracking-tight text-foreground sm:text-[3.5rem]">
+                      <span
+                        ref={element => {
+                          numberRefs.current[index] = element;
+                        }}
+                        aria-hidden="true"
+                      >
+                        0
+                      </span>
+                      <span aria-hidden="true">{stat.suffix}</span>
+                      <span className="sr-only">
+                        {stat.value}
+                        {stat.suffix}
+                      </span>
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl font-medium leading-tight text-foreground">
+                      {stat.label}
+                    </h3>
+                    <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                      {stat.detail}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -277,6 +383,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BfnByNumbers />
 
       {/* About story — Haze band */}
       <div id="about" ref={registerSection("about")} className="w-full bg-card">
