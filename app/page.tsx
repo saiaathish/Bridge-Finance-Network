@@ -14,7 +14,7 @@ const FEATURED_PARTNERS = [
   {
     name: "Wells Fargo",
     src: "/partners/wells-fargo.svg",
-    className: "w-52 sm:w-60",
+    className: "w-40 sm:w-44",
   },
   {
     name: "Goldman Sachs",
@@ -39,7 +39,7 @@ const FEATURED_PARTNERS = [
   {
     name: "StreetSmart Careers",
     src: "/partners/streetsmart-careers.svg",
-    className: "w-48 sm:w-52",
+    className: "w-40 sm:w-44",
   },
 ];
 
@@ -120,19 +120,19 @@ function IndustryLogoMarquee() {
           {[0, 1].map(copy => (
             <div
               key={copy}
-              className="flex shrink-0 items-center gap-8 pr-8 sm:gap-10 sm:pr-10"
+              className="flex shrink-0 items-center gap-6 pr-6 sm:gap-8 sm:pr-8"
             >
               {FEATURED_PARTNERS.map(partner => (
-              <div
+                <div
                   key={`${copy}-${partner.name}`}
-                  className="flex h-16 w-52 shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-60"
-              >
+                  className="flex h-16 w-44 shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-44"
+                >
                   <img
                     src={partner.src}
                     alt=""
                     className={`max-h-full max-w-full object-contain ${partner.className}`}
                   />
-              </div>
+                </div>
               ))}
             </div>
           ))}
