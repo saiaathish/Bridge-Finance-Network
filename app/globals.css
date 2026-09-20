@@ -294,8 +294,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .sky-band,
-    .sky-beam,
-    .stat-marquee-track {
+    .sky-beam {
       animation: none;
     }
   }
@@ -329,22 +328,19 @@
   }
 }
 
-/* Stat row marquee — continuous ticker, pauses on hover */
-.stat-marquee {
+/* Industry logo marquee - continuous, quiet evidence of practitioner reach. */
+.industry-logo-marquee {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
-.stat-marquee-track {
+.industry-logo-marquee-track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 28s linear infinite;
-}
-.stat-marquee:hover .stat-marquee-track {
-  animation-play-state: paused;
+  animation: industryLogoMarquee 34s linear infinite;
 }
 
-@keyframes marqueeScroll {
+@keyframes industryLogoMarquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
@@ -451,4 +447,3 @@
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
-

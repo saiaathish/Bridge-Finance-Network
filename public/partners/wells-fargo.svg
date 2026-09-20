@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 23" role="img" aria-labelledby="title">
+  <title id="title">Wells Fargo</title>
+  <defs>
+    <!-- Render the official transparent Wells Fargo header mark in BFN ink. -->
+    <filter id="bfn-ink" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" />
+    </filter>
+  </defs>
+  <image href="source/wells-fargo.png" width="220" height="23" preserveAspectRatio="xMidYMid meet" filter="url(#bfn-ink)" />
+</svg>

@@ -10,10 +10,37 @@ import { APPLICATION_URL } from "@/lib/constants";
 import { heroIntro, heroSkyParallax, typewriter } from "@/lib/motion";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
-const HERO_STATS = [
-  { value: "200+", label: "Student Members" },
-  { value: "4", label: "Coverage Desks" },
-  { value: "4", label: "Member Paths" },
+const FEATURED_PARTNERS = [
+  {
+    name: "Wells Fargo",
+    src: "/partners/wells-fargo.svg",
+    className: "w-52 sm:w-60",
+  },
+  {
+    name: "Goldman Sachs",
+    src: "/partners/goldman-sachs.svg",
+    className: "h-12 sm:h-[3.25rem]",
+  },
+  {
+    name: "Crédit Agricole",
+    src: "/partners/credit-agricole.svg",
+    className: "w-44 sm:w-48",
+  },
+  {
+    name: "Principal Financial Group",
+    src: "/partners/principal-financial-group.svg",
+    className: "h-10 sm:h-11",
+  },
+  {
+    name: "Wall Street Oasis",
+    src: "/partners/wall-street-oasis.svg",
+    className: "h-12 sm:h-[3.25rem]",
+  },
+  {
+    name: "StreetSmart Careers",
+    src: "/partners/streetsmart-careers.svg",
+    className: "w-48 sm:w-52",
+  },
 ];
 
 // Headline broken into char spans for the typewriter reveal; "Finance"
@@ -69,37 +96,49 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
   );
 }
 
-// Stat row as a continuous marquee ticker; duplicated once so the loop is
-// seamless at translateX(-50%).
-function StatMarquee() {
+// Logo row as a continuous marquee; duplicated once so the loop is seamless
+// at translateX(-50%). The readable label provides the accessible context,
+// while the animated duplicate stays out of the accessibility tree.
+function IndustryLogoMarquee() {
   return (
-    <div
-      className="stat-marquee border-t border-border pt-8"
-      aria-label="200+ Student Members, 4 Coverage Desks, 4 Member Paths"
+    <section
+      className="border-t border-border pt-6 sm:pt-8"
+      aria-labelledby="industry-featured-title"
     >
-      <div className="stat-marquee-track" aria-hidden="true">
-        {[0, 1].map(copy => (
-          <div key={copy} className="flex shrink-0 items-center">
-            {HERO_STATS.map(stat => (
+      <h2
+        id="industry-featured-title"
+        className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:text-xs"
+      >
+        Industry Professionals Featured at BFN
+      </h2>
+      <p className="sr-only">
+        Professionals featured at Bridge Finance Network include{" "}
+        {FEATURED_PARTNERS.map(partner => partner.name).join(", ")}.
+      </p>
+      <div className="industry-logo-marquee mt-5">
+        <div className="industry-logo-marquee-track" aria-hidden="true">
+          {[0, 1].map(copy => (
+            <div
+              key={copy}
+              className="flex shrink-0 items-center gap-8 pr-8 sm:gap-10 sm:pr-10"
+            >
+              {FEATURED_PARTNERS.map(partner => (
               <div
-                key={`${copy}-${stat.label}`}
-                className="flex items-baseline gap-3 pr-16"
+                  key={`${copy}-${partner.name}`}
+                  className="flex h-16 w-52 shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-60"
               >
-                <span className="font-mono text-2xl text-foreground md:text-3xl">
-                  {stat.value}
-                </span>
-                <span className="text-sm font-semibold text-muted-foreground">
-                  {stat.label}
-                </span>
-                <span className="pl-10 font-mono text-muted-foreground/50">
-                  ✦
-                </span>
+                  <img
+                    src={partner.src}
+                    alt=""
+                    className={`max-h-full max-w-full object-contain ${partner.className}`}
+                  />
               </div>
-            ))}
-          </div>
-        ))}
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -109,7 +148,7 @@ export default function Home() {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const [activeKey, setActiveKey] = useState("hero");
 
-  // Badge fades up immediately; subhead/CTAs/stat ticker follow once the
+  // Badge fades up immediately; subhead/CTAs/logo carousel follow once the
   // typewriter headline finishes. useLayoutEffect: runs before paint so
   // there is no visible-then-hidden flash.
   useLayoutEffect(() => {
@@ -232,9 +271,9 @@ export default function Home() {
             </MagneticButton>
           </div>
 
-          {/* Live stat ticker inside the hero */}
+          {/* Industry-professional logo carousel inside the hero */}
           <div data-hero-item className="gsap-hidden">
-            <StatMarquee />
+            <IndustryLogoMarquee />
           </div>
         </div>
       </section>
