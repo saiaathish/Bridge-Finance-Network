@@ -50,7 +50,6 @@ export const teamMembers: TeamMember[] = [
     photo: "/team/andrew-fu.png",
     category: "C-Suite",
     description: [
-      "Andrew brings three years of experience as a Student Government Treasurer and an intern at Human Resources Administration.",
       "As Co-Founder of BFN, he has been instrumental in building the foundational system that BFN currently operates. He believes that by growing this organization, he can connect students with financial education and real-world opportunity.",
     ],
   },
