@@ -2,6 +2,7 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 import { wordReveal } from "@/lib/motion"
+import { APPLICATION_URL } from "@/lib/constants"
 import { useEffect, useRef } from "react"
 
 export function ServicesSection() {
@@ -28,7 +29,7 @@ export function ServicesSection() {
           }`}
         >
           <h2 ref={headingRef} className="mb-2 font-display text-5xl font-medium tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            What BFN Organizes
+            Specialized programs we offer
           </h2>
           <p className="font-mono text-sm text-muted-foreground md:text-base">
             / One clear path for students entering finance
@@ -38,23 +39,23 @@ export function ServicesSection() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
           {[
             {
-              title: "Learn",
-              description: "Finance fundamentals, templates, and recruiting preparation.",
+              title: "Intro to Investment",
+              description: "Learn the stock market and intro to pitching your stock.",
               direction: "top",
             },
             {
-              title: "Find",
-              description: "Curated internships, programs, competitions, and deadlines.",
+              title: "Fundamentals of Financial Literacy",
+              description: "Learn how to save, budget, invest, and spend wisely.",
               direction: "right",
             },
             {
-              title: "Practice",
-              description: "Stock pitches, case work, research briefs, and presentations.",
+              title: "Basics of Accounting",
+              description: "Learn how accounting works in the financial industry and why it is the language of finance",
               direction: "left",
             },
             {
-              title: "Lead",
-              description: "Chapter roles, team work, local events, and student projects.",
+              title: "Valuation Modeling",
+              description: "Provided by our trusted partner Wall Street Oasis at zero cost. Learn how valuation modeling works in big banks.",
               direction: "bottom",
             },
           ].map((service, i) => (
@@ -104,7 +105,12 @@ function ServiceCard({
         <div className="h-px w-8 bg-foreground/30 transition-all duration-300 group-hover:w-12 group-hover:bg-foreground/50" />
         <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
       </div>
-      <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">{service.title}</h3>
+      <h3
+        onClick={() => window.open(APPLICATION_URL, "_blank")}
+        className="mb-2 cursor-pointer font-sans text-2xl font-light text-foreground md:text-3xl"
+      >
+        {service.title}
+      </h3>
       <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">{service.description}</p>
     </div>
   )
