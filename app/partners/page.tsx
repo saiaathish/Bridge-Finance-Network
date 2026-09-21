@@ -63,14 +63,14 @@ export default function PartnersPage() {
                   data-card
                   className="gsap-hidden flex w-full flex-col items-center rounded-xl border border-border bg-white p-6 text-center transition-colors duration-150 hover:border-muted-foreground"
                 >
-                  <div className="flex h-36 w-full items-center justify-center">
+                  <div className="relative flex h-40 w-full items-center justify-center">
                     {partner.logo ? (
                       <Image
                         src={partner.logo}
                         alt={`${partner.name} logo`}
-                        width={220}
-                        height={140}
-                        className="max-h-32 w-auto max-w-[85%] object-contain"
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-contain p-2"
                       />
                     ) : (
                       <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
