@@ -225,17 +225,17 @@ function BfnByNumbers() {
             return (
               <article
                 key={stat.label}
-                className="rounded-xl border border-signal/20 bg-background/80 p-6 sm:p-7"
+                className="flex h-full flex-col rounded-xl border border-signal/20 bg-background/80 p-6 sm:p-7"
               >
-                <div className="flex items-start gap-5">
+                <div className="flex items-start gap-5 lg:flex-col lg:gap-4">
                   <span
-                    className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal"
+                    className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal lg:mt-0"
                     aria-hidden="true"
                   >
                     <Icon className="h-6 w-6" strokeWidth={1.8} />
                   </span>
                   <div className="min-w-0">
-                    <p className="font-display text-5xl font-medium leading-none tracking-tight text-foreground sm:text-[3.5rem]">
+                    <p className="whitespace-nowrap font-display text-4xl font-medium leading-none tracking-tight tabular-nums text-foreground sm:text-5xl lg:text-3xl xl:text-[3.5rem]">
                       <span aria-hidden="true">{stat.prefix}</span>
                       <span
                         ref={element => {
