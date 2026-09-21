@@ -63,7 +63,7 @@ export default function PartnersPage() {
                   data-card
                   className="gsap-hidden flex w-full flex-col items-center rounded-xl border border-border bg-white p-6 text-center transition-colors duration-150 hover:border-muted-foreground"
                 >
-                  <div className="flex h-36 w-full items-center justify-center rounded-lg border border-border bg-card p-3">
+                  <div className="flex h-36 w-full items-center justify-center">
                     {partner.logo ? (
                       <Image
                         src={partner.logo}

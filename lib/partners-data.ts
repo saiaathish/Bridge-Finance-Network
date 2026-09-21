@@ -30,7 +30,7 @@ export const partners: Partner[] = [
   },
   {
     id: "fmw-nonprofit-solutions",
-    name: "Fmw Nonprofit Solutions",
+    name: "FMW Nonprofit Solutions",
     logo: "/partners/fmw-nonprofit-solutions.jpg",
     description: "Provides fiscal sponsorship, financial management, and administrative services.",
   },
