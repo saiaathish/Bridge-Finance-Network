@@ -73,7 +73,7 @@ export default function GuestSpeakersPage() {
                     </div>
                   </div>
 
-                  <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{speaker.bio}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{speaker.bio}</p>
 
                   {speaker.tags.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
