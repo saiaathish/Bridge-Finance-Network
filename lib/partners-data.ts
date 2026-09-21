@@ -21,7 +21,7 @@ export const partners: Partner[] = [
   {
     id: "nextgen-knowledge",
     name: "Nextgen Knowledge",
-    logo: "/partners/nextgen-knowledge.png",
+    logo: "/partners/nextgen-knowledge.jpg",
     description: "Brings financial literacy to younger students through interactive question banks.",
     website: "https://nextgenknowledge.org/",
   },
