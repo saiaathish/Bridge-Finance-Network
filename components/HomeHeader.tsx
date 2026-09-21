@@ -1,35 +1,37 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { ChevronDownIcon, Menu, X } from "lucide-react"
 import { MagneticButton } from "@/components/magnetic-button"
 import { APPLICATION_URL } from "@/lib/constants"
 
 // Nav order keeps About beside Home in the primary navigation; on the
 // homepage itself sections are keyed so the band order below can differ
-// from nav order. "Directory", "Partners", and "Speakers" always leave the
-// page — they live at their own routes, not in an on-page section.
+// from nav order. "Directory" always leaves the page — it lives at its
+// own route, not in an on-page section.
 export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
   { label: "About", key: "about" },
-  { label: "Approach", key: "approach" },
   { label: "Programs", key: "programs" },
   { label: "Directory", key: "directory", href: "/directory" },
-  { label: "Partners", key: "partners", href: "/partners" },
-  { label: "Speakers", key: "speakers", href: "/portal/speakers" },
-  { label: "Apply", key: "contact" },
+] as const
+
+// Secondary links tucked behind the "More" dropdown on desktop; the mobile
+// menu still lists them flat alongside the primary items above.
+export const MORE_NAV_ITEMS = [
+  { label: "Partners", href: "/partners" },
+  { label: "Speakers", href: "/portal/speakers" },
+  { label: "Support Us", href: "/support" },
 ] as const
 
 // Where each on-page item points when rendered somewhere other than the
 // homepage itself — the root route plus the matching section id.
 const AWAY_HREF: Record<string, string> = {
   hero: "/",
-  approach: "/#approach",
   programs: "/#programs",
   about: "/#about",
-  contact: "/#contact",
 }
 
 interface HomeHeaderProps {
@@ -40,15 +42,18 @@ interface HomeHeaderProps {
 }
 
 /**
- * The site's single homepage-style nav bar: logo, Home/Approach/Programs/
- * Directory/About/Apply, and the Apply CTA. Rendered by the homepage itself
- * (scrolling between its own sections) and by /directory (navigating back
- * to those same sections), so there is exactly one implementation.
+ * The site's single homepage-style nav bar: logo, primary links, a "More"
+ * dropdown for secondary pages, and the Apply CTA. Rendered by the homepage
+ * itself (scrolling between its own sections) and by other pages
+ * (navigating back to those same sections), so there is exactly one
+ * implementation.
  */
 export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
+  const moreRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -57,10 +62,27 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // Close the mobile menu whenever the route changes underneath it.
+  // Close the mobile menu and the "More" dropdown whenever the route
+  // changes underneath them.
   useEffect(() => {
     setMenuOpen(false)
+    setMoreOpen(false)
   }, [pathname])
+
+  // Close the "More" dropdown on an outside click, so click-to-open
+  // (touch/keyboard) has a matching click-to-close.
+  useEffect(() => {
+    if (!moreOpen) return
+    const onClickOutside = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setMoreOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside)
+    return () => document.removeEventListener("mousedown", onClickOutside)
+  }, [moreOpen])
+
+  const isMoreActive = MORE_NAV_ITEMS.some(item => pathname === item.href)
 
   return (
     <nav
@@ -120,26 +142,60 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
             </button>
           )
         })}
+
+        <div
+          ref={moreRef}
+          className="relative"
+          onMouseEnter={() => setMoreOpen(true)}
+          onMouseLeave={() => setMoreOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setMoreOpen(open => !open)}
+            aria-expanded={moreOpen}
+            className={`group relative flex items-center gap-1 font-sans text-sm font-semibold transition-colors duration-150 ${
+              isMoreActive || moreOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            More
+            <ChevronDownIcon
+              className={`size-4 transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+            />
+            <span
+              className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-150 ${
+                isMoreActive ? "w-full" : "w-0 group-hover:w-full"
+              }`}
+            />
+          </button>
+
+          <div className={`absolute left-0 top-full pt-2 ${moreOpen ? "block" : "hidden"}`}>
+            <div className="min-w-[180px] rounded-xl border border-border bg-card p-2 shadow-sm">
+              {MORE_NAV_ITEMS.map(item => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMoreOpen(false)}
+                  className={`block rounded-lg px-3 py-2 font-sans text-sm font-semibold transition-colors duration-150 ${
+                    pathname === item.href
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:bg-background hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="hidden shrink-0 items-center gap-2 md:flex">
-        <Link
-          href="/support"
-          aria-current={pathname === "/support" ? "page" : undefined}
-          className={`rounded-lg border px-3 py-2.5 text-sm font-semibold transition-colors duration-150 min-[480px]:px-6 ${
-            pathname === "/support"
-              ? "border-[#153B63] text-[#153B63]"
-              : "border-border text-foreground hover:border-muted-foreground"
-          }`}
-        >
-          Support Us
-        </Link>
+      <div className="hidden shrink-0 items-center md:flex">
         <MagneticButton
           size="compact"
-          variant="ghost"
+          variant="primary"
           onClick={() => window.open(APPLICATION_URL, "_blank")}
         >
-          Apply to Join
+          Apply
         </MagneticButton>
       </div>
 
@@ -191,30 +247,32 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
                 </button>
               )
             })}
+
+            {MORE_NAV_ITEMS.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={`rounded-lg px-3 py-2.5 font-sans text-base font-semibold transition-colors duration-150 ${
+                  pathname === item.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
-          <div className="mt-3 flex flex-col gap-2 border-t border-border pt-4">
-            <Link
-              href="/support"
-              onClick={() => setMenuOpen(false)}
-              className={`rounded-lg border px-4 py-2.5 text-center text-sm font-semibold transition-colors duration-150 ${
-                pathname === "/support"
-                  ? "border-[#153B63] text-[#153B63]"
-                  : "border-border text-foreground hover:border-muted-foreground"
-              }`}
-            >
-              Support Us
-            </Link>
+          <div className="mt-3 border-t border-border pt-4">
             <MagneticButton
               size="default"
-              variant="ghost"
+              variant="primary"
               className="w-full"
               onClick={() => {
                 window.open(APPLICATION_URL, "_blank")
                 setMenuOpen(false)
               }}
             >
-              Apply to Join
+              Apply
             </MagneticButton>
           </div>
         </div>
