@@ -1,15 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { HomeHeader } from "@/components/HomeHeader";
+import { MagneticButton } from "@/components/magnetic-button";
 import Footer from "@/components/Footer";
 import { partners } from "@/lib/partners-data";
 import { contentSwitch, heroIntro } from "@/lib/motion";
 
+const CONTACT_EMAIL = "bridgefinancenetwork@gmail.com";
+
 export default function PartnersPage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!headerRef.current) return;
@@ -22,6 +27,14 @@ export default function PartnersPage() {
   useLayoutEffect(() => {
     if (!gridRef.current) return;
     const tween = contentSwitch(gridRef.current.querySelectorAll("[data-card]"));
+    return () => {
+      tween.kill();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!ctaRef.current) return;
+    const tween = heroIntro(ctaRef.current.querySelectorAll("[data-header-item]"));
     return () => {
       tween.kill();
     };
@@ -70,6 +83,30 @@ export default function PartnersPage() {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.description}</p>
                 </div>
               ))}
+            </div>
+
+            <div
+              ref={ctaRef}
+              className="mt-16 rounded-2xl border border-border bg-card px-8 py-12 text-center md:mt-20 md:px-16 md:py-16"
+            >
+              <h2 data-header-item className="gsap-hidden font-display text-3xl font-medium leading-tight text-foreground md:text-4xl">
+                Want to join the <span className="accent-word">Coalition?</span>
+              </h2>
+              <p data-header-item className="gsap-hidden mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                Whether you&apos;re a student organization, nonprofit, company, educator, or community organization, we&apos;d love to hear what you&apos;re working on and explore how we could collaborate.
+              </p>
+              <div data-header-item className="gsap-hidden mt-8">
+                <MagneticButton
+                  variant="primary"
+                  size="lg"
+                  onClick={() => window.open(`mailto:${CONTACT_EMAIL}`)}
+                >
+                  <span className="group flex items-center justify-center gap-2">
+                    Reach Out
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </MagneticButton>
+              </div>
             </div>
           </div>
         </section>
