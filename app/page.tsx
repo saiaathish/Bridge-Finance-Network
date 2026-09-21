@@ -376,8 +376,8 @@ export default function Home() {
           >
             <span className="text-pretty">
               A student-led 501(c)(3) nonprofit helping motivated students build finance
-              skills, find credible opportunities, compete, publish research,
-              and lead local chapters.
+              skills, find credible opportunities, join a community, and gain
+              exposure to a career in finance.
             </span>
           </p>
           <div
