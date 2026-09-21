@@ -61,16 +61,16 @@ export default function PartnersPage() {
                 <div
                   key={partner.id}
                   data-card
-                  className="gsap-hidden flex w-full flex-col items-center rounded-xl border border-border bg-white p-8 text-center transition-colors duration-150 hover:border-muted-foreground"
+                  className="gsap-hidden flex w-full flex-col items-center rounded-xl border border-border bg-white p-6 text-center transition-colors duration-150 hover:border-muted-foreground"
                 >
-                  <div className="flex h-24 w-full items-center justify-center rounded-lg border border-border bg-card p-4">
+                  <div className="flex h-36 w-full items-center justify-center rounded-lg border border-border bg-card p-3">
                     {partner.logo ? (
                       <Image
                         src={partner.logo}
                         alt={`${partner.name} logo`}
-                        width={160}
-                        height={80}
-                        className="max-h-16 w-auto max-w-full object-contain"
+                        width={220}
+                        height={140}
+                        className="max-h-32 w-auto max-w-[85%] object-contain"
                       />
                     ) : (
                       <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
@@ -79,8 +79,10 @@ export default function PartnersPage() {
                     )}
                   </div>
 
-                  <h3 className="mt-5 font-sans text-lg font-semibold text-foreground">{partner.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{partner.description}</p>
+                  <div className="mt-3">
+                    <h3 className="font-sans text-lg font-semibold text-foreground">{partner.name}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{partner.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
