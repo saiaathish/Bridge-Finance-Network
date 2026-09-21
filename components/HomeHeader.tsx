@@ -9,29 +9,33 @@ import { APPLICATION_URL } from "@/lib/constants"
 
 // Nav order keeps About beside Home in the primary navigation; on the
 // homepage itself sections are keyed so the band order below can differ
-// from nav order. "Directory" always leaves the page — it lives at its
-// own route, not in an on-page section.
+// from nav order. "Apply" scrolls to the homepage's Apply/Contact section
+// — the separate filled button on the right opens the external
+// application form directly.
 export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
   { label: "About", key: "about" },
+  { label: "Approach", key: "approach" },
   { label: "Programs", key: "programs" },
-  { label: "Directory", key: "directory", href: "/directory" },
+  { label: "Apply", key: "contact" },
 ] as const
 
 // Secondary links tucked behind the "More" dropdown on desktop; the mobile
 // menu still lists them flat alongside the primary items above.
 export const MORE_NAV_ITEMS = [
   { label: "Partners", href: "/partners" },
-  { label: "Speakers", href: "/portal/speakers" },
-  { label: "Support Us", href: "/support" },
+  { label: "Guest Speakers", href: "/portal/speakers" },
+  { label: "Directory", href: "/directory" },
 ] as const
 
 // Where each on-page item points when rendered somewhere other than the
 // homepage itself — the root route plus the matching section id.
 const AWAY_HREF: Record<string, string> = {
   hero: "/",
+  approach: "/#approach",
   programs: "/#programs",
   about: "/#about",
+  contact: "/#contact",
 }
 
 interface HomeHeaderProps {
@@ -102,10 +106,9 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
 
       <div className="hidden items-center gap-8 md:flex">
         {HOME_NAV_ITEMS.map((item) => {
-          const isPageLink = "href" in item
-          const href = isPageLink ? item.href : AWAY_HREF[item.key]
+          const href = AWAY_HREF[item.key]
 
-          if (!onNavigate || isPageLink) {
+          if (!onNavigate) {
             const isActive = pathname === href || (item.key === "hero" && pathname === "/")
             return (
               <Link
@@ -213,10 +216,9 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
         <div className="absolute left-0 right-0 top-full border-b border-border bg-card px-6 py-4 md:hidden">
           <div className="flex flex-col gap-1">
             {HOME_NAV_ITEMS.map(item => {
-              const isPageLink = "href" in item
-              const href = isPageLink ? item.href : AWAY_HREF[item.key]
+              const href = AWAY_HREF[item.key]
 
-              if (!onNavigate || isPageLink) {
+              if (!onNavigate) {
                 const isActive = pathname === href || (item.key === "hero" && pathname === "/")
                 return (
                   <Link
