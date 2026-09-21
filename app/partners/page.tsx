@@ -63,21 +63,41 @@ export default function PartnersPage() {
                   data-card
                   className="gsap-hidden flex w-full flex-col items-center rounded-xl border border-border bg-white p-6 text-center transition-colors duration-150 hover:border-muted-foreground"
                 >
-                  <div className="relative flex h-40 w-full items-center justify-center">
-                    {partner.logo ? (
-                      <Image
-                        src={partner.logo}
-                        alt={`${partner.name} logo`}
-                        fill
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-contain p-2"
-                      />
+                  {partner.logo ? (
+                    partner.website ? (
+                      <a
+                        href={partner.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${partner.name}'s website`}
+                        className="relative flex h-40 w-full items-center justify-center opacity-90 transition-opacity duration-150 hover:opacity-100"
+                      >
+                        <Image
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-contain p-2"
+                        />
+                      </a>
                     ) : (
+                      <div className="relative flex h-40 w-full items-center justify-center">
+                        <Image
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-contain p-2"
+                        />
+                      </div>
+                    )
+                  ) : (
+                    <div className="flex h-40 w-full items-center justify-center">
                       <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                         {partner.name}
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   <div className="mt-3">
                     <h3 className="font-sans text-lg font-semibold text-foreground">{partner.name}</h3>
