@@ -6,6 +6,7 @@ import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
+import Footer from "@/components/Footer";
 import { APPLICATION_URL } from "@/lib/constants";
 import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
 import { DollarSign, GraduationCap, Handshake, LayoutGrid, Users } from "lucide-react";
@@ -332,6 +333,7 @@ export default function Home() {
   };
 
   return (
+    <>
     <main className="relative w-full bg-background text-foreground">
       <HomeHeader activeKey={activeKey} onNavigate={scrollToKey} />
 
@@ -427,5 +429,7 @@ export default function Home() {
         <ContactSection />
       </div>
     </main>
+    <Footer />
+    </>
   );
 }
