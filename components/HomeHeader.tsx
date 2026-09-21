@@ -8,15 +8,15 @@ import { APPLICATION_URL } from "@/lib/constants"
 
 // Nav order keeps About beside Home in the primary navigation; on the
 // homepage itself sections are keyed so the band order below can differ
-// from nav order. "Directory" is the only item that always leaves the
-// page — the full team directory lives at /directory, not in an on-page
-// section.
+// from nav order. "Directory" and "Partners" always leave the page — they
+// live at their own routes, not in an on-page section.
 export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
   { label: "About", key: "about" },
   { label: "Approach", key: "approach" },
   { label: "Programs", key: "programs" },
   { label: "Directory", key: "directory", href: "/directory" },
+  { label: "Partners", key: "partners", href: "/partners" },
   { label: "Apply", key: "contact" },
 ] as const
 
