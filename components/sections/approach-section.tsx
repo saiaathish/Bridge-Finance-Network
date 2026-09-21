@@ -20,9 +20,9 @@ export function ApproachSection() {
             >
               <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ Building real skills</p>
               <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-                We teach the
+                We provide the foundation
                 <br />
-                entrance for <span className="text-muted-foreground">Finance.</span>
+                for a career in <span className="text-muted-foreground">Finance.</span>
               </h2>
             </div>
 
@@ -32,10 +32,10 @@ export function ApproachSection() {
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                BFN is a structured pathway into finance built for students with no prior experience. Members don&apos;t just read about markets, they research real companies, build investment theses, and present stock pitches to a live committee.
+                BFN is a structured pathway into finance built for students at any experience level. Members don&apos;t just study curriculums — they engage with industry professionals, join structured cohorts, discover opportunities across partner organizations, and participate in specialized tracks tailored to their goals.
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                Every assignment is designed to develop the analytical habits that matter in finance: asking the right questions, backing your thesis with data, and communicating your ideas clearly.
+                Every step is designed to build a community where the next generation of finance professionals can grow together.
               </p>
             </div>
           </div>
@@ -44,24 +44,29 @@ export function ApproachSection() {
           <div className="flex flex-col justify-center space-y-5 md:space-y-7">
             {[
               {
-                desk: "Financial Research",
-                detail: "Company deep dives, industry analysis, and investment theses.",
+                desk: "Specialized Programs",
+                detail: "Explore the various aspects of finance through our curated, hands-on tracks.",
                 direction: "right",
               },
               {
-                desk: "Stock Pitching",
-                detail: "Price targets, relative valuation, and live pitch presentations.",
+                desk: "Cohorts",
+                detail: "Join a group of like-minded students to complete a program alongside peers and a dedicated mentor.",
                 direction: "left",
               },
               {
-                desk: "Financial Literacy",
-                detail: "Markets, accounting fundamentals, and basics of financing.",
+                desk: "Partnerships",
+                detail: "Access exclusive opportunities sourced through BFN's network of partner organizations.",
                 direction: "right",
               },
               {
                 desk: "Professional Development",
-                detail: "Guest speakers, networking opportunities, and real-world exposure to the finance industry.",
+                detail: "Connect with industry professionals through guest speaker sessions, networking events, and real-world finance exposure.",
                 direction: "left",
+              },
+              {
+                desk: "Community",
+                detail: "Rise through the ranks from Intern to VP and play an active role in shaping the future of BFN.",
+                direction: "right",
               },
             ].map((item, i) => {
               const getRevealClass = () => {
