@@ -8,7 +8,7 @@ import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
 import { APPLICATION_URL } from "@/lib/constants";
 import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
-import { ClipboardList, GraduationCap, Users } from "lucide-react";
+import { DollarSign, GraduationCap, Handshake, LayoutGrid, Users } from "lucide-react";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
 const FEATURED_PARTNERS = [
@@ -146,24 +146,43 @@ function IndustryLogoMarquee() {
 const BFN_STATS = [
   {
     value: 4,
+    prefix: "",
     suffix: "",
-    label: "Coverage Desks",
-    detail: "Student-led teams covering core finance verticals.",
+    label: "Active Programs",
+    detail: "Specialized tracks students can join and complete.",
+    icon: LayoutGrid,
+  },
+  {
+    value: 300,
+    prefix: "",
+    suffix: "+",
+    label: "Members",
+    detail: "A growing network of motivated students nationwide.",
     icon: Users,
   },
   {
-    value: 400,
+    value: 50,
+    prefix: "",
     suffix: "+",
-    label: "Student Members",
-    detail: "A growing network of motivated students across chapters.",
+    label: "Schools",
+    detail: "High schools represented across our student network.",
     icon: GraduationCap,
   },
   {
-    value: 50,
+    value: 4,
+    prefix: "",
     suffix: "+",
-    label: "Curated Opportunities",
-    detail: "Competitions, research, leadership, and career resources.",
-    icon: ClipboardList,
+    label: "Partnerships",
+    detail: "Trusted organizations supporting our mission.",
+    icon: Handshake,
+  },
+  {
+    value: 2500,
+    prefix: "$",
+    suffix: "",
+    label: "Fundraised",
+    detail: "Raised to fund programs, resources, and outreach.",
+    icon: DollarSign,
   },
 ];
 
@@ -200,7 +219,7 @@ function BfnByNumbers() {
           <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
           {BFN_STATS.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -217,6 +236,7 @@ function BfnByNumbers() {
                   </span>
                   <div className="min-w-0">
                     <p className="font-display text-5xl font-medium leading-none tracking-tight text-foreground sm:text-[3.5rem]">
+                      <span aria-hidden="true">{stat.prefix}</span>
                       <span
                         ref={element => {
                           numberRefs.current[index] = element;
@@ -227,6 +247,7 @@ function BfnByNumbers() {
                       </span>
                       <span aria-hidden="true">{stat.suffix}</span>
                       <span className="sr-only">
+                        {stat.prefix}
                         {stat.value}
                         {stat.suffix}
                       </span>
