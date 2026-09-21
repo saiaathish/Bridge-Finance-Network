@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin, User } from "lucide-react";
+import { User } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { HomeHeader } from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
@@ -40,7 +40,7 @@ export default function GuestSpeakersPage() {
                 Guest <span className="accent-word">Speakers</span>
               </h1>
               <p data-header-item className="gsap-hidden mt-4 text-lg text-muted-foreground">
-                Hear from industry professionals across finance, investing, and beyond.
+                Hear from industry professionals across various fields of finance.
               </p>
             </div>
 
@@ -51,7 +51,7 @@ export default function GuestSpeakersPage() {
                   data-card
                   className="gsap-hidden flex flex-col rounded-xl border border-border bg-white p-6 transition-colors duration-150 hover:border-muted-foreground"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-4">
                     <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-card">
                       {speaker.photo ? (
                         <Image
@@ -68,26 +68,24 @@ export default function GuestSpeakersPage() {
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-sans text-lg font-semibold text-foreground">{speaker.name}</h3>
-                      <p className="text-sm font-semibold text-signal">{speaker.title}</p>
-                      <div className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
-                        <MapPin size={14} className="shrink-0" />
-                        <span className="truncate">{speaker.location}</span>
-                      </div>
+                      <p className="mt-1.5 text-sm font-semibold text-signal">{speaker.title}</p>
                     </div>
                   </div>
 
                   <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{speaker.bio}</p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {speaker.tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-signal/10 px-3 py-1 text-xs font-medium text-signal"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {speaker.tags.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {speaker.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-signal/10 px-3 py-1 text-xs font-medium text-signal"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
