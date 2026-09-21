@@ -68,7 +68,8 @@ export default function GuestSpeakersPage() {
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-sans text-lg font-semibold text-foreground">{speaker.name}</h3>
-                      <p className="mt-1.5 text-sm font-semibold text-signal">{speaker.title}</p>
+                      <p className="mt-1 text-sm font-semibold text-signal">{speaker.title}</p>
+                      <p className="text-sm text-muted-foreground">{speaker.organization}</p>
                     </div>
                   </div>
 

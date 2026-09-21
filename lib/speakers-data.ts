@@ -1,4 +1,4 @@
-// Guest speakers data. Bio/title/tags are placeholders pending the real
+// Guest speakers data. Bio/tags are placeholders pending the real
 // details — swap them in once available. The grid on /portal/speakers
 // renders entirely from this list.
 
@@ -6,6 +6,7 @@ export interface Speaker {
   id: string;
   name: string;
   title: string;
+  organization: string;
   /** Public headshot path. Omitted entries render a placeholder avatar. */
   photo?: string;
   bio: string;
@@ -16,7 +17,8 @@ export const speakers: Speaker[] = [
   {
     id: "brendan-hermanspan",
     name: "Brendan Hermanspan",
-    title: "Guest Speaker",
+    title: "Private Wealth Management",
+    organization: "Goldman Sachs",
     photo: "/speakers/brendan-hermanspan.webp",
     bio: "Bio coming soon.",
     tags: [],
@@ -24,7 +26,8 @@ export const speakers: Speaker[] = [
   {
     id: "lenise-miller",
     name: "Lenise Miller",
-    title: "Guest Speaker",
+    title: "VP of Enterprise Risk Management",
+    organization: "Credit Agricole CIB",
     photo: "/speakers/lenise-miller.webp",
     bio: "Bio coming soon.",
     tags: [],
@@ -32,7 +35,8 @@ export const speakers: Speaker[] = [
   {
     id: "steven-zhang",
     name: "Steven Zhang",
-    title: "Guest Speaker",
+    title: "Software Engineer",
+    organization: "PaveFinance",
     photo: "/speakers/steven-zhang.webp",
     bio: "Bio coming soon.",
     tags: [],
@@ -40,7 +44,8 @@ export const speakers: Speaker[] = [
   {
     id: "bryce-viorst",
     name: "Bryce Viorst",
-    title: "Guest Speaker",
+    title: "CEO & Founder",
+    organization: "StreetSmart",
     photo: "/speakers/bryce-viorst.webp",
     bio: "Bio coming soon.",
     tags: [],
@@ -48,7 +53,8 @@ export const speakers: Speaker[] = [
   {
     id: "jonathan-schudmak",
     name: "Jonathan Schudmak",
-    title: "Guest Speaker",
+    title: "Former Managing Director (Energy & Power)",
+    organization: "Wells Fargo",
     photo: "/speakers/jonathan-schudmak.webp",
     bio: "Bio coming soon.",
     tags: [],
@@ -56,7 +62,9 @@ export const speakers: Speaker[] = [
   {
     id: "patrick-curtis",
     name: "Patrick Curtis",
-    title: "Guest Speaker",
+    title: "CEO & Founder",
+    organization: "Wall Street Oasis",
+    photo: "/speakers/patrick-curtis.webp",
     bio: "Bio coming soon.",
     tags: [],
   },
