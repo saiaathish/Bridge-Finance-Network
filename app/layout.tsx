@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
+import { SiteBackground } from "@/components/SiteBackground";
 import { ScrollTriggerRefresh } from "@/components/motion/ScrollTriggerRefresh";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <SiteBackground />
         <Providers>{children}</Providers>
         <ScrollTriggerRefresh />
         {/* Fillout embed — turns [data-fillout-embed-type="popup"] elements

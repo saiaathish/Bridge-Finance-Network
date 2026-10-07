@@ -414,13 +414,20 @@ export function sectionEntrance(container: Element, itemSelector: string): gsap.
   )
 }
 
+/** The shared sunrise layer mounted by components/SiteBackground. */
+export function getSiteSky(): HTMLElement | null {
+  if (typeof document === "undefined") return null
+  return document.querySelector<HTMLElement>("[data-site-sky]")
+}
+
 /**
- * Landing-hero sky parallax + fade: the gradient moves at a fraction of
- * scroll velocity for depth, then fades as the next content
- * zone (fadeTrigger) enters at 80% viewport. Additive to the CSS drift
- * loops; skipped entirely under prefers-reduced-motion.
+ * Landing-hero sky parallax + fade on the shared site sky. Desktop: the
+ * gradient trails the scroll at 0.3x for depth. Mobile: no scrubbed
+ * parallax, only the fade. Both fade out as the next content zone
+ * (fadeTrigger) moves from 80% to 15% of the viewport. Skipped under
+ * prefers-reduced-motion.
  */
-export function heroSkyParallax(sky: Element, fadeTrigger: Element): gsap.MatchMedia | null {
+export function heroSkyParallax(sky: Element, hero: Element, fadeTrigger: Element): gsap.MatchMedia | null {
   if (prefersReducedMotion()) return null
 
   const mm = gsap.matchMedia()
@@ -430,31 +437,25 @@ export function heroSkyParallax(sky: Element, fadeTrigger: Element): gsap.MatchM
       isMobile: "(max-width: 767px)",
     },
     (ctx) => {
-      const { isMobile } = ctx.conditions as { isMobile: boolean }
-      const velocity = isMobile ? 0.15 : 0.3
+      const { isDesktop } = ctx.conditions as { isDesktop: boolean }
 
-      // Parallax: sky trails the scroll at `velocity`. Trigger on the hero
-      // section (the sky's positioned parent), not the transformed sky
-      // itself — a scrubbed y-transform on the trigger element makes the
-      // trigger's own start/end positions drift as it animates.
-      const hero = sky.parentElement ?? sky
-      gsap.to(sky, {
-        y: () => window.innerHeight * velocity,
-        ease: "none",
-        scrollTrigger: {
-          trigger: hero,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      })
+      // Trigger on the hero, not the transformed sky — a scrubbed
+      // y-transform on the trigger element makes its own start/end drift.
+      if (isDesktop) {
+        gsap.to(sky, {
+          y: () => window.innerHeight * 0.3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        })
+      }
 
-      // Fade + compress as the next zone arrives. The fade spans from the
-      // next band entering at 80% viewport until it reaches 15% — a
-      // proportional range, so the sky only fully releases once the next
-      // band actually dominates the screen. Keep scale at 1: scaling this
-      // full-bleed layer exposes blank edges while it is still visible.
+      // Keep scale at 1: scaling this full-bleed layer exposes blank edges.
       gsap.to(sky, {
         opacity: 0,
         ease: "none",
@@ -469,6 +470,25 @@ export function heroSkyParallax(sky: Element, fadeTrigger: Element): gsap.MatchM
     },
   )
   return mm
+}
+
+/**
+ * Inner-page hero: the shared sky fades out as the hero scrolls away.
+ * Opacity only, no parallax. Skipped under prefers-reduced-motion.
+ */
+export function skyScrollFade(sky: Element, hero: Element): gsap.core.Tween | null {
+  if (prefersReducedMotion()) return null
+  return gsap.to(sky, {
+    opacity: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: hero,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+      invalidateOnRefresh: true,
+    },
+  })
 }
 
 /**

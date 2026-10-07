@@ -8,7 +8,7 @@ import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
 import { APPLICATION_URL } from "@/lib/constants";
-import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
+import { getSiteSky, heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
 import { DollarSign, GraduationCap, Handshake, LayoutGrid, Users } from "lucide-react";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
@@ -272,7 +272,6 @@ function BfnByNumbers() {
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const skyRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const [activeKey, setActiveKey] = useState("hero");
 
@@ -294,13 +293,14 @@ export default function Home() {
     heroIntro(heroRef.current.querySelectorAll("[data-hero-item]"));
   };
 
-  // Sky parallax (0.3x desktop / 0.15x mobile) + fade-out as the About band
+  // Shared site sky: parallax (desktop only) + fade-out as the About band
   // enters at 80% viewport.
   useEffect(() => {
-    if (!skyRef.current) return;
+    const sky = getSiteSky();
+    const heroEl = sectionRefs.current["hero"];
     const aboutEl = sectionRefs.current["about"];
-    if (!aboutEl) return;
-    const mm = heroSkyParallax(skyRef.current, aboutEl);
+    if (!sky || !heroEl || !aboutEl) return;
+    const mm = heroSkyParallax(sky, heroEl, aboutEl);
     return () => {
       mm?.revert();
     };
@@ -334,17 +334,16 @@ export default function Home() {
 
   return (
     <>
-    <main className="relative w-full bg-background text-foreground">
+    <main className="relative w-full text-foreground">
       <HomeHeader activeKey={activeKey} onNavigate={scrollToKey} />
 
-      {/* Hero — full-bleed sunrise sky across the entire viewport */}
+      {/* Hero — the shared site sky (root layout) sizes itself to this
+          section via data-sky-anchor */}
       <section
         ref={registerSection("hero")}
-        className="hero-fade relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pb-20 pt-28 md:px-12"
+        data-sky-anchor="edge"
+        className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pb-20 pt-28 md:px-12"
       >
-        {/* Extends 40% above the hero so the downward parallax drift never
-            exposes a blank strip along the clipped top edge */}
-        <div ref={skyRef} className="sky-beam pointer-events-none absolute -top-[40%] bottom-0 inset-x-0" />
 
         {/* Brand mark watermark, sitting quietly in the sunrise sky's empty span */}
         <div
