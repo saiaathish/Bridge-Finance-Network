@@ -342,8 +342,9 @@ export function typewriter(container: Element, options: { onComplete?: () => voi
   const chars = container.querySelectorAll("[data-char]")
   if (prefersReducedMotion()) {
     gsap.set(chars, { autoAlpha: 1 })
-    options.onComplete?.()
-    return gsap.to(container, { duration: 0 })
+    // Defer one tick: callers often run this from a child's layout effect,
+    // before the parent's refs (which onComplete reads) are attached.
+    return gsap.delayedCall(0, () => options.onComplete?.())
   }
   return gsap.fromTo(
     chars,

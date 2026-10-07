@@ -554,10 +554,11 @@
   @media (width >= 48rem) { font-size: var(--text-lg); }
 }
 
-/* Body copy inside cards: 14px, relaxed */
+/* Body copy inside cards: 14 / 16px, relaxed */
 @utility type-card {
   font-size: var(--text-sm);
   line-height: 1.625;
+  @media (width >= 48rem) { font-size: var(--text-base); }
 }
 
 /* "/ Section eyebrow" in mono: 14 / 16px */

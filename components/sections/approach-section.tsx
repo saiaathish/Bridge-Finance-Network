@@ -1,9 +1,26 @@
 "use client"
 
-import { useReveal } from "@/hooks/use-reveal"
+import { useRef } from "react"
+import { fadeUp, slideIn, textRise, useGsap } from "@/lib/motion"
 
 export function ApproachSection() {
-  const { ref, isVisible } = useReveal(0.3)
+  const ref = useRef<HTMLElement>(null)
+
+  useGsap(ref, (env, q) => {
+    const section = ref.current!
+    fadeUp(q("[data-eyebrow]"), env, { trigger: section, start: "top 75%" })
+    const [heading] = q("[data-rise]")
+    if (heading) textRise(heading, env, { by: "words", trigger: section, start: "top 75%", delay: 0.1 })
+    fadeUp(q("[data-fade]"), env, { trigger: section, start: "top 75%", delay: 0.3 })
+    q("[data-item]").forEach((item, i) => {
+      slideIn(item, env, {
+        from: item.dataset.item === "left" ? "left" : "right",
+        trigger: section,
+        start: "top 75%",
+        delay: 0.3 + i * (env.isMobile ? 0.08 : 0.12),
+      })
+    })
+  })
 
   return (
     <section
@@ -14,27 +31,20 @@ export function ApproachSection() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
           {/* Left side - Narrative */}
           <div>
-            <div
-              className={`mb-6 transition-all duration-700 md:mb-10 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
-                }`}
-            >
-              <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ Building real skills</p>
-              <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
+            <div className="mb-6 md:mb-10">
+              <p data-eyebrow className="gsap-hidden type-eyebrow mb-4 text-muted-foreground">/ Building real skills</p>
+              <h2 data-rise className="gsap-hidden type-h2 text-foreground">
                 We provide the foundation
                 <br />
                 for a career in <span className="text-muted-foreground">Finance.</span>
               </h2>
             </div>
 
-            <div
-              className={`space-y-4 transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              style={{ transitionDelay: "200ms" }}
-            >
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+            <div className="space-y-4">
+              <p data-fade className="gsap-hidden type-body max-w-md text-foreground/90">
                 BFN is a structured pathway into finance built for students at any experience level. Members don&apos;t just study curriculums — they engage with industry professionals, join structured cohorts, discover opportunities across partner organizations, and participate in specialized tracks tailored to their goals.
               </p>
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+              <p data-fade className="gsap-hidden type-body max-w-md text-foreground/90">
                 Every step is designed to build a community where the next generation of finance professionals can grow together.
               </p>
             </div>
@@ -69,26 +79,19 @@ export function ApproachSection() {
                 direction: "right",
               },
             ].map((item, i) => {
-              const getRevealClass = () => {
-                if (!isVisible) {
-                  return item.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
-                }
-                return "translate-x-0 opacity-100"
-              }
-
               return (
                 <div
                   key={i}
-                  className={`group border-l border-foreground/30 pl-4 transition-all duration-700 hover:border-foreground/60 md:pl-8 ${getRevealClass()}`}
+                  data-item={item.direction}
+                  className="gsap-hidden group border-l border-foreground/30 pl-4 transition-colors duration-300 hover:border-foreground/60 md:pl-8"
                   style={{
-                    transitionDelay: `${300 + i * 150}ms`,
                     marginLeft: i % 2 === 0 ? "0" : "auto",
                     maxWidth: i % 2 === 0 ? "100%" : "90%",
                   }}
                 >
                   <div className="mb-1 flex items-center gap-3">
                     <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
-                    <h3 className="font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-1 md:text-2xl">
+                    <h3 className="type-title text-foreground transition-transform duration-300 group-hover:translate-x-1">
                       {item.desk}
                     </h3>
                   </div>
