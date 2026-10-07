@@ -51,6 +51,7 @@
   --color-gain: var(--bfn-gain);
   --color-loss: var(--bfn-loss);
   --color-navy: var(--bfn-navy);
+  --color-navy-hover: var(--bfn-navy-hover);
   --color-surface: var(--bfn-surface);
 }
 
@@ -70,6 +71,7 @@
   --bfn-gradient-sky: linear-gradient(100deg, var(--bfn-sky-a), var(--bfn-sky-b) 45%, var(--bfn-sky-c));
   /* Brand navy (logo) — nav active state, support bullets */
   --bfn-navy: #153B63;
+  --bfn-navy-hover: #123354;
   /* Solid card surface for readable content cards */
   --bfn-surface: #ffffff;
   /* Sunrise palette — dawn to gold, the hero sky's stops */

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-border text-muted-foreground">
-      <div className="container py-16">
+    <footer className="border-t border-border bg-card px-6 text-muted-foreground md:px-12">
+      <div className="mx-auto w-full max-w-7xl py-16">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Bridge Finance Network · 501(c)(3) nonprofit organization. All rights reserved.
