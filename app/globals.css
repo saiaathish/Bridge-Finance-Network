@@ -50,6 +50,8 @@
   --color-signal: var(--bfn-signal);
   --color-gain: var(--bfn-gain);
   --color-loss: var(--bfn-loss);
+  --color-navy: var(--bfn-navy);
+  --color-surface: var(--bfn-surface);
 }
 
 :root {
@@ -66,6 +68,18 @@
   --bfn-sky-b: #8FD3F4;
   --bfn-sky-c: #F2B463;
   --bfn-gradient-sky: linear-gradient(100deg, var(--bfn-sky-a), var(--bfn-sky-b) 45%, var(--bfn-sky-c));
+  /* Brand navy (logo) — nav active state, support bullets */
+  --bfn-navy: #153B63;
+  /* Solid card surface for readable content cards */
+  --bfn-surface: #ffffff;
+  /* Sunrise palette — dawn to gold, the hero sky's stops */
+  --bfn-sunrise-dawn: #35578C;
+  --bfn-sunrise-sky: var(--bfn-sky-a);
+  --bfn-sunrise-light: var(--bfn-sky-b);
+  --bfn-sunrise-mist: #CFE9E2;
+  --bfn-sunrise-cream: #FBE3B8;
+  --bfn-sunrise-gold: var(--bfn-sky-c);
+  --bfn-sunrise-ember: #E8955F;
 
   --radius: 0.75rem;
   --background: var(--bfn-canvas);
@@ -180,7 +194,7 @@
 
   /* One italic accent word per headline, max once per page section (DESIGN.md) */
   .accent-word {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
   }
@@ -195,7 +209,7 @@
 
   /* Pure white card reserved for real data tables (BFN Portfolio) */
   .card-data {
-    background-color: #ffffff;
+    background-color: var(--bfn-surface);
     border: 1px solid var(--bfn-hairline);
     border-radius: 12px;
   }
@@ -275,13 +289,13 @@
   .sky-beam {
     background-image: linear-gradient(
       var(--sunrise-angle, 160deg),
-      #35578C 0%,
-      #4FA8E8 var(--sunrise-lift, 22%),
-      #8FD3F4 45%,
-      #CFE9E2 58%,
-      #FBE3B8 70%,
-      #F2B463 84%,
-      #E8955F 100%
+      var(--bfn-sunrise-dawn) 0%,
+      var(--bfn-sunrise-sky) var(--sunrise-lift, 22%),
+      var(--bfn-sunrise-light) 45%,
+      var(--bfn-sunrise-mist) 58%,
+      var(--bfn-sunrise-cream) 70%,
+      var(--bfn-sunrise-gold) 84%,
+      var(--bfn-sunrise-ember) 100%
     );
     background-size: 160% 160%;
     background-position: 50% 100%;
