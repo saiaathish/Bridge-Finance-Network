@@ -118,29 +118,6 @@
   --sidebar-ring: var(--bfn-signal);
 }
 
-/* Non-landing brand accent — logo-inspired navy, scoped to `.inner-page`
-   (every route except `/`) so the landing page's bright signal-blue is
-   never touched. Re-declares only the tokens derived from --bfn-signal /
-   --bfn-hairline / --bfn-haze; everything else (ink, canvas, primary/
-   buttons) is inherited unchanged so CTAs stay ink, not navy. */
-.inner-page {
-  --bfn-signal: #134A94;
-  --bfn-hairline: rgba(19, 74, 148, 0.35);
-  --bfn-haze: color-mix(in srgb, var(--bfn-signal) 8%, #ffffff);
-
-  --card: var(--bfn-haze);
-  --card-foreground: var(--bfn-ink);
-  --secondary: var(--bfn-haze);
-  --muted: var(--bfn-haze);
-  --accent: var(--bfn-haze);
-  --border: var(--bfn-hairline);
-  --input: var(--bfn-hairline);
-  --ring: var(--bfn-signal);
-  --sidebar: var(--bfn-haze);
-  --sidebar-border: var(--bfn-hairline);
-  --sidebar-ring: var(--bfn-signal);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -285,14 +262,6 @@
     border-radius: 12px;
   }
 
-  /* Sky gradient band — signature element only: hero band, tier-ladder track,
-     section dividers. Never a page or card background. */
-  .sky-band {
-    background-image: var(--bfn-gradient-sky);
-    background-size: 200% 100%;
-    animation: skyDrift 60s linear infinite alternate;
-  }
-
   /* Hidden-before-GSAP state: applied in JSX so animated elements are
      invisible on first paint; GSAP flips visibility as its first act. */
   .gsap-hidden {
@@ -300,40 +269,6 @@
     visibility: hidden;
   }
 
-  /* Deliberate cinematic opening on the hero container */
-  .hero-fade {
-    animation: fadeIn 0.3s ease-out both;
-  }
-
-  /* Sunrise sky filling the right half of the hero — full bleed to the top
-     and right edges, feathering leftward into the canvas. Multi-stop
-     dawn-to-gold gradient whose angle, position, and horizon drift slowly. */
-  .sky-beam {
-    background-image: linear-gradient(
-      var(--sunrise-angle, 160deg),
-      var(--bfn-sunrise-dawn) 0%,
-      var(--bfn-sunrise-sky) var(--sunrise-lift, 22%),
-      var(--bfn-sunrise-light) 45%,
-      var(--bfn-sunrise-mist) 58%,
-      var(--bfn-sunrise-cream) 70%,
-      var(--bfn-sunrise-gold) 84%,
-      var(--bfn-sunrise-ember) 100%
-    );
-    background-size: 160% 160%;
-    background-position: 50% 100%;
-    animation:
-      sunriseAngle 45s ease-in-out infinite alternate,
-      sunriseRise 60s ease-in-out infinite alternate;
-    -webkit-mask-image: linear-gradient(250deg, black 42%, transparent 80%);
-    mask-image: linear-gradient(250deg, black 42%, transparent 80%);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .sky-band,
-    .sky-beam {
-      animation: none;
-    }
-  }
 }
 
 /* ------------------------------------------------------------------
@@ -424,34 +359,6 @@
   }
 }
 
-@property --sunrise-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 160deg;
-}
-
-@property --sunrise-lift {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 22%;
-}
-
-@keyframes sunriseAngle {
-  from { --sunrise-angle: 145deg; }
-  to { --sunrise-angle: 195deg; }
-}
-
-@keyframes sunriseRise {
-  0% {
-    background-position: 50% 100%;
-    --sunrise-lift: 30%;
-  }
-  100% {
-    background-position: 50% 0%;
-    --sunrise-lift: 14%;
-  }
-}
-
 /* Industry logo marquee - continuous, quiet evidence of practitioner reach. */
 .industry-logo-marquee {
   overflow: hidden;
@@ -507,11 +414,6 @@
 }
 @keyframes caretBlink {
   50% { opacity: 0; }
-}
-
-@keyframes skyDrift {
-  from { background-position: 0% 50%; }
-  to { background-position: 100% 50%; }
 }
 
 /* ------------------------------------------------------------------

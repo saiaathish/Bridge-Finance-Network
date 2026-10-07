@@ -274,28 +274,6 @@ export function heroIntro(targets: gsap.TweenTarget): gsap.core.Tween {
 }
 
 /**
- * Scroll reveal for section headers: same fade-up, fires once at 80%
- * viewport entry. Cards within a section do NOT get their own trigger.
- */
-export function scrollReveal(target: gsap.DOMTarget): gsap.core.Tween {
-  return gsap.fromTo(
-    target,
-    { y: 24, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.6,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: target as gsap.DOMTarget,
-        start: "top 80%",
-        once: true,
-      },
-    },
-  )
-}
-
-/**
  * Stat counter: tweens the number up on scroll-into-view. Render the target
  * with monospace digits so width doesn't jump mid-count.
  */
@@ -355,62 +333,6 @@ export function typewriter(container: Element, options: { onComplete?: () => voi
       stagger: 0.055,
       ease: "none",
       onComplete: options.onComplete,
-    },
-  )
-}
-
-/**
- * Word-by-word reveal on scroll: splits the element's text into word spans
- * and staggers them up. Fires once at 80% viewport entry.
- */
-export function wordReveal(el: HTMLElement): gsap.core.Tween {
-  if (!el.dataset.split) {
-    const words = (el.textContent ?? "").split(/\s+/).filter(Boolean)
-    el.textContent = ""
-    words.forEach((word, i) => {
-      const span = document.createElement("span")
-      span.textContent = word
-      span.style.display = "inline-block"
-      span.dataset.word = ""
-      el.appendChild(span)
-      if (i < words.length - 1) el.appendChild(document.createTextNode(" "))
-    })
-    el.dataset.split = "true"
-  }
-  const words = el.querySelectorAll("[data-word]")
-  const reduced = prefersReducedMotion()
-  return gsap.fromTo(
-    words,
-    { y: 24, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.5,
-      ease: "power3.out",
-      stagger: reduced ? 0 : 0.06,
-      scrollTrigger: { trigger: el, start: "top 80%", once: true },
-    },
-  )
-}
-
-/**
- * Staggered section entrance: items rise, scale, and settle with a varied
- * stagger (not a flat fade-up). One trigger per section container.
- */
-export function sectionEntrance(container: Element, itemSelector: string): gsap.core.Tween {
-  const items = container.querySelectorAll(itemSelector)
-  const reduced = prefersReducedMotion()
-  return gsap.fromTo(
-    items,
-    { y: 32, autoAlpha: 0, scale: 0.97 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      scale: 1,
-      duration: 0.7,
-      ease: "power3.out",
-      stagger: reduced ? 0 : { each: 0.1, from: "start" },
-      scrollTrigger: { trigger: container, start: "top 80%", once: true },
     },
   )
 }
@@ -490,46 +412,4 @@ export function skyScrollFade(sky: Element, hero: Element): gsap.core.Tween | nu
       invalidateOnRefresh: true,
     },
   })
-}
-
-/**
- * Immediate (non-scroll-gated) fade-up for content that swaps in response
- * to a user action — e.g. a tab switch — rather than scroll position.
- * Same easing/duration as sectionEntrance for a consistent feel.
- */
-export function contentSwitch(targets: gsap.TweenTarget, options: { instant?: boolean } = {}): gsap.core.Tween {
-  const reduced = prefersReducedMotion()
-  const instant = options.instant ?? false
-  return gsap.fromTo(
-    targets,
-    { y: 16, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: instant ? 0 : 0.45,
-      ease: "power3.out",
-      stagger: instant || reduced ? 0 : 0.06,
-    },
-  )
-}
-
-/**
- * Tier-ladder gradient track fill, left-to-right on scroll-into-view.
- * `fraction` is 0–1 progress along the ladder.
- */
-export function tierLadderFill(el: Element, fraction = 1): gsap.core.Tween {
-  const target = `${Math.round(fraction * 100)}%`
-  if (prefersReducedMotion()) {
-    return gsap.set(el, { width: target }) as unknown as gsap.core.Tween
-  }
-  return gsap.fromTo(
-    el,
-    { width: "0%" },
-    {
-      width: target,
-      duration: 1,
-      ease: "power2.inOut",
-      scrollTrigger: { trigger: el, start: "top 80%", once: true },
-    },
-  )
 }
