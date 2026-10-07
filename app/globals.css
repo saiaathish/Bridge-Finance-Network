@@ -267,6 +267,22 @@
     color: color-mix(in srgb, var(--bfn-sky-c) 55%, var(--bfn-ink));
   }
 
+  /* Soft static sunrise tint for alternating sections — never animated,
+     so the site sky stays the only moving background. */
+  .bg-sunrise-tint {
+    background-color: var(--bfn-canvas);
+    background-image:
+      radial-gradient(ellipse 70% 90% at 100% 0%, color-mix(in srgb, var(--bfn-sunrise-light) 28%, transparent), transparent 70%),
+      radial-gradient(ellipse 60% 80% at 0% 100%, color-mix(in srgb, var(--bfn-sunrise-cream) 50%, transparent), transparent 70%);
+  }
+
+  /* Solid readable content card */
+  .card-surface {
+    background-color: var(--bfn-surface);
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 12px;
+  }
+
   /* Sky gradient band — signature element only: hero band, tier-ladder track,
      section dividers. Never a page or card background. */
   .sky-band {
