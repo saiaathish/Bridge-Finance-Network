@@ -198,7 +198,7 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
           aria-current={pathname === "/support" ? "page" : undefined}
           className={`rounded-lg border px-3 py-2.5 text-sm font-semibold transition-colors duration-150 min-[480px]:px-6 ${
             pathname === "/support"
-              ? "border-[#153B63] text-[#153B63]"
+              ? "border-navy text-navy"
               : "border-border text-foreground hover:border-muted-foreground"
           }`}
         >
@@ -281,7 +281,7 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
               onClick={() => setMenuOpen(false)}
               className={`rounded-lg border px-4 py-2.5 text-center text-sm font-semibold transition-colors duration-150 ${
                 pathname === "/support"
-                  ? "border-[#153B63] text-[#153B63]"
+                  ? "border-navy text-navy"
                   : "border-border text-foreground hover:border-muted-foreground"
               }`}
             >

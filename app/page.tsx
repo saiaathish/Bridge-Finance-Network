@@ -8,7 +8,7 @@ import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
 import { APPLICATION_URL } from "@/lib/constants";
-import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
+import { cardsIn, drawRule, fadeUp, getSiteSky, heroIntro, heroSkyParallax, statCounter, typewriter, useGsap } from "@/lib/motion";
 import { DollarSign, GraduationCap, Handshake, LayoutGrid, Users } from "lucide-react";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
@@ -74,7 +74,7 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
   return (
     <h1
       ref={ref}
-      className={`type-caret ${done ? "type-done" : ""} mb-6 font-display text-5xl font-medium leading-[1.08] tracking-tight text-foreground md:text-7xl lg:text-[84px]`}
+      className={`type-caret ${done ? "type-done" : ""} mb-6 type-display text-foreground`}
       aria-label="Bridge Finance Network"
     >
       {HEADLINE_LINES.map((line, li) => (
@@ -109,7 +109,7 @@ function IndustryLogoMarquee() {
     >
       <h2
         id="industry-featured-title"
-        className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:text-xs"
+        className="type-label text-muted-foreground"
       >
         Industry Professionals Featured at BFN
       </h2>
@@ -188,7 +188,15 @@ const BFN_STATS = [
 ];
 
 function BfnByNumbers() {
+  const sectionRef = useRef<HTMLElement>(null);
   const numberRefs = useRef<Array<HTMLSpanElement | null>>([]);
+
+  useGsap(sectionRef, (env, q) => {
+    const section = sectionRef.current!;
+    drawRule(q("[data-rule]"), env, { trigger: section });
+    fadeUp(q("[data-eyebrow]"), env, { trigger: section, delay: 0.2 });
+    cardsIn(q("[data-card]"), env);
+  });
 
   useLayoutEffect(() => {
     const tweens = BFN_STATS.map((stat, index) => {
@@ -205,19 +213,21 @@ function BfnByNumbers() {
 
   return (
     <section
+      ref={sectionRef}
       className="border-t border-border bg-card px-6 py-12 md:px-12 md:py-14"
       aria-labelledby="bfn-by-numbers-title"
     >
       <div className="mx-auto max-w-7xl">
         <div className="flex items-center justify-center gap-4">
-          <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
+          <span data-rule className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
           <h2
             id="bfn-by-numbers-title"
-            className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-xs"
+            data-eyebrow
+            className="gsap-hidden type-label text-muted-foreground"
           >
             BFN by the numbers
           </h2>
-          <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
+          <span data-rule className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
@@ -226,7 +236,8 @@ function BfnByNumbers() {
             return (
               <article
                 key={stat.label}
-                className="flex h-full flex-col rounded-xl border border-signal/20 bg-background/80 p-6 sm:p-7"
+                data-card
+                className="gsap-hidden flex h-full flex-col rounded-xl border border-signal/20 bg-background/80 p-6 sm:p-7"
               >
                 <div className="flex items-start gap-5 lg:flex-col lg:gap-4">
                   <span
@@ -253,10 +264,10 @@ function BfnByNumbers() {
                         {stat.suffix}
                       </span>
                     </p>
-                    <h3 className="mt-2 font-display text-2xl font-medium leading-tight text-foreground">
+                    <h3 className="type-h3 mt-2 text-foreground">
                       {stat.label}
                     </h3>
-                    <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                    <p className="type-card mt-2 max-w-xs text-muted-foreground">
                       {stat.detail}
                     </p>
                   </div>
@@ -272,7 +283,6 @@ function BfnByNumbers() {
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const skyRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const [activeKey, setActiveKey] = useState("hero");
 
@@ -294,13 +304,14 @@ export default function Home() {
     heroIntro(heroRef.current.querySelectorAll("[data-hero-item]"));
   };
 
-  // Sky parallax (0.3x desktop / 0.15x mobile) + fade-out as the About band
+  // Shared site sky: parallax (desktop only) + fade-out as the About band
   // enters at 80% viewport.
   useEffect(() => {
-    if (!skyRef.current) return;
+    const sky = getSiteSky();
+    const heroEl = sectionRefs.current["hero"];
     const aboutEl = sectionRefs.current["about"];
-    if (!aboutEl) return;
-    const mm = heroSkyParallax(skyRef.current, aboutEl);
+    if (!sky || !heroEl || !aboutEl) return;
+    const mm = heroSkyParallax(sky, heroEl, aboutEl);
     return () => {
       mm?.revert();
     };
@@ -334,17 +345,16 @@ export default function Home() {
 
   return (
     <>
-    <main className="relative w-full bg-background text-foreground">
+    <main className="relative w-full text-foreground">
       <HomeHeader activeKey={activeKey} onNavigate={scrollToKey} />
 
-      {/* Hero — full-bleed sunrise sky across the entire viewport */}
+      {/* Hero — the shared site sky (root layout) sizes itself to this
+          section via data-sky-anchor */}
       <section
         ref={registerSection("hero")}
-        className="hero-fade relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pb-20 pt-28 md:px-12"
+        data-sky-anchor="edge"
+        className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pb-20 pt-28 md:px-12"
       >
-        {/* Extends 40% above the hero so the downward parallax drift never
-            exposes a blank strip along the clipped top edge */}
-        <div ref={skyRef} className="sky-beam pointer-events-none absolute -top-[40%] bottom-0 inset-x-0" />
 
         {/* Brand mark watermark, sitting quietly in the sunrise sky's empty span */}
         <div
@@ -363,7 +373,7 @@ export default function Home() {
             data-hero-lead
             className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5"
           >
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="type-kicker text-muted-foreground">
               STUDENT-LED NONPROFIT FINANCE NETWORK
             </p>
           </div>
@@ -372,7 +382,7 @@ export default function Home() {
 
           <p
             data-hero-item
-            className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="gsap-hidden type-lead mb-10 max-w-xl text-muted-foreground"
           >
             <span className="text-pretty">
               A student-led 501(c)(3) nonprofit helping motivated students build finance

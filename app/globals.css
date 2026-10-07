@@ -50,6 +50,9 @@
   --color-signal: var(--bfn-signal);
   --color-gain: var(--bfn-gain);
   --color-loss: var(--bfn-loss);
+  --color-navy: var(--bfn-navy);
+  --color-navy-hover: var(--bfn-navy-hover);
+  --color-surface: var(--bfn-surface);
 }
 
 :root {
@@ -66,6 +69,19 @@
   --bfn-sky-b: #8FD3F4;
   --bfn-sky-c: #F2B463;
   --bfn-gradient-sky: linear-gradient(100deg, var(--bfn-sky-a), var(--bfn-sky-b) 45%, var(--bfn-sky-c));
+  /* Brand navy (logo) — nav active state, support bullets */
+  --bfn-navy: #153B63;
+  --bfn-navy-hover: #123354;
+  /* Solid card surface for readable content cards */
+  --bfn-surface: #ffffff;
+  /* Sunrise palette — dawn to gold, the hero sky's stops */
+  --bfn-sunrise-dawn: #35578C;
+  --bfn-sunrise-sky: var(--bfn-sky-a);
+  --bfn-sunrise-light: var(--bfn-sky-b);
+  --bfn-sunrise-mist: #CFE9E2;
+  --bfn-sunrise-cream: #FBE3B8;
+  --bfn-sunrise-gold: var(--bfn-sky-c);
+  --bfn-sunrise-ember: #E8955F;
 
   --radius: 0.75rem;
   --background: var(--bfn-canvas);
@@ -102,35 +118,16 @@
   --sidebar-ring: var(--bfn-signal);
 }
 
-/* Non-landing brand accent — logo-inspired navy, scoped to `.inner-page`
-   (every route except `/`) so the landing page's bright signal-blue is
-   never touched. Re-declares only the tokens derived from --bfn-signal /
-   --bfn-hairline / --bfn-haze; everything else (ink, canvas, primary/
-   buttons) is inherited unchanged so CTAs stay ink, not navy. */
-.inner-page {
-  --bfn-signal: #134A94;
-  --bfn-hairline: rgba(19, 74, 148, 0.35);
-  --bfn-haze: color-mix(in srgb, var(--bfn-signal) 8%, #ffffff);
-
-  --card: var(--bfn-haze);
-  --card-foreground: var(--bfn-ink);
-  --secondary: var(--bfn-haze);
-  --muted: var(--bfn-haze);
-  --accent: var(--bfn-haze);
-  --border: var(--bfn-hairline);
-  --input: var(--bfn-hairline);
-  --ring: var(--bfn-signal);
-  --sidebar: var(--bfn-haze);
-  --sidebar-border: var(--bfn-hairline);
-  --sidebar-ring: var(--bfn-signal);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    /* Own stacking context so the site sky (z-index -1) paints above the
+       canvas but beneath all page content. */
+    position: relative;
+    isolation: isolate;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -180,7 +177,7 @@
 
   /* One italic accent word per headline, max once per page section (DESIGN.md) */
   .accent-word {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
   }
@@ -195,7 +192,7 @@
 
   /* Pure white card reserved for real data tables (BFN Portfolio) */
   .card-data {
-    background-color: #ffffff;
+    background-color: var(--bfn-surface);
     border: 1px solid var(--bfn-hairline);
     border-radius: 12px;
   }
@@ -249,12 +246,20 @@
     color: color-mix(in srgb, var(--bfn-sky-c) 55%, var(--bfn-ink));
   }
 
-  /* Sky gradient band — signature element only: hero band, tier-ladder track,
-     section dividers. Never a page or card background. */
-  .sky-band {
-    background-image: var(--bfn-gradient-sky);
-    background-size: 200% 100%;
-    animation: skyDrift 60s linear infinite alternate;
+  /* Soft static sunrise tint for alternating sections — never animated,
+     so the site sky stays the only moving background. */
+  .bg-sunrise-tint {
+    background-color: var(--bfn-canvas);
+    background-image:
+      radial-gradient(ellipse 70% 90% at 100% 0%, color-mix(in srgb, var(--bfn-sunrise-light) 28%, transparent), transparent 70%),
+      radial-gradient(ellipse 60% 80% at 0% 100%, color-mix(in srgb, var(--bfn-sunrise-cream) 50%, transparent), transparent 70%);
+  }
+
+  /* Solid readable content card */
+  .card-surface {
+    background-color: var(--bfn-surface);
+    border: 1px solid var(--bfn-hairline);
+    border-radius: 12px;
   }
 
   /* Hidden-before-GSAP state: applied in JSX so animated elements are
@@ -264,67 +269,93 @@
     visibility: hidden;
   }
 
-  /* Deliberate cinematic opening on the hero container */
-  .hero-fade {
-    animation: fadeIn 0.3s ease-out both;
-  }
+}
 
-  /* Sunrise sky filling the right half of the hero — full bleed to the top
-     and right edges, feathering leftward into the canvas. Multi-stop
-     dawn-to-gold gradient whose angle, position, and horizon drift slowly. */
-  .sky-beam {
-    background-image: linear-gradient(
-      var(--sunrise-angle, 160deg),
-      #35578C 0%,
-      #4FA8E8 var(--sunrise-lift, 22%),
-      #8FD3F4 45%,
-      #CFE9E2 58%,
-      #FBE3B8 70%,
-      #F2B463 84%,
-      #E8955F 100%
-    );
-    background-size: 160% 160%;
-    background-position: 50% 100%;
-    animation:
-      sunriseAngle 45s ease-in-out infinite alternate,
-      sunriseRise 60s ease-in-out infinite alternate;
-    -webkit-mask-image: linear-gradient(250deg, black 42%, transparent 80%);
-    mask-image: linear-gradient(250deg, black 42%, transparent 80%);
-  }
+/* ------------------------------------------------------------------
+   Site sky — the single shared moving background (components/SiteBackground).
+   Height follows the current page's hero via --site-sky-height.
+   ------------------------------------------------------------------ */
+.site-sky {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--site-sky-height, 100svh);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  animation: fadeIn 0.3s ease-out both;
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    .sky-band,
-    .sky-beam {
-      animation: none;
-    }
+/* Extends 40% above the hero so a downward parallax drift never exposes
+   a blank strip at the top; feathers leftward into the canvas. */
+.site-sky-layer {
+  position: absolute;
+  top: -40%;
+  bottom: 0;
+  inset-inline: 0;
+  -webkit-mask-image: linear-gradient(250deg, black 42%, transparent 80%);
+  mask-image: linear-gradient(250deg, black 42%, transparent 80%);
+}
+
+/* Inner pages: also feather the bottom edge into the canvas. */
+.site-sky[data-edge="fade"] .site-sky-layer {
+  -webkit-mask-image:
+    linear-gradient(250deg, black 42%, transparent 80%),
+    linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(250deg, black 42%, transparent 80%),
+    linear-gradient(to bottom, black 55%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Oversized so the transform drift never reveals an edge. */
+.site-sky-gradient {
+  position: absolute;
+  inset: -25%;
+  background-image: linear-gradient(
+    160deg,
+    var(--bfn-sunrise-dawn) 0%,
+    var(--bfn-sunrise-sky) 22%,
+    var(--bfn-sunrise-light) 45%,
+    var(--bfn-sunrise-mist) 58%,
+    var(--bfn-sunrise-cream) 70%,
+    var(--bfn-sunrise-gold) 84%,
+    var(--bfn-sunrise-ember) 100%
+  );
+  transform: translate3d(0, -10%, 0);
+  will-change: transform;
+  animation: sunriseDrift 60s ease-in-out infinite alternate;
+}
+
+@keyframes sunriseDrift {
+  from { transform: translate3d(0, -10%, 0) rotate(-6deg); }
+  to { transform: translate3d(0, 10%, 0) rotate(12deg); }
+}
+
+/* Mobile: rise only, no rotation. */
+@keyframes sunriseDriftMobile {
+  from { transform: translate3d(0, -10%, 0); }
+  to { transform: translate3d(0, 10%, 0); }
+}
+
+@media (max-width: 767px) {
+  .site-sky-gradient {
+    animation-name: sunriseDriftMobile;
   }
 }
 
-@property --sunrise-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 160deg;
+:root[data-tab-hidden] .site-sky-gradient {
+  animation-play-state: paused;
 }
 
-@property --sunrise-lift {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 22%;
-}
-
-@keyframes sunriseAngle {
-  from { --sunrise-angle: 145deg; }
-  to { --sunrise-angle: 195deg; }
-}
-
-@keyframes sunriseRise {
-  0% {
-    background-position: 50% 100%;
-    --sunrise-lift: 30%;
+@media (prefers-reduced-motion: reduce) {
+  .site-sky,
+  .site-sky-gradient {
+    animation: none;
   }
-  100% {
-    background-position: 50% 0%;
-    --sunrise-lift: 14%;
+  .site-sky-gradient {
+    will-change: auto;
   }
 }
 
@@ -338,6 +369,12 @@
   display: flex;
   width: max-content;
   animation: industryLogoMarquee 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-logo-marquee-track {
+    animation: none;
+  }
 }
 
 @keyframes industryLogoMarquee {
@@ -379,9 +416,92 @@
   50% { opacity: 0; }
 }
 
-@keyframes skyDrift {
-  from { background-position: 0% 50%; }
-  to { background-position: 100% 50%; }
+/* ------------------------------------------------------------------
+   Type scale — lifted from the homepage. Every page uses these instead
+   of ad-hoc size/weight/leading/tracking combinations.
+   ------------------------------------------------------------------ */
+
+/* Hero h1: 48 / 72 / 84px, 500, 1.08, tight */
+@utility type-display {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-tight);
+  @media (width >= 48rem) { font-size: var(--text-7xl); }
+  @media (width >= 64rem) { font-size: 84px; }
+}
+
+/* Section h2: 36 / 60 / 72px, 500, 1.05, tight */
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-tight);
+  @media (width >= 48rem) { font-size: var(--text-6xl); }
+  @media (width >= 64rem) { font-size: var(--text-7xl); }
+}
+
+/* Display h3 (stat labels, card names): 24px, 500, 1.25 */
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* Sans light title (program / approach items): 24 / 30px, 300 */
+@utility type-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  line-height: 1.25;
+  @media (width >= 48rem) { font-size: var(--text-3xl); }
+}
+
+/* Lead paragraph under a hero headline: 18 / 20px, relaxed */
+@utility type-lead {
+  font-size: var(--text-lg);
+  line-height: 1.625;
+  @media (width >= 48rem) { font-size: var(--text-xl); }
+}
+
+/* Body copy in sections: 14 / 18px, relaxed */
+@utility type-body {
+  font-size: var(--text-sm);
+  line-height: 1.625;
+  @media (width >= 48rem) { font-size: var(--text-lg); }
+}
+
+/* Body copy inside cards: 14 / 16px, relaxed */
+@utility type-card {
+  font-size: var(--text-sm);
+  line-height: 1.625;
+  @media (width >= 48rem) { font-size: var(--text-base); }
+}
+
+/* "/ Section eyebrow" in mono: 14 / 16px */
+@utility type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  @media (width >= 48rem) { font-size: var(--text-base); }
+}
+
+/* Uppercase mono label: 10 / 12px, 500, 0.16em */
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  @media (width >= 40rem) { font-size: var(--text-xs); }
+}
+
+/* Kicker pill text above a hero headline: 12px mono */
+@utility type-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
 }
 
 @layer utilities {

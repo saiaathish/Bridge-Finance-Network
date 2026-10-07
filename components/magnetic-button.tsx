@@ -18,7 +18,7 @@ export function MagneticButton({
   ...rest
 }: MagneticButtonProps) {
   const variants = {
-    primary: "bg-[#153B63] text-white border border-transparent hover:bg-[#123354]",
+    primary: "bg-navy text-white border border-transparent hover:bg-navy-hover",
     secondary: "bg-transparent text-foreground border border-border hover:border-muted-foreground",
     ghost: "bg-transparent text-foreground border border-border hover:border-muted-foreground",
   }

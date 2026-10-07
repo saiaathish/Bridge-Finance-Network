@@ -10,7 +10,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
     <div
       data-card
-      className="gsap-hidden hover-wiggle group flex w-full flex-col items-center rounded-xl border border-border bg-white p-8 text-center transition-colors duration-150 hover:border-muted-foreground"
+      className="gsap-hidden hover-wiggle group flex w-full flex-col items-center card-surface p-8 text-center transition-colors duration-150 hover:border-muted-foreground"
     >
       {showPhoto && (
         <div
@@ -40,13 +40,13 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
       )}
 
       {member.rank && (
-        <span className={`font-mono text-[11px] font-semibold uppercase tracking-wider text-signal ${showPhoto ? "mt-4" : ""}`}>
+        <span className={`type-label text-signal ${showPhoto ? "mt-4" : ""}`}>
           {member.rank}
         </span>
       )}
 
       <h3
-        className={`font-sans text-lg font-semibold text-foreground ${
+        className={`type-h3 text-foreground ${
           member.rank ? "mt-1" : showPhoto ? "mt-5" : ""
         }`}
       >
@@ -59,7 +59,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
       {member.description && (
         <div className="mt-4 space-y-3 text-left">
           {member.description.map((paragraph, index) => (
-            <p key={index} className="text-sm leading-relaxed text-muted-foreground">
+            <p key={index} className="type-card text-muted-foreground">
               {paragraph}
             </p>
           ))}
