@@ -398,6 +398,93 @@
   to { background-position: 100% 50%; }
 }
 
+/* ------------------------------------------------------------------
+   Type scale — lifted from the homepage. Every page uses these instead
+   of ad-hoc size/weight/leading/tracking combinations.
+   ------------------------------------------------------------------ */
+
+/* Hero h1: 48 / 72 / 84px, 500, 1.08, tight */
+@utility type-display {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-tight);
+  @media (width >= 48rem) { font-size: var(--text-7xl); }
+  @media (width >= 64rem) { font-size: 84px; }
+}
+
+/* Section h2: 36 / 60 / 72px, 500, 1.05, tight */
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-tight);
+  @media (width >= 48rem) { font-size: var(--text-6xl); }
+  @media (width >= 64rem) { font-size: var(--text-7xl); }
+}
+
+/* Display h3 (stat labels, card names): 24px, 500, 1.25 */
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* Sans light title (program / approach items): 24 / 30px, 300 */
+@utility type-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  line-height: 1.25;
+  @media (width >= 48rem) { font-size: var(--text-3xl); }
+}
+
+/* Lead paragraph under a hero headline: 18 / 20px, relaxed */
+@utility type-lead {
+  font-size: var(--text-lg);
+  line-height: 1.625;
+  @media (width >= 48rem) { font-size: var(--text-xl); }
+}
+
+/* Body copy in sections: 14 / 18px, relaxed */
+@utility type-body {
+  font-size: var(--text-sm);
+  line-height: 1.625;
+  @media (width >= 48rem) { font-size: var(--text-lg); }
+}
+
+/* Body copy inside cards: 14px, relaxed */
+@utility type-card {
+  font-size: var(--text-sm);
+  line-height: 1.625;
+}
+
+/* "/ Section eyebrow" in mono: 14 / 16px */
+@utility type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  @media (width >= 48rem) { font-size: var(--text-base); }
+}
+
+/* Uppercase mono label: 10 / 12px, 500, 0.16em */
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  @media (width >= 40rem) { font-size: var(--text-xs); }
+}
+
+/* Kicker pill text above a hero headline: 12px mono */
+@utility type-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
 @layer utilities {
   /* Hides the scrollbar on horizontally-scrollable strips (e.g. tab bars)
      without removing native touch/wheel scroll behavior. */
