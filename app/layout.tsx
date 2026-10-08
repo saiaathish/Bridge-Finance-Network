@@ -6,7 +6,7 @@ import { Providers } from "@/components/Providers";
 export const metadata: Metadata = {
   title: "Bridge Finance Network",
   description:
-    "BFN is a fiscally sponsored project of FMW Nonprofit Solutions, a 501(c)(3) tax-exempt organization, expanding access to finance education and career preparation.",
+    "BFN: a finance education project fiscally sponsored by FMW Nonprofit Solutions (a 501(c)(3) tax-exempt organization).",
 };
 
 export default function RootLayout({
