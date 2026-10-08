@@ -36,8 +36,9 @@ export function AboutSection() {
             style={{ transitionDelay: "200ms" }}
           >
             <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-              BFN is a student-led 501(c)(3) nonprofit expanding access to finance education, curated opportunities,
-              competitions, and practical career preparation.
+              BFN is a student-led project expanding access to finance education, curated opportunities,
+              competitions, and practical career preparation. BFN is a fiscally sponsored project of
+              FMW Nonprofit Solutions, a 501(c)(3) tax-exempt organization.
             </p>
             <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
               Students apply publicly, and approved members receive organized opportunities, templates, deadlines,
