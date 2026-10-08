@@ -364,7 +364,7 @@ export default function Home() {
             className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5"
           >
             <p className="font-mono text-xs text-muted-foreground">
-              STUDENT-LED NONPROFIT FINANCE NETWORK
+              STUDENT-LED FINANCE EDUCATION PROJECT
             </p>
           </div>
 
