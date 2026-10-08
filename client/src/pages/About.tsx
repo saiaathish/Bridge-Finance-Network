@@ -36,7 +36,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-[oklch(0.35_0.02_260)] leading-relaxed">
                 <p>
-                  Bridge Finance Network is a student-led nonprofit organization dedicated to expanding access to finance education, curated opportunities, and practical career preparation for high school students across the country.
+                  Bridge Finance Network is a student-led finance project dedicated to expanding access to finance education, curated opportunities, and practical career preparation for high school students across the country.
                 </p>
                 <p>
                   We believe that the path to a career in finance shouldn't start in college. By providing structured programs, mentorship, competitions, and a national peer network, we give ambitious students the tools and experience they need to stand out — years before their first internship application.

@@ -364,7 +364,7 @@ export default function Home() {
             className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5"
           >
             <p className="font-mono text-xs text-muted-foreground">
-              STUDENT-LED NONPROFIT FINANCE NETWORK
+              STUDENT-LED FINANCE EDUCATION PROJECT
             </p>
           </div>
 
@@ -375,9 +375,9 @@ export default function Home() {
             className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             <span className="text-pretty">
-              A student-led 501(c)(3) nonprofit helping motivated students build finance
-              skills, find credible opportunities, join a community, and gain
-              exposure to a career in finance.
+              Student-led finance education, opportunities, and community. BFN
+              operates under fiscal sponsorship of FMW Nonprofit Solutions, a
+              501(c)(3) tax-exempt organization.
             </span>
           </p>
           <div

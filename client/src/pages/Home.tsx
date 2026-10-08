@@ -87,7 +87,7 @@ export default function Home() {
               }`}
             >
               <div className="w-2 h-2 rounded-full bg-[oklch(0.75_0.15_175)] animate-pulse" />
-              <span className="text-[oklch(0.75_0.15_175)] text-sm font-medium">Student-Led Nonprofit Finance Network</span>
+              <span className="text-[oklch(0.75_0.15_175)] text-sm font-medium">Student-Led Finance Education Project</span>
             </div>
 
             <h1
