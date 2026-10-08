@@ -375,10 +375,9 @@ export default function Home() {
             className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             <span className="text-pretty">
-              A student-led project helping motivated students build finance
-              skills, find credible opportunities, join a community, and gain
-              exposure to a career in finance. BFN is a fiscally sponsored project
-              of FMW Nonprofit Solutions, a 501(c)(3) tax-exempt organization.
+              Student-led finance education, opportunities, and community. BFN
+              operates under fiscal sponsorship of FMW Nonprofit Solutions, a
+              501(c)(3) tax-exempt organization.
             </span>
           </p>
           <div
