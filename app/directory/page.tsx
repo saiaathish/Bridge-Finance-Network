@@ -76,7 +76,11 @@ export default function Directory() {
                 className={
                   compactGrid
                     ? "grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
-                    : "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                    : `grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ${
+                        // C-Suite cards keep matching heights; on other teams each
+                        // card sizes to its own content.
+                        activeCategory === "C-Suite" ? "" : "items-start"
+                      }`
                 }
               >
                 {members.map((member) =>

@@ -214,7 +214,7 @@ const cardMembers: TeamMember[] = [
     category: "Programs",
     school: "Monroe Township High School",
     description: [
-      "As the Director of the Programs Team, Yuvraj worked seamlessly with the cohort leads and curriculums team into delivering structured programs to BFN members. Additionally, he has hosted BFN's 2nd Stock pitch competition and is currently working with Echelon Equities to host another.",
+      "As the Director of the Programs Team, Yuvraj worked seamlessly with the cohort leads and the Curriculum team to deliver structured programs to BFN members. Additionally, he has hosted BFN's 2nd Stock pitch competition and is currently working with Echelon Equity to host another.",
     ],
   },
 
