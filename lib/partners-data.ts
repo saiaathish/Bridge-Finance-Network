@@ -4,8 +4,8 @@
 export interface Partner {
   id: string;
   name: string;
-  /** Short label shown above the name, e.g. "Fiscal Sponsor". */
-  type: string;
+  /** Short label shown above the name, e.g. "Fiscal Sponsor". Only rendered when provided. */
+  type?: string;
   /** Public logo path. Omitted entries render a name-only row. */
   logo?: string;
   /** Logo's natural pixel dimensions, so it renders at its own aspect ratio. */
@@ -68,5 +68,12 @@ export const partners: Partner[] = [
     logoWidth: 500,
     logoHeight: 500,
     howTheySupport: "Supports BFN's international chapters and provides in-person tutoring in Queens and Brooklyn.",
+  },
+  {
+    id: "echelon-equities",
+    name: "Echelon Equities",
+    logo: "/partners/echelon-equities.png",
+    logoWidth: 1052,
+    logoHeight: 1064,
   },
 ];

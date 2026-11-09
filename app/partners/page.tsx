@@ -46,25 +46,31 @@ function PartnerRow({ partner, index }: { partner: Partner; index: number }) {
           </div>
 
           <div className={`flex max-w-[800px] flex-col justify-center ${logoOnRight ? "md:order-1" : ""}`}>
-            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{partner.type}</p>
-            <h2 className="mt-1.5 font-display text-3xl font-medium leading-tight tracking-tight text-foreground md:text-4xl">
+            {partner.type && (
+              <p className="mb-1.5 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                {partner.type}
+              </p>
+            )}
+            <h2 className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground md:text-4xl">
               {partner.name}
             </h2>
 
-            <div className="mt-3 space-y-3">
-              {partner.whatTheyDo && (
-                <div>
-                  <p className="font-semibold text-foreground">About {partner.name}</p>
-                  <p className="text-sm leading-relaxed text-foreground/90 md:text-base">{partner.whatTheyDo}</p>
-                </div>
-              )}
-              {partner.howTheySupport && (
-                <div>
-                  <p className="font-semibold text-foreground">How they support BFN</p>
-                  <p className="text-sm leading-relaxed text-foreground/90 md:text-base">{partner.howTheySupport}</p>
-                </div>
-              )}
-            </div>
+            {(partner.whatTheyDo || partner.howTheySupport) && (
+              <div className="mt-3 space-y-3">
+                {partner.whatTheyDo && (
+                  <div>
+                    <p className="font-semibold text-foreground">About {partner.name}</p>
+                    <p className="text-sm leading-relaxed text-foreground/90 md:text-base">{partner.whatTheyDo}</p>
+                  </div>
+                )}
+                {partner.howTheySupport && (
+                  <div>
+                    <p className="font-semibold text-foreground">How they support BFN</p>
+                    <p className="text-sm leading-relaxed text-foreground/90 md:text-base">{partner.howTheySupport}</p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {partner.website && (
               <div className="mt-4">
