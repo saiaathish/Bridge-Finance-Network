@@ -11,8 +11,6 @@ export const teamCategories = [
   "Marketing",
   "Programs",
   "Curriculum",
-  "Resources",
-  "Partnerships",
   "Members",
 ] as const;
 
@@ -37,8 +35,9 @@ export interface TeamMember {
   rosterOnly?: boolean;
 }
 
-// Hand-written cards. Photos, titles, and bios live here; tier, tab, and
-// order come from the roster (see the merge at the bottom of this file).
+// Hand-written cards. Photos and bios live here; for anyone on the roster,
+// tier, school, tab, and order come from the roster instead (see the merge
+// at the bottom of this file). Titles only show for people not on the roster.
 const cardMembers: TeamMember[] = [
   // C-Suite
   {
@@ -498,6 +497,9 @@ export const tierOrder = [
 const ROSTER_TEAM_TO_CATEGORY: Record<string, TeamCategory> = {
   "Web Dev": "Web Dev Team",
   Member: "Members",
+  // No separate Resources or Partnerships tab on the site.
+  Resources: "Members",
+  Partnerships: "Members",
 };
 
 const normalizeName = (name: string) => name.trim().toLowerCase();
@@ -537,8 +539,8 @@ function buildTeamMembers(): TeamMember[] {
   const usedIds = new Set(cardMembers.map((card) => card.id));
 
   // Roster people, in roster order, each shown once under their roster tab.
-  // An existing card keeps its photo, title, school, and bio; the roster adds
-  // the tier (and the school, if the card had none).
+  // The roster is the up-to-date source: its tier replaces any old job title
+  // and its school replaces the card's. A card keeps only its photo and bio.
   const fromRoster: TeamMember[] = entries.map((entry) => {
     const category = rosterCategory(entry.team);
     const cards = cardsByName.get(normalizeName(entry.name));
@@ -548,8 +550,9 @@ function buildTeamMembers(): TeamMember[] {
       return {
         ...card,
         category,
+        title: undefined,
         rank: entry.tier,
-        school: card.school || entry.school || undefined,
+        school: entry.school || undefined,
       };
     }
 

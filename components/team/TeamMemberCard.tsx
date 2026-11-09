@@ -53,7 +53,9 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
         {member.name}
       </h3>
       {/* Skip the title line when it's just a restatement of the rank badge above it. */}
-      {member.title !== member.rank && <p className="mt-1 text-sm font-semibold text-signal">{member.title}</p>}
+      {member.title && member.title !== member.rank && (
+        <p className="mt-1 text-sm font-semibold text-signal">{member.title}</p>
+      )}
       {member.school && <p className="mt-1 text-sm text-muted-foreground">{member.school}</p>}
 
       {member.description && (
