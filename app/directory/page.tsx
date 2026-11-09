@@ -106,7 +106,7 @@ export default function Directory() {
         <div className="container py-16">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} Bridge Finance Network. All rights reserved.
+              &copy; 2025 Bridge Finance Network. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <a
