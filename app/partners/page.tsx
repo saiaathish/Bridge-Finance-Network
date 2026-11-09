@@ -6,27 +6,90 @@ import { useLayoutEffect, useRef } from "react";
 import { HomeHeader } from "@/components/HomeHeader";
 import { MagneticButton } from "@/components/magnetic-button";
 import Footer from "@/components/Footer";
-import { partners } from "@/lib/partners-data";
-import { contentSwitch, heroIntro } from "@/lib/motion";
+import { useReveal } from "@/hooks/use-reveal";
+import { partners, type Partner } from "@/lib/partners-data";
+import { heroIntro } from "@/lib/motion";
 
 const CONTACT_EMAIL = "bridgefinancenetwork@gmail.com";
 
+function PartnerRow({ partner, index }: { partner: Partner; index: number }) {
+  const { ref, isVisible } = useReveal(0.2);
+  const logoOnRight = index % 2 === 1;
+
+  return (
+    <section
+      ref={ref}
+      className={`border-t border-border py-16 transition-all duration-700 md:py-20 ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      }`}
+    >
+      <div className="container">
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16 lg:gap-24">
+          <div className={`flex justify-center ${logoOnRight ? "md:order-2" : ""}`}>
+            {partner.logo ? (
+              <Image
+                src={partner.logo}
+                alt={`${partner.name} logo`}
+                width={partner.logoWidth ?? 400}
+                height={partner.logoHeight ?? 400}
+                className="h-auto w-full max-w-[220px] md:max-w-[280px]"
+              />
+            ) : (
+              <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+                {partner.name}
+              </span>
+            )}
+          </div>
+
+          <div className={`flex flex-col justify-center ${logoOnRight ? "md:order-1" : ""}`}>
+            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{partner.type}</p>
+            <h2 className="mt-2 font-display text-3xl font-medium leading-tight tracking-tight text-foreground md:text-4xl">
+              {partner.name}
+            </h2>
+
+            <div className="mt-5 space-y-4">
+              {partner.whatTheyDo && (
+                <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-base">
+                  <span className="font-semibold text-foreground">What they do: </span>
+                  {partner.whatTheyDo}
+                </p>
+              )}
+              {partner.howTheySupport && (
+                <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-base">
+                  <span className="font-semibold text-foreground">How they support BFN: </span>
+                  {partner.howTheySupport}
+                </p>
+              )}
+            </div>
+
+            {partner.website && (
+              <div className="mt-7">
+                <MagneticButton
+                  variant="secondary"
+                  size="default"
+                  onClick={() => window.open(partner.website, "_blank")}
+                >
+                  <span className="group flex items-center justify-center gap-2">
+                    Visit website
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </MagneticButton>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function PartnersPage() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!headerRef.current) return;
     const tween = heroIntro(headerRef.current.querySelectorAll("[data-header-item]"));
-    return () => {
-      tween.kill();
-    };
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!gridRef.current) return;
-    const tween = contentSwitch(gridRef.current.querySelectorAll("[data-card]"));
     return () => {
       tween.kill();
     };
@@ -55,58 +118,13 @@ export default function PartnersPage() {
                 The organizations that help make BFN&apos;s mission possible.
               </p>
             </div>
+          </div>
 
-            <div ref={gridRef} className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {partners.map(partner => (
-                <div
-                  key={partner.id}
-                  data-card
-                  className="gsap-hidden flex w-full flex-col items-center rounded-xl border border-border bg-white p-6 text-center transition-colors duration-150 hover:border-muted-foreground"
-                >
-                  {partner.logo ? (
-                    partner.website ? (
-                      <a
-                        href={partner.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${partner.name}'s website`}
-                        className="relative flex h-40 w-full items-center justify-center opacity-90 transition-opacity duration-150 hover:opacity-100"
-                      >
-                        <Image
-                          src={partner.logo}
-                          alt={`${partner.name} logo`}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className="object-contain p-2"
-                        />
-                      </a>
-                    ) : (
-                      <div className="relative flex h-40 w-full items-center justify-center">
-                        <Image
-                          src={partner.logo}
-                          alt={`${partner.name} logo`}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className="object-contain p-2"
-                        />
-                      </div>
-                    )
-                  ) : (
-                    <div className="flex h-40 w-full items-center justify-center">
-                      <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                        {partner.name}
-                      </span>
-                    </div>
-                  )}
+          {partners.map((partner, index) => (
+            <PartnerRow key={partner.id} partner={partner} index={index} />
+          ))}
 
-                  <div className="mt-3">
-                    <h3 className="font-sans text-lg font-semibold text-foreground">{partner.name}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{partner.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
+          <div className="container">
             <div
               ref={ctaRef}
               className="mt-16 rounded-2xl border border-border bg-card px-8 py-12 text-center md:mt-20 md:px-16 md:py-16"
