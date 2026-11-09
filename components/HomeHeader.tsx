@@ -16,6 +16,7 @@ export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
   { label: "About", key: "about" },
   { label: "Programs", key: "programs" },
+  { label: "Resources", key: "resources" },
   { label: "Apply", key: "contact" },
 ] as const
 
@@ -32,6 +33,7 @@ export const MORE_NAV_ITEMS = [
 const AWAY_HREF: Record<string, string> = {
   hero: "/",
   programs: "/#programs",
+  resources: "/#resources",
   about: "/#about",
   contact: "/#contact",
 }
