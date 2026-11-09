@@ -3,7 +3,6 @@
 import { ServicesSection } from "@/components/sections/services-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
-import { ResourcesSection } from "@/components/sections/resources-section";
 import { ExpansionSection } from "@/components/sections/expansion-section";
 import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
@@ -418,11 +417,6 @@ export default function Home() {
       {/* Programs — Haze band */}
       <div id="programs" ref={registerSection("programs")} className="w-full bg-card">
         <ServicesSection />
-      </div>
-
-      {/* Resource Hub — Haze band */}
-      <div id="resources" ref={registerSection("resources")} className="w-full bg-card">
-        <ResourcesSection />
       </div>
 
       {/* Expansion map — Haze band */}

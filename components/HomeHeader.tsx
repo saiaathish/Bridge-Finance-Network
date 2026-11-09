@@ -16,7 +16,6 @@ export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
   { label: "About", key: "about" },
   { label: "Programs", key: "programs" },
-  { label: "Resources", key: "resources" },
   { label: "Expansion", key: "expansion" },
   { label: "Apply", key: "contact" },
 ] as const
@@ -27,6 +26,7 @@ export const MORE_NAV_ITEMS = [
   { label: "Partners", href: "/partners" },
   { label: "Guest Speakers", href: "/portal/speakers" },
   { label: "Directory", href: "/directory" },
+  { label: "Resources", href: "/resources" },
 ] as const
 
 // Where each on-page item points when rendered somewhere other than the
@@ -34,7 +34,6 @@ export const MORE_NAV_ITEMS = [
 const AWAY_HREF: Record<string, string> = {
   hero: "/",
   programs: "/#programs",
-  resources: "/#resources",
   expansion: "/#expansion",
   about: "/#about",
   contact: "/#contact",
