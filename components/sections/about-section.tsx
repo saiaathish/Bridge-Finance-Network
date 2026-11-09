@@ -30,7 +30,7 @@ export function AboutSection() {
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                BFN is a structured pathway into finance built for students at any experience level. Members don&apos;t just study curriculums — they engage with industry professionals, join structured cohorts, discover opportunities across partner organizations, and participate in specialized tracks tailored to their goals.
+                BFN is a hub that centralizes resources for ambitious students interested in finance, offering a structured pathway for students at any experience level. Members go beyond studying curriculums by learning from industry professionals, joining cohorts, discovering opportunities through our partners, and completing specialized tracks built around their goals.
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 Every step is designed to build a community where the next generation of finance professionals can grow together.
