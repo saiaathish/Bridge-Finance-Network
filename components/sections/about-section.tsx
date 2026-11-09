@@ -18,7 +18,6 @@ export function AboutSection() {
               className={`mb-6 transition-all duration-700 md:mb-10 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
                 }`}
             >
-              <p className="mb-4 font-mono text-sm text-muted-foreground md:text-base">/ Building real skills</p>
               <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
                 Made by students, brought to students.
               </h2>
