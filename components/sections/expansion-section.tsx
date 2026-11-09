@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useReveal } from "@/hooks/use-reveal"
 import { MemberMap } from "@/components/member-map"
 
@@ -18,23 +19,15 @@ export function ExpansionSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="flex flex-col items-center text-center">
-          <div className={`${revealClass} flex items-center justify-center gap-4`} style={delay(0)}>
-            <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
-            <p className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-              Expansion
-            </p>
-            <span className="h-px w-16 bg-border sm:w-24" aria-hidden="true" />
-          </div>
-
           <h2
-            style={delay(100)}
-            className={`${revealClass} mt-5 font-display text-4xl font-medium tracking-tight text-foreground md:text-6xl lg:text-7xl`}
+            style={delay(0)}
+            className={`${revealClass} font-display text-4xl font-medium tracking-tight text-foreground md:text-6xl lg:text-7xl`}
           >
             A Growing Global Network
           </h2>
 
           <p
-            style={delay(200)}
+            style={delay(100)}
             className={`${revealClass} mt-6 max-w-[700px] text-base leading-relaxed text-foreground/80 md:text-lg`}
           >
             BFN&apos;s student community now reaches more than 140 cities across 16 countries. Each dot
@@ -43,11 +36,20 @@ export function ExpansionSection() {
           </p>
         </div>
 
-        <div style={delay(300)} className={`${revealClass} mt-10`}>
+        <div style={delay(200)} className={`${revealClass} mt-10`}>
           <MemberMap />
           <p className="mt-4 text-center font-mono text-xs text-muted-foreground">
             Drag to explore, and zoom in to see each city.
           </p>
+          <div className="mt-6 flex justify-center">
+            {/* Same look as MagneticButton variant="secondary", rendered as a link. */}
+            <Link
+              href="/directory"
+              className="inline-block rounded-lg border border-border bg-transparent px-6 py-2.5 text-sm font-semibold text-foreground transition-colors duration-150 ease-out hover:border-muted-foreground"
+            >
+              Meet Our Members
+            </Link>
+          </div>
         </div>
       </div>
     </section>
