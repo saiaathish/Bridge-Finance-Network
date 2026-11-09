@@ -7,7 +7,6 @@ import { MagneticButton } from "@/components/magnetic-button"
 
 const QUICK_LINKS = [
   { label: "About", href: "#about" },
-  { label: "Approach", href: "#approach" },
   { label: "Programs", href: "#programs" },
   { label: "Apply", href: "#contact" },
 ]

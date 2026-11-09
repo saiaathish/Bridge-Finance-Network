@@ -15,7 +15,6 @@ import { APPLICATION_URL } from "@/lib/constants"
 export const HOME_NAV_ITEMS = [
   { label: "Home", key: "hero" },
   { label: "About", key: "about" },
-  { label: "Approach", key: "approach" },
   { label: "Programs", key: "programs" },
   { label: "Apply", key: "contact" },
 ] as const
@@ -32,7 +31,6 @@ export const MORE_NAV_ITEMS = [
 // homepage itself — the root route plus the matching section id.
 const AWAY_HREF: Record<string, string> = {
   hero: "/",
-  approach: "/#approach",
   programs: "/#programs",
   about: "/#about",
   contact: "/#contact",

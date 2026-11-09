@@ -1,6 +1,5 @@
 "use client";
 
-import { ApproachSection } from "@/components/sections/approach-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -412,11 +411,6 @@ export default function Home() {
       {/* About story — Haze band */}
       <div id="about" ref={registerSection("about")} className="w-full bg-card">
         <AboutSection />
-      </div>
-
-      {/* Approach — canvas */}
-      <div id="approach" ref={registerSection("approach")} className="w-full">
-        <ApproachSection />
       </div>
 
       {/* Programs — Haze band */}
