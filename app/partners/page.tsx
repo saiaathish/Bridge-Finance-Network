@@ -19,20 +19,24 @@ function PartnerRow({ partner, index }: { partner: Partner; index: number }) {
   return (
     <section
       ref={ref}
-      className={`border-t border-border py-16 transition-all duration-700 md:py-20 ${
+      className={`border-t border-border py-8 transition-all duration-700 md:py-10 ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       }`}
     >
       <div className="container">
-        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16 lg:gap-24">
-          <div className={`flex justify-center ${logoOnRight ? "md:order-2" : ""}`}>
+        <div
+          className={`grid items-center gap-8 md:gap-12 lg:gap-16 ${
+            logoOnRight ? "md:grid-cols-[3fr_1fr]" : "md:grid-cols-[1fr_3fr]"
+          }`}
+        >
+          <div className={`flex items-center justify-center ${logoOnRight ? "md:order-2" : ""}`}>
             {partner.logo ? (
               <Image
                 src={partner.logo}
                 alt={`${partner.name} logo`}
                 width={partner.logoWidth ?? 400}
                 height={partner.logoHeight ?? 400}
-                className="h-auto w-full max-w-[220px] md:max-w-[280px]"
+                className="h-auto max-h-[140px] w-auto max-w-full"
               />
             ) : (
               <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
@@ -41,29 +45,29 @@ function PartnerRow({ partner, index }: { partner: Partner; index: number }) {
             )}
           </div>
 
-          <div className={`flex flex-col justify-center ${logoOnRight ? "md:order-1" : ""}`}>
+          <div className={`flex max-w-[800px] flex-col justify-center ${logoOnRight ? "md:order-1" : ""}`}>
             <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{partner.type}</p>
-            <h2 className="mt-2 font-display text-3xl font-medium leading-tight tracking-tight text-foreground md:text-4xl">
+            <h2 className="mt-1.5 font-display text-3xl font-medium leading-tight tracking-tight text-foreground md:text-4xl">
               {partner.name}
             </h2>
 
-            <div className="mt-5 space-y-4">
+            <div className="mt-3 space-y-3">
               {partner.whatTheyDo && (
-                <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-base">
-                  <span className="font-semibold text-foreground">What they do: </span>
-                  {partner.whatTheyDo}
-                </p>
+                <div>
+                  <p className="font-semibold text-foreground">About {partner.name}</p>
+                  <p className="text-sm leading-relaxed text-foreground/90 md:text-base">{partner.whatTheyDo}</p>
+                </div>
               )}
               {partner.howTheySupport && (
-                <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-base">
-                  <span className="font-semibold text-foreground">How they support BFN: </span>
-                  {partner.howTheySupport}
-                </p>
+                <div>
+                  <p className="font-semibold text-foreground">How they support BFN</p>
+                  <p className="text-sm leading-relaxed text-foreground/90 md:text-base">{partner.howTheySupport}</p>
+                </div>
               )}
             </div>
 
             {partner.website && (
-              <div className="mt-7">
+              <div className="mt-4">
                 <MagneticButton
                   variant="secondary"
                   size="default"
