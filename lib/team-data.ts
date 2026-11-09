@@ -6,11 +6,11 @@ import roster from "@/data/bfn-members.json";
 
 export const teamCategories = [
   "C-Suite",
-  "Web Dev Team",
-  "Operations",
-  "Marketing",
   "Programs",
   "Curriculum",
+  "Operations",
+  "Web Dev Team",
+  "Marketing",
   "Members",
 ] as const;
 
@@ -57,7 +57,7 @@ const cardMembers: TeamMember[] = [
     photo: "/team/andrew-fu.png",
     category: "C-Suite",
     description: [
-      "As Co-Founder of BFN, he has been instrumental in building the foundational system that BFN currently operates. He believes that by growing this organization, he can connect students with financial education and real-world opportunity.",
+      "As Co-Founder of BFN, Andrew has been instrumental in building the foundational system that BFN currently operates. He believes that by growing this organization, he can connect students with financial education and real-world opportunity.",
     ],
   },
   {
@@ -94,15 +94,11 @@ const cardMembers: TeamMember[] = [
     ],
   },
   {
-    id: "anderson-overkamp",
-    name: "Anderson Overkamp",
-    title: "Chief Investment Officer",
-    photo: "/team/anderson-overkamp.png",
+    id: "henry-harvey",
+    name: "Henry Harvey",
+    title: "Chief Administrative Officer",
+    photo: "/team/henry-harvey.png",
     category: "C-Suite",
-    description: [
-      "Anderson began his finance journey as a self-directed stock market investor and equity researcher, documenting his analysis through his own website and blog.",
-      "He brings deep knowledge in equity research and financial writing to help BFN deliver meaningful, real-world learning experiences.",
-    ],
   },
 
   // Web Dev Team
@@ -148,14 +144,6 @@ const cardMembers: TeamMember[] = [
   },
 
   // Operations
-  {
-    id: "henry-harvey",
-    name: "Henry Harvey",
-    title: "Vice President, Operations",
-    category: "Operations",
-    school: "Rye Country Day School",
-    rank: "Lead",
-  },
   {
     id: "hrudya-pullalarevu",
     name: "Hrudya Pullalarevu",
@@ -222,8 +210,12 @@ const cardMembers: TeamMember[] = [
     id: "yuvraj-dharmapuri",
     name: "Yuvraj Dharmapuri",
     title: "Programs Associate",
+    photo: "/team/yuvraj-dharmapuri.png",
     category: "Programs",
     school: "Monroe Township High School",
+    description: [
+      "As the Director of the Programs Team, Yuvraj worked seamlessly with the cohort leads and curriculums team into delivering structured programs to BFN members. Additionally, he has hosted BFN's 2nd Stock pitch competition and is currently working with Echelon Equities to host another.",
+    ],
   },
 
   // Curriculum
@@ -538,10 +530,18 @@ function buildTeamMembers(): TeamMember[] {
 
   const usedIds = new Set(cardMembers.map((card) => card.id));
 
+  // C-Suite is hand-curated: anyone with a C-Suite card shows only there,
+  // even if the roster also lists them on a team.
+  const cSuiteNames = new Set(
+    cardMembers.filter((card) => card.category === "C-Suite").map((card) => normalizeName(card.name)),
+  );
+
   // Roster people, in roster order, each shown once under their roster tab.
   // The roster is the up-to-date source: its tier replaces any old job title
   // and its school replaces the card's. A card keeps only its photo and bio.
-  const fromRoster: TeamMember[] = entries.map((entry) => {
+  const fromRoster: TeamMember[] = entries
+    .filter((entry) => !cSuiteNames.has(normalizeName(entry.name)))
+    .map((entry) => {
     const category = rosterCategory(entry.team);
     const cards = cardsByName.get(normalizeName(entry.name));
     const card = cards?.find((c) => c.category === category) ?? cards?.[0];

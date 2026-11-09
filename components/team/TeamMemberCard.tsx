@@ -3,9 +3,9 @@ import { User } from "lucide-react";
 import type { TeamMember } from "@/lib/team-data";
 
 export function TeamMemberCard({ member }: { member: TeamMember }) {
-  // Portraits are a C-Suite-only treatment — every other subteam gets a
-  // simpler, more compact card with no reserved photo space.
-  const showPhoto = member.category === "C-Suite";
+  // C-Suite always reserves a portrait slot; on other teams a portrait only
+  // shows when that person has a photo.
+  const showPhoto = member.category === "C-Suite" || Boolean(member.photo);
 
   return (
     <div
@@ -19,7 +19,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
           {member.photo ? (
             <Image
               src={member.photo}
-              alt={`Portrait of ${member.name}, ${member.title ?? "C-Suite executive"}`}
+              alt={`Portrait of ${member.name}${member.title ? `, ${member.title}` : ""}`}
               width={128}
               height={128}
               sizes="128px"
