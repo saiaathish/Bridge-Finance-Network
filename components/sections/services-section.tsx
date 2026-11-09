@@ -2,11 +2,13 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 import { wordReveal } from "@/lib/motion"
-import { APPLICATION_URL } from "@/lib/constants"
+import { programs, type Program } from "@/lib/programs-data"
 import { useEffect, useRef } from "react"
 
 export function ServicesSection() {
-  const { ref, isVisible } = useReveal(0.3)
+  // The section is several screens tall now, so the heading reveals as soon as
+  // the section starts entering view; each card has its own trigger below.
+  const { ref, isVisible } = useReveal(0.05)
   const headingRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
@@ -36,30 +38,9 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
-          {[
-            {
-              title: "Intro to Investment",
-              description: "Learn the stock market and intro to pitching your stock.",
-              direction: "top",
-            },
-            {
-              title: "Fundamentals of Financial Literacy",
-              description: "Learn how to save, budget, invest, and spend wisely.",
-              direction: "right",
-            },
-            {
-              title: "Basics of Accounting",
-              description: "Learn how accounting works in the financial industry and why it is the language of finance",
-              direction: "left",
-            },
-            {
-              title: "Valuation Modeling",
-              description: "Provided by our trusted partner Wall Street Oasis at zero cost. Learn how valuation modeling works in big banks.",
-              direction: "bottom",
-            },
-          ].map((service, i) => (
-            <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
+        <div className="space-y-6">
+          {programs.map((program, i) => (
+            <ProgramCard key={program.number} program={program} index={i} />
           ))}
         </div>
       </div>
@@ -67,51 +48,84 @@ export function ServicesSection() {
   )
 }
 
-function ServiceCard({
-  service,
-  index,
-  isVisible,
-}: {
-  service: { title: string; description: string; direction: string }
-  index: number
-  isVisible: boolean
-}) {
-  const getRevealClass = () => {
-    if (!isVisible) {
-      switch (service.direction) {
-        case "left":
-          return "-translate-x-16 opacity-0"
-        case "right":
-          return "translate-x-16 opacity-0"
-        case "top":
-          return "-translate-y-16 opacity-0"
-        case "bottom":
-          return "translate-y-16 opacity-0"
-        default:
-          return "translate-y-12 opacity-0"
-      }
-    }
-    return "translate-x-0 translate-y-0 opacity-100"
-  }
+// Same staggered, alternating-direction entrance the original cards used.
+const REVEAL_FROM = [
+  "-translate-y-16 opacity-0",
+  "translate-x-16 opacity-0",
+  "-translate-x-16 opacity-0",
+  "translate-y-16 opacity-0",
+]
+
+function ProgramCard({ program, index }: { program: Program; index: number }) {
+  const { ref, isVisible } = useReveal(0.15)
 
   return (
-    <div
-      className={`group transition-all duration-700 ${getRevealClass()}`}
-      style={{
-        transitionDelay: `${index * 150}ms`,
-      }}
+    <article
+      ref={ref}
+      className={`grid overflow-hidden rounded-xl border border-border bg-white transition-all duration-700 lg:grid-cols-[300px_minmax(0,1fr)] ${
+        isVisible ? "translate-x-0 translate-y-0 opacity-100" : REVEAL_FROM[index % REVEAL_FROM.length]
+      }`}
     >
-      <div className="mb-3 flex items-center gap-3">
-        <div className="h-px w-8 bg-foreground/30 transition-all duration-300 group-hover:w-12 group-hover:bg-foreground/50" />
-        <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
+      {/* Left: number, name, description */}
+      <div className="border-b border-border p-6 md:p-8 lg:border-b-0 lg:border-r">
+        <div className="mb-3 flex items-center gap-3">
+          <div className="h-px w-8 bg-foreground/30" />
+          <span className="font-mono text-xs text-muted-foreground">{program.number}</span>
+        </div>
+        <h3 className="font-display text-2xl font-medium leading-tight tracking-tight text-foreground md:text-3xl">
+          {program.name}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/80">{program.description}</p>
+        {program.note && <p className="mt-3 font-mono text-xs text-muted-foreground">{program.note}</p>}
       </div>
-      <h3
-        onClick={() => window.open(APPLICATION_URL, "_blank")}
-        className="mb-2 cursor-pointer font-sans text-2xl font-light text-foreground md:text-3xl"
-      >
-        {service.title}
-      </h3>
-      <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">{service.description}</p>
-    </div>
+
+      {/* Right: four parts, then the totals strip */}
+      <div className="flex flex-col">
+        <div className="grid flex-1 divide-y divide-border sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+          {program.parts.map((part) => (
+            <div key={part.label} className="flex flex-col p-5 sm:border-b sm:border-border lg:border-b-0">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">{part.label}</p>
+              <p className="mt-1.5 text-sm font-semibold leading-snug text-foreground">{part.name}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-foreground/70">{part.description}</p>
+              {part.tags && part.tags.length > 0 && (
+                <div className="mt-auto flex flex-wrap gap-1.5 pt-3">
+                  {part.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="whitespace-nowrap rounded-full bg-signal/10 px-2.5 py-0.5 text-[11px] font-medium text-signal"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-5 border-t border-border bg-signal/[0.04] px-5 py-4 md:flex-row md:flex-wrap md:items-center md:gap-x-8">
+          <div className="flex gap-6">
+            {program.totals.map((total) => (
+              <div key={total.label}>
+                <p className="font-display text-2xl font-medium leading-none text-foreground">{total.value}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                  {total.label}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="min-w-0 flex-1 md:min-w-[200px]">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              {program.finalLabel ?? "Final assignment"}
+            </p>
+            <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{program.finalValue}</p>
+          </div>
+          <div className="min-w-0 flex-1 md:min-w-[200px]">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">What you gain</p>
+            <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{program.gain}</p>
+          </div>
+        </div>
+      </div>
+    </article>
   )
 }
