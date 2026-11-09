@@ -1,0 +1,1162 @@
+[
+ {
+  "city": "Frisco",
+  "region": "TX",
+  "country": "USA",
+  "lat": 33.15,
+  "lng": -96.82,
+  "count": 30
+ },
+ {
+  "city": "Monroe Township",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.32,
+  "lng": -74.43,
+  "count": 12
+ },
+ {
+  "city": "Tampa",
+  "region": "FL",
+  "country": "USA",
+  "lat": 27.95,
+  "lng": -82.46,
+  "count": 11
+ },
+ {
+  "city": "Chesterfield",
+  "region": "MO",
+  "country": "USA",
+  "lat": 38.66,
+  "lng": -90.58,
+  "count": 10
+ },
+ {
+  "city": "North Brunswick",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.45,
+  "lng": -74.48,
+  "count": 7
+ },
+ {
+  "city": "New Delhi",
+  "region": "",
+  "country": "India",
+  "lat": 28.61,
+  "lng": 77.21,
+  "count": 7
+ },
+ {
+  "city": "Bridgewater",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.59,
+  "lng": -74.62,
+  "count": 7
+ },
+ {
+  "city": "Round Rock",
+  "region": "TX",
+  "country": "USA",
+  "lat": 30.51,
+  "lng": -97.68,
+  "count": 6
+ },
+ {
+  "city": "Somerset",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.5,
+  "lng": -74.49,
+  "count": 5
+ },
+ {
+  "city": "Leander",
+  "region": "TX",
+  "country": "USA",
+  "lat": 30.58,
+  "lng": -97.85,
+  "count": 5
+ },
+ {
+  "city": "New York",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.75,
+  "lng": -73.98,
+  "count": 4
+ },
+ {
+  "city": "Allen",
+  "region": "TX",
+  "country": "USA",
+  "lat": 33.1,
+  "lng": -96.67,
+  "count": 4
+ },
+ {
+  "city": "Sanford",
+  "region": "FL",
+  "country": "USA",
+  "lat": 28.8,
+  "lng": -81.27,
+  "count": 4
+ },
+ {
+  "city": "Dubai",
+  "region": "",
+  "country": "UAE",
+  "lat": 25.2,
+  "lng": 55.27,
+  "count": 4
+ },
+ {
+  "city": "Brooklyn",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.65,
+  "lng": -73.95,
+  "count": 4
+ },
+ {
+  "city": "Whitby",
+  "region": "ON",
+  "country": "Canada",
+  "lat": 43.9,
+  "lng": -78.94,
+  "count": 4
+ },
+ {
+  "city": "Hillsborough",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.5,
+  "lng": -74.64,
+  "count": 4
+ },
+ {
+  "city": "Troy",
+  "region": "MI",
+  "country": "USA",
+  "lat": 42.61,
+  "lng": -83.15,
+  "count": 3
+ },
+ {
+  "city": "Cary",
+  "region": "NC",
+  "country": "USA",
+  "lat": 35.79,
+  "lng": -78.78,
+  "count": 3
+ },
+ {
+  "city": "Canton",
+  "region": "MI",
+  "country": "USA",
+  "lat": 42.31,
+  "lng": -83.48,
+  "count": 3
+ },
+ {
+  "city": "Doha",
+  "region": "",
+  "country": "Qatar",
+  "lat": 25.29,
+  "lng": 51.53,
+  "count": 3
+ },
+ {
+  "city": "Miami",
+  "region": "FL",
+  "country": "USA",
+  "lat": 25.76,
+  "lng": -80.19,
+  "count": 3
+ },
+ {
+  "city": "Prosper",
+  "region": "TX",
+  "country": "USA",
+  "lat": 33.24,
+  "lng": -96.8,
+  "count": 3
+ },
+ {
+  "city": "Philadelphia",
+  "region": "PA",
+  "country": "USA",
+  "lat": 39.95,
+  "lng": -75.16,
+  "count": 3
+ },
+ {
+  "city": "Flanders",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.84,
+  "lng": -74.7,
+  "count": 2
+ },
+ {
+  "city": "Suwanee",
+  "region": "GA",
+  "country": "USA",
+  "lat": 34.05,
+  "lng": -84.07,
+  "count": 2
+ },
+ {
+  "city": "Aurora",
+  "region": "IL",
+  "country": "USA",
+  "lat": 41.76,
+  "lng": -88.32,
+  "count": 2
+ },
+ {
+  "city": "Ashburn",
+  "region": "VA",
+  "country": "USA",
+  "lat": 39.04,
+  "lng": -77.49,
+  "count": 2
+ },
+ {
+  "city": "Kirkland",
+  "region": "WA",
+  "country": "USA",
+  "lat": 47.68,
+  "lng": -122.21,
+  "count": 2
+ },
+ {
+  "city": "South Brunswick",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.38,
+  "lng": -74.53,
+  "count": 2
+ },
+ {
+  "city": "Livingston",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.8,
+  "lng": -74.32,
+  "count": 2
+ },
+ {
+  "city": "Newark",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.74,
+  "lng": -74.17,
+  "count": 2
+ },
+ {
+  "city": "Apex",
+  "region": "NC",
+  "country": "USA",
+  "lat": 35.73,
+  "lng": -78.85,
+  "count": 2
+ },
+ {
+  "city": "St. Louis",
+  "region": "MO",
+  "country": "USA",
+  "lat": 38.63,
+  "lng": -90.2,
+  "count": 2
+ },
+ {
+  "city": "Coppell",
+  "region": "TX",
+  "country": "USA",
+  "lat": 32.95,
+  "lng": -97.02,
+  "count": 2
+ },
+ {
+  "city": "Indore",
+  "region": "",
+  "country": "India",
+  "lat": 22.72,
+  "lng": 75.86,
+  "count": 2
+ },
+ {
+  "city": "Abu Dhabi",
+  "region": "",
+  "country": "UAE",
+  "lat": 24.45,
+  "lng": 54.38,
+  "count": 2
+ },
+ {
+  "city": "Pune",
+  "region": "",
+  "country": "India",
+  "lat": 18.52,
+  "lng": 73.86,
+  "count": 2
+ },
+ {
+  "city": "Singapore",
+  "region": "",
+  "country": "Singapore",
+  "lat": 1.35,
+  "lng": 103.82,
+  "count": 2
+ },
+ {
+  "city": "Seymour",
+  "region": "CT",
+  "country": "USA",
+  "lat": 41.4,
+  "lng": -73.08,
+  "count": 2
+ },
+ {
+  "city": "Austin",
+  "region": "TX",
+  "country": "USA",
+  "lat": 30.27,
+  "lng": -97.74,
+  "count": 2
+ },
+ {
+  "city": "Mumbai",
+  "region": "",
+  "country": "India",
+  "lat": 19.08,
+  "lng": 72.88,
+  "count": 2
+ },
+ {
+  "city": "Pickering",
+  "region": "ON",
+  "country": "Canada",
+  "lat": 43.84,
+  "lng": -79.09,
+  "count": 2
+ },
+ {
+  "city": "Great Neck",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.8,
+  "lng": -73.73,
+  "count": 2
+ },
+ {
+  "city": "Kandhkot",
+  "region": "",
+  "country": "Pakistan",
+  "lat": 28.24,
+  "lng": 69.18,
+  "count": 2
+ },
+ {
+  "city": "Rye",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.98,
+  "lng": -73.68,
+  "count": 1
+ },
+ {
+  "city": "Edison",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.52,
+  "lng": -74.41,
+  "count": 1
+ },
+ {
+  "city": "Orlando",
+  "region": "FL",
+  "country": "USA",
+  "lat": 28.54,
+  "lng": -81.38,
+  "count": 1
+ },
+ {
+  "city": "Leesburg",
+  "region": "VA",
+  "country": "USA",
+  "lat": 39.12,
+  "lng": -77.56,
+  "count": 1
+ },
+ {
+  "city": "Ridgewood",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.98,
+  "lng": -74.12,
+  "count": 1
+ },
+ {
+  "city": "Plymouth",
+  "region": "MI",
+  "country": "USA",
+  "lat": 42.37,
+  "lng": -83.47,
+  "count": 1
+ },
+ {
+  "city": "Waterloo",
+  "region": "ON",
+  "country": "Canada",
+  "lat": 43.47,
+  "lng": -80.52,
+  "count": 1
+ },
+ {
+  "city": "Union City",
+  "region": "CA",
+  "country": "USA",
+  "lat": 37.6,
+  "lng": -122.02,
+  "count": 1
+ },
+ {
+  "city": "Plainsboro",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.33,
+  "lng": -74.6,
+  "count": 1
+ },
+ {
+  "city": "West Hartford",
+  "region": "CT",
+  "country": "USA",
+  "lat": 41.76,
+  "lng": -72.74,
+  "count": 1
+ },
+ {
+  "city": "Silver Spring",
+  "region": "MD",
+  "country": "USA",
+  "lat": 38.99,
+  "lng": -77.03,
+  "count": 1
+ },
+ {
+  "city": "Dallas",
+  "region": "TX",
+  "country": "USA",
+  "lat": 32.78,
+  "lng": -96.8,
+  "count": 1
+ },
+ {
+  "city": "Skillman",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.42,
+  "lng": -74.7,
+  "count": 1
+ },
+ {
+  "city": "Lagos",
+  "region": "",
+  "country": "Nigeria",
+  "lat": 6.52,
+  "lng": 3.38,
+  "count": 1
+ },
+ {
+  "city": "Rajpura",
+  "region": "",
+  "country": "India",
+  "lat": 30.48,
+  "lng": 76.59,
+  "count": 1
+ },
+ {
+  "city": "Saskatoon",
+  "region": "SK",
+  "country": "Canada",
+  "lat": 52.13,
+  "lng": -106.67,
+  "count": 1
+ },
+ {
+  "city": "Jaipur",
+  "region": "",
+  "country": "India",
+  "lat": 26.91,
+  "lng": 75.79,
+  "count": 1
+ },
+ {
+  "city": "Hewlett",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.64,
+  "lng": -73.7,
+  "count": 1
+ },
+ {
+  "city": "Cumming",
+  "region": "GA",
+  "country": "USA",
+  "lat": 34.21,
+  "lng": -84.14,
+  "count": 1
+ },
+ {
+  "city": "Brampton",
+  "region": "ON",
+  "country": "Canada",
+  "lat": 43.73,
+  "lng": -79.76,
+  "count": 1
+ },
+ {
+  "city": "Yonkers",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.93,
+  "lng": -73.9,
+  "count": 1
+ },
+ {
+  "city": "Temple",
+  "region": "TX",
+  "country": "USA",
+  "lat": 31.1,
+  "lng": -97.34,
+  "count": 1
+ },
+ {
+  "city": "Edmonton",
+  "region": "AB",
+  "country": "Canada",
+  "lat": 53.55,
+  "lng": -113.49,
+  "count": 1
+ },
+ {
+  "city": "Fremont",
+  "region": "CA",
+  "country": "USA",
+  "lat": 37.55,
+  "lng": -121.99,
+  "count": 1
+ },
+ {
+  "city": "Nashua",
+  "region": "NH",
+  "country": "USA",
+  "lat": 42.77,
+  "lng": -71.47,
+  "count": 1
+ },
+ {
+  "city": "Plainview",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.78,
+  "lng": -73.47,
+  "count": 1
+ },
+ {
+  "city": "Highland Park",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.5,
+  "lng": -74.43,
+  "count": 1
+ },
+ {
+  "city": "Argyle",
+  "region": "TX",
+  "country": "USA",
+  "lat": 33.12,
+  "lng": -97.18,
+  "count": 1
+ },
+ {
+  "city": "Washington",
+  "region": "DC",
+  "country": "USA",
+  "lat": 38.91,
+  "lng": -77.04,
+  "count": 1
+ },
+ {
+  "city": "Plano",
+  "region": "TX",
+  "country": "USA",
+  "lat": 33.02,
+  "lng": -96.7,
+  "count": 1
+ },
+ {
+  "city": "Long Beach",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.59,
+  "lng": -73.66,
+  "count": 1
+ },
+ {
+  "city": "Lahore",
+  "region": "",
+  "country": "Pakistan",
+  "lat": 31.55,
+  "lng": 74.34,
+  "count": 1
+ },
+ {
+  "city": "Miller Place",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.96,
+  "lng": -72.99,
+  "count": 1
+ },
+ {
+  "city": "Marlton",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 39.89,
+  "lng": -74.92,
+  "count": 1
+ },
+ {
+  "city": "Kozhikode",
+  "region": "",
+  "country": "India",
+  "lat": 11.26,
+  "lng": 75.78,
+  "count": 1
+ },
+ {
+  "city": "Varanasi",
+  "region": "",
+  "country": "India",
+  "lat": 25.32,
+  "lng": 82.97,
+  "count": 1
+ },
+ {
+  "city": "Overland Park",
+  "region": "KS",
+  "country": "USA",
+  "lat": 38.98,
+  "lng": -94.67,
+  "count": 1
+ },
+ {
+  "city": "Hyderabad",
+  "region": "",
+  "country": "India",
+  "lat": 17.39,
+  "lng": 78.49,
+  "count": 1
+ },
+ {
+  "city": "Oswego",
+  "region": "IL",
+  "country": "USA",
+  "lat": 41.68,
+  "lng": -88.35,
+  "count": 1
+ },
+ {
+  "city": "Piscataway",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.55,
+  "lng": -74.46,
+  "count": 1
+ },
+ {
+  "city": "Westcliff-on-Sea",
+  "region": "",
+  "country": "United Kingdom",
+  "lat": 51.54,
+  "lng": 0.69,
+  "count": 1
+ },
+ {
+  "city": "Monterrey",
+  "region": "",
+  "country": "Mexico",
+  "lat": 25.69,
+  "lng": -100.32,
+  "count": 1
+ },
+ {
+  "city": "St. Peters",
+  "region": "MO",
+  "country": "USA",
+  "lat": 38.8,
+  "lng": -90.63,
+  "count": 1
+ },
+ {
+  "city": "Rockaway",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.9,
+  "lng": -74.51,
+  "count": 1
+ },
+ {
+  "city": "Little Rock",
+  "region": "AR",
+  "country": "USA",
+  "lat": 34.75,
+  "lng": -92.29,
+  "count": 1
+ },
+ {
+  "city": "Jakarta",
+  "region": "",
+  "country": "Indonesia",
+  "lat": -6.21,
+  "lng": 106.85,
+  "count": 1
+ },
+ {
+  "city": "Chapel Hill",
+  "region": "NC",
+  "country": "USA",
+  "lat": 35.91,
+  "lng": -79.06,
+  "count": 1
+ },
+ {
+  "city": "Bengaluru",
+  "region": "",
+  "country": "India",
+  "lat": 12.97,
+  "lng": 77.59,
+  "count": 1
+ },
+ {
+  "city": "McLean",
+  "region": "VA",
+  "country": "USA",
+  "lat": 38.93,
+  "lng": -77.18,
+  "count": 1
+ },
+ {
+  "city": "Tomball",
+  "region": "TX",
+  "country": "USA",
+  "lat": 30.1,
+  "lng": -95.62,
+  "count": 1
+ },
+ {
+  "city": "Southborough",
+  "region": "MA",
+  "country": "USA",
+  "lat": 42.31,
+  "lng": -71.53,
+  "count": 1
+ },
+ {
+  "city": "Parsippany",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.86,
+  "lng": -74.43,
+  "count": 1
+ },
+ {
+  "city": "South Huntington",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.82,
+  "lng": -73.4,
+  "count": 1
+ },
+ {
+  "city": "Abington",
+  "region": "PA",
+  "country": "USA",
+  "lat": 40.12,
+  "lng": -75.12,
+  "count": 1
+ },
+ {
+  "city": "Queens",
+  "region": "NY",
+  "country": "USA",
+  "lat": 40.73,
+  "lng": -73.79,
+  "count": 1
+ },
+ {
+  "city": "Kolkata",
+  "region": "",
+  "country": "India",
+  "lat": 22.57,
+  "lng": 88.36,
+  "count": 1
+ },
+ {
+  "city": "North Richland Hills",
+  "region": "TX",
+  "country": "USA",
+  "lat": 32.83,
+  "lng": -97.23,
+  "count": 1
+ },
+ {
+  "city": "Greensboro",
+  "region": "NC",
+  "country": "USA",
+  "lat": 36.07,
+  "lng": -79.79,
+  "count": 1
+ },
+ {
+  "city": "Hightstown",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.27,
+  "lng": -74.52,
+  "count": 1
+ },
+ {
+  "city": "Puebla",
+  "region": "",
+  "country": "Mexico",
+  "lat": 19.04,
+  "lng": -98.21,
+  "count": 1
+ },
+ {
+  "city": "Warsaw",
+  "region": "",
+  "country": "Poland",
+  "lat": 52.23,
+  "lng": 21.01,
+  "count": 1
+ },
+ {
+  "city": "Robbinsville",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.21,
+  "lng": -74.62,
+  "count": 1
+ },
+ {
+  "city": "Durham",
+  "region": "NC",
+  "country": "USA",
+  "lat": 35.99,
+  "lng": -78.9,
+  "count": 1
+ },
+ {
+  "city": "West Orange",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.8,
+  "lng": -74.24,
+  "count": 1
+ },
+ {
+  "city": "White Plains",
+  "region": "NY",
+  "country": "USA",
+  "lat": 41.03,
+  "lng": -73.76,
+  "count": 1
+ },
+ {
+  "city": "Gotan",
+  "region": "",
+  "country": "India",
+  "lat": 26.66,
+  "lng": 73.74,
+  "count": 1
+ },
+ {
+  "city": "Redmond",
+  "region": "WA",
+  "country": "USA",
+  "lat": 47.67,
+  "lng": -122.12,
+  "count": 1
+ },
+ {
+  "city": "Manalapan",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.28,
+  "lng": -74.34,
+  "count": 1
+ },
+ {
+  "city": "Gambier",
+  "region": "OH",
+  "country": "USA",
+  "lat": 40.38,
+  "lng": -82.4,
+  "count": 1
+ },
+ {
+  "city": "Ho Chi Minh City",
+  "region": "",
+  "country": "Vietnam",
+  "lat": 10.82,
+  "lng": 106.63,
+  "count": 1
+ },
+ {
+  "city": "Arlington",
+  "region": "VA",
+  "country": "USA",
+  "lat": 38.88,
+  "lng": -77.1,
+  "count": 1
+ },
+ {
+  "city": "Carrollton",
+  "region": "TX",
+  "country": "USA",
+  "lat": 32.98,
+  "lng": -96.89,
+  "count": 1
+ },
+ {
+  "city": "Burlington",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.07,
+  "lng": -74.85,
+  "count": 1
+ },
+ {
+  "city": "Jesup",
+  "region": "GA",
+  "country": "USA",
+  "lat": 31.61,
+  "lng": -81.89,
+  "count": 1
+ },
+ {
+  "city": "State College",
+  "region": "PA",
+  "country": "USA",
+  "lat": 40.79,
+  "lng": -77.86,
+  "count": 1
+ },
+ {
+  "city": "Chelmsford",
+  "region": "MA",
+  "country": "USA",
+  "lat": 42.6,
+  "lng": -71.37,
+  "count": 1
+ },
+ {
+  "city": "East Brunswick",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.43,
+  "lng": -74.42,
+  "count": 1
+ },
+ {
+  "city": "Sacramento",
+  "region": "CA",
+  "country": "USA",
+  "lat": 38.58,
+  "lng": -121.49,
+  "count": 1
+ },
+ {
+  "city": "Windsor",
+  "region": "",
+  "country": "United Kingdom",
+  "lat": 51.48,
+  "lng": -0.61,
+  "count": 1
+ },
+ {
+  "city": "South Windsor",
+  "region": "CT",
+  "country": "USA",
+  "lat": 41.82,
+  "lng": -72.62,
+  "count": 1
+ },
+ {
+  "city": "Los Angeles",
+  "region": "CA",
+  "country": "USA",
+  "lat": 34.05,
+  "lng": -118.24,
+  "count": 1
+ },
+ {
+  "city": "Westfield",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.66,
+  "lng": -74.35,
+  "count": 1
+ },
+ {
+  "city": "Novi",
+  "region": "MI",
+  "country": "USA",
+  "lat": 42.48,
+  "lng": -83.48,
+  "count": 1
+ },
+ {
+  "city": "Allentown",
+  "region": "PA",
+  "country": "USA",
+  "lat": 40.6,
+  "lng": -75.49,
+  "count": 1
+ },
+ {
+  "city": "Marlborough",
+  "region": "MA",
+  "country": "USA",
+  "lat": 42.35,
+  "lng": -71.55,
+  "count": 1
+ },
+ {
+  "city": "Naperville",
+  "region": "IL",
+  "country": "USA",
+  "lat": 41.75,
+  "lng": -88.15,
+  "count": 1
+ },
+ {
+  "city": "Noida",
+  "region": "",
+  "country": "India",
+  "lat": 28.54,
+  "lng": 77.39,
+  "count": 1
+ },
+ {
+  "city": "Raleigh",
+  "region": "NC",
+  "country": "USA",
+  "lat": 35.78,
+  "lng": -78.64,
+  "count": 1
+ },
+ {
+  "city": "Ludhiana",
+  "region": "",
+  "country": "India",
+  "lat": 30.9,
+  "lng": 75.86,
+  "count": 1
+ },
+ {
+  "city": "Lawrenceville",
+  "region": "NJ",
+  "country": "USA",
+  "lat": 40.3,
+  "lng": -74.73,
+  "count": 1
+ },
+ {
+  "city": "Riyadh",
+  "region": "",
+  "country": "Saudi Arabia",
+  "lat": 24.71,
+  "lng": 46.68,
+  "count": 1
+ },
+ {
+  "city": "Liberty Hill",
+  "region": "TX",
+  "country": "USA",
+  "lat": 30.66,
+  "lng": -97.92,
+  "count": 1
+ },
+ {
+  "city": "Chicago",
+  "region": "IL",
+  "country": "USA",
+  "lat": 41.88,
+  "lng": -87.63,
+  "count": 1
+ },
+ {
+  "city": "Missouri City",
+  "region": "TX",
+  "country": "USA",
+  "lat": 29.62,
+  "lng": -95.54,
+  "count": 1
+ },
+ {
+  "city": "Hisar",
+  "region": "",
+  "country": "India",
+  "lat": 29.15,
+  "lng": 75.72,
+  "count": 1
+ },
+ {
+  "city": "Tokyo",
+  "region": "",
+  "country": "Japan",
+  "lat": 35.68,
+  "lng": 139.69,
+  "count": 1
+ },
+ {
+  "city": "Kuala Lumpur",
+  "region": "",
+  "country": "Malaysia",
+  "lat": 3.14,
+  "lng": 101.69,
+  "count": 1
+ },
+ {
+  "city": "Grosse Pointe",
+  "region": "MI",
+  "country": "USA",
+  "lat": 42.39,
+  "lng": -82.91,
+  "count": 1
+ },
+ {
+  "city": "Oxford",
+  "region": "",
+  "country": "United Kingdom",
+  "lat": 51.75,
+  "lng": -1.26,
+  "count": 1
+ },
+ {
+  "city": "Andover",
+  "region": "MA",
+  "country": "USA",
+  "lat": 42.66,
+  "lng": -71.14,
+  "count": 1
+ }
+]
