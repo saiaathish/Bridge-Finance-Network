@@ -1,0 +1,1874 @@
+[
+ {
+  "name": "Sashitej Palla",
+  "tier": "VP",
+  "school": "Mount Olive High School",
+  "team": "Web Dev"
+ },
+ {
+  "name": "Aneesh Thatta",
+  "tier": "VP",
+  "school": "Lambert High School",
+  "team": "Curriculum"
+ },
+ {
+  "name": "Yuvraj Dharmapuri",
+  "tier": "Director",
+  "school": "Monroe Township High School",
+  "team": "Programs"
+ },
+ {
+  "name": "Henry Harvey",
+  "tier": "Director",
+  "school": "Rye Country Day School",
+  "team": "Operations"
+ },
+ {
+  "name": "Kanav Jaitly",
+  "tier": "Manager",
+  "school": "Mount Olive High School",
+  "team": "Web Dev"
+ },
+ {
+  "name": "Jannatul Jami",
+  "tier": "Senior Associate",
+  "school": "Baruch College",
+  "team": "Marketing"
+ },
+ {
+  "name": "Sathvik Shivam",
+  "tier": "Senior Associate",
+  "school": "Metea Valley High School",
+  "team": "Web Dev"
+ },
+ {
+  "name": "Sanat Tibrewal",
+  "tier": "Senior Associate",
+  "school": "Allen High School",
+  "team": "Curriculum"
+ },
+ {
+  "name": "Ackshat Tiwari",
+  "tier": "Senior Associate",
+  "school": "Rock Ridge High School",
+  "team": "Web Dev"
+ },
+ {
+  "name": "Tanvi Aegyarapu",
+  "tier": "Associate",
+  "school": "Wakeland High School",
+  "team": "Marketing"
+ },
+ {
+  "name": "Saharsh Bhaskarla",
+  "tier": "Associate",
+  "school": "Monroe Township High School",
+  "team": "Programs"
+ },
+ {
+  "name": "Yashvi Ghelani",
+  "tier": "Associate",
+  "school": "Central Jersey College Prep Charter School",
+  "team": "Resources"
+ },
+ {
+  "name": "Sudheeksha Karray",
+  "tier": "Associate",
+  "school": "Lake Washington High School",
+  "team": "Curriculum"
+ },
+ {
+  "name": "Aryan Katakam",
+  "tier": "Associate",
+  "school": "Seminole High School",
+  "team": "Operations"
+ },
+ {
+  "name": "Hardik Laddha",
+  "tier": "Associate",
+  "school": "John P Stevens High School",
+  "team": "Curriculum"
+ },
+ {
+  "name": "Sahil Mathur",
+  "tier": "Associate",
+  "school": "Monroe Township High School",
+  "team": "Programs"
+ },
+ {
+  "name": "Divyesh Meda",
+  "tier": "Associate",
+  "school": "Orlando Science High School",
+  "team": "Curriculum"
+ },
+ {
+  "name": "Vikyath Paruchuri",
+  "tier": "Associate",
+  "school": "Riverside High School",
+  "team": "Operations"
+ },
+ {
+  "name": "Svar Patel",
+  "tier": "Associate",
+  "school": "Ridgewood High School",
+  "team": "Programs"
+ },
+ {
+  "name": "Sreehitha Patnayakuni",
+  "tier": "Associate",
+  "school": "Middleton High School",
+  "team": "Partnerships"
+ },
+ {
+  "name": "Tejaswi Ponnam",
+  "tier": "Associate",
+  "school": "International Academy East",
+  "team": "Partnerships"
+ },
+ {
+  "name": "Abhiram Ramasahayam",
+  "tier": "Associate",
+  "school": "Leadership Prep Secondary",
+  "team": "Marketing"
+ },
+ {
+  "name": "Vivan Shankar",
+  "tier": "Associate",
+  "school": "Kings School Al Barsha",
+  "team": "Resources"
+ },
+ {
+  "name": "Arnav Srivastava",
+  "tier": "Associate",
+  "school": "Marquette High School",
+  "team": "Web Dev"
+ },
+ {
+  "name": "Hardik Vij",
+  "tier": "Associate",
+  "school": "St. Mary's School",
+  "team": "Curriculum"
+ },
+ {
+  "name": "Sree Dhanvin Chintakunta",
+  "tier": "Senior Analyst",
+  "school": "Green Level High School",
+  "team": "Member"
+ },
+ {
+  "name": "Anish Janapareddi",
+  "tier": "Senior Analyst",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ishani Mazumder",
+  "tier": "Senior Analyst",
+  "school": "Rock Hill High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sharon Menezes",
+  "tier": "Senior Analyst",
+  "school": "Plymouth High School",
+  "team": "Member"
+ },
+ {
+  "name": "Besiki Pkhakadze",
+  "tier": "Senior Analyst",
+  "school": "Wilfrid Laurier University",
+  "team": "Member"
+ },
+ {
+  "name": "Aditya Amarjeet Singh",
+  "tier": "Senior Analyst",
+  "school": "Allen High School",
+  "team": "Member"
+ },
+ {
+  "name": "Tanya Aegyarapu",
+  "tier": "Analyst",
+  "school": "Wakeland High School",
+  "team": "Member"
+ },
+ {
+  "name": "Nandika Baddam",
+  "tier": "Analyst",
+  "school": "Wakeland High School",
+  "team": "Member"
+ },
+ {
+  "name": "Prisha Basnet",
+  "tier": "Analyst",
+  "school": "James Logan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Pavan Binwani",
+  "tier": "Analyst",
+  "school": "Frisco Centennial High School",
+  "team": "Member"
+ },
+ {
+  "name": "Anam Fuzail",
+  "tier": "Analyst",
+  "school": "South Brunswick High School",
+  "team": "Member"
+ },
+ {
+  "name": "Cindy Jiang",
+  "tier": "Analyst",
+  "school": "Brooklyn Technical High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ved Jujjavarapu",
+  "tier": "Analyst",
+  "school": "Marquette Sr. High School",
+  "team": "Member"
+ },
+ {
+  "name": "Krishnam Kapila",
+  "tier": "Analyst",
+  "school": "DAV",
+  "team": "Member"
+ },
+ {
+  "name": "Nischal Konduru",
+  "tier": "Analyst",
+  "school": "WW Plainsboro South High School",
+  "team": "Member"
+ },
+ {
+  "name": "Lucas Lu",
+  "tier": "Analyst",
+  "school": "Livingston High School",
+  "team": "Member"
+ },
+ {
+  "name": "Franchesca Marinez",
+  "tier": "Analyst",
+  "school": "Brooklyn Technical High School",
+  "team": "Member"
+ },
+ {
+  "name": "Robston Milfort",
+  "tier": "Analyst",
+  "school": "Essex County Newark Tech",
+  "team": "Member"
+ },
+ {
+  "name": "Bhavin Mogasalamarri",
+  "tier": "Analyst",
+  "school": "Apex High School",
+  "team": "Member"
+ },
+ {
+  "name": "Jahnavi Pullela",
+  "tier": "Analyst",
+  "school": "Canton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Akhil Puvvada",
+  "tier": "Analyst",
+  "school": "Round Rock High School",
+  "team": "Member"
+ },
+ {
+  "name": "Keshav Raghunath",
+  "tier": "Analyst",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Milan Shah",
+  "tier": "Analyst",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Daksh Suryadevara",
+  "tier": "Analyst",
+  "school": "Kingswood Oxford School",
+  "team": "Member"
+ },
+ {
+  "name": "Hansika Aadhi",
+  "tier": "Intern",
+  "school": "Canton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Abdoulkerim Abdelkerim",
+  "tier": "Intern",
+  "school": "James Hubert Blake High School",
+  "team": "Member"
+ },
+ {
+  "name": "Tejumade Adepoju",
+  "tier": "Intern",
+  "school": "School of Business and Management at Townview",
+  "team": "Member"
+ },
+ {
+  "name": "Aarush Agarwal",
+  "tier": "Intern",
+  "school": "Lebanon Trail High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shagun Agrawal",
+  "tier": "Intern",
+  "school": "Rock Hill High School",
+  "team": "Member"
+ },
+ {
+  "name": "Babandeep Singh Ahluwalia",
+  "tier": "Intern",
+  "school": "University of Delhi",
+  "team": "Member"
+ },
+ {
+  "name": "Isha Ahuja",
+  "tier": "Intern",
+  "school": "MICDS",
+  "team": "Member"
+ },
+ {
+  "name": "Lakshmi Ala",
+  "tier": "Intern",
+  "school": "Lebanon Trail High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kushal Anchuri",
+  "tier": "Intern",
+  "school": "Lebanon Trail High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vinay Annamalai",
+  "tier": "Intern",
+  "school": "Thomas Edison Charter",
+  "team": "Member"
+ },
+ {
+  "name": "Munveer Annavaram",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vidhi Arora",
+  "tier": "Intern",
+  "school": "Spring Dale Senior School",
+  "team": "Member"
+ },
+ {
+  "name": "Abhinav Arul",
+  "tier": "Intern",
+  "school": "Montgomery High School",
+  "team": "Member"
+ },
+ {
+  "name": "Manav Arun",
+  "tier": "Intern",
+  "school": "Birla Public School",
+  "team": "Member"
+ },
+ {
+  "name": "Motunrayo Ayinde-Tukur",
+  "tier": "Intern",
+  "school": "University of Lagos",
+  "team": "Member"
+ },
+ {
+  "name": "Mubarak Azeez",
+  "tier": "Intern",
+  "school": "Newark School Data Science High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vaibhav Bagai",
+  "tier": "Intern",
+  "school": "Mukat Public School",
+  "team": "Member"
+ },
+ {
+  "name": "Hadi Baig",
+  "tier": "Intern",
+  "school": "Aden Bowman Collegiate",
+  "team": "Member"
+ },
+ {
+  "name": "Tanay Balabhadruni",
+  "tier": "Intern",
+  "school": "Panther Creek High School",
+  "team": "Member"
+ },
+ {
+  "name": "Gurunarayan Balaji",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Harshi Bandaru",
+  "tier": "Intern",
+  "school": "Coppell High School",
+  "team": "Member"
+ },
+ {
+  "name": "Mitanshi Bansal",
+  "tier": "Intern",
+  "school": "Saket International School",
+  "team": "Member"
+ },
+ {
+  "name": "Raga Battu",
+  "tier": "Intern",
+  "school": "Frisco High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ameek Bhalla",
+  "tier": "Intern",
+  "school": "West Forsyth High School",
+  "team": "Member"
+ },
+ {
+  "name": "Dwij Bhargava",
+  "tier": "Intern",
+  "school": "Liberty High School",
+  "team": "Member"
+ },
+ {
+  "name": "Rithvik Bhathivi",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kritika Bhatia",
+  "tier": "Intern",
+  "school": "Subodh Public School",
+  "team": "Member"
+ },
+ {
+  "name": "Simar Bhatia",
+  "tier": "Intern",
+  "school": "Goodley Public School",
+  "team": "Member"
+ },
+ {
+  "name": "Varun Bhatia",
+  "tier": "Intern",
+  "school": "Sri Guru Gobind Singh College",
+  "team": "Member"
+ },
+ {
+  "name": "Arth Bhatt",
+  "tier": "Intern",
+  "school": "Delhi Public School Indore",
+  "team": "Member"
+ },
+ {
+  "name": "Raj Bhatta",
+  "tier": "Intern",
+  "school": "George W. Hewlett High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kabir Bhushan",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Manasvi Bobade",
+  "tier": "Intern",
+  "school": "Alliance Academy for Innovation",
+  "team": "Member"
+ },
+ {
+  "name": "Vaishnavi Bommireddipalli",
+  "tier": "Intern",
+  "school": "Central Peel Secondary",
+  "team": "Member"
+ },
+ {
+  "name": "Jahnae Brown",
+  "tier": "Intern",
+  "school": "Saunders Trade+Technical High School",
+  "team": "Member"
+ },
+ {
+  "name": "Alexandra Bui",
+  "tier": "Intern",
+  "school": "Lake Belton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Pranav Chadha",
+  "tier": "Intern",
+  "school": "University of Alberta",
+  "team": "Member"
+ },
+ {
+  "name": "Riyana Chakraborty",
+  "tier": "Intern",
+  "school": "American High School",
+  "team": "Member"
+ },
+ {
+  "name": "Abhiraj Chand",
+  "tier": "Intern",
+  "school": "Rock Hill High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vivian Chao",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Manvik Chaudhary",
+  "tier": "Intern",
+  "school": "Nashua High School South",
+  "team": "Member"
+ },
+ {
+  "name": "Matthew Chen",
+  "tier": "Intern",
+  "school": "Plainview Old Bethpage JFK High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sophia Chen",
+  "tier": "Intern",
+  "school": "Highland Park High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shreyas Choudhury",
+  "tier": "Intern",
+  "school": "Argyle High School",
+  "team": "Member"
+ },
+ {
+  "name": "Janaiah Clark",
+  "tier": "Intern",
+  "school": "Miami-Dade Virtual School",
+  "team": "Member"
+ },
+ {
+  "name": "Janashia Clark",
+  "tier": "Intern",
+  "school": "Miami-Dade Virtual School",
+  "team": "Member"
+ },
+ {
+  "name": "Reggie Clark Jr.",
+  "tier": "Intern",
+  "school": "Miami-Dade Virtual School",
+  "team": "Member"
+ },
+ {
+  "name": "Christian Clarke",
+  "tier": "Intern",
+  "school": "Gonzaga College High School",
+  "team": "Member"
+ },
+ {
+  "name": "Chiara Corvellec",
+  "tier": "Intern",
+  "school": "Raha International School",
+  "team": "Member"
+ },
+ {
+  "name": "Jordan Currin",
+  "tier": "Intern",
+  "school": "Collin College",
+  "team": "Member"
+ },
+ {
+  "name": "Swaraj D",
+  "tier": "Intern",
+  "school": "Victorious Kidss Educares",
+  "team": "Member"
+ },
+ {
+  "name": "John D'Emic",
+  "tier": "Intern",
+  "school": "Long Beach High School",
+  "team": "Member"
+ },
+ {
+  "name": "Muhammad Haris Daoud",
+  "tier": "Intern",
+  "school": "International School of Lahore",
+  "team": "Member"
+ },
+ {
+  "name": "Akshit Dash",
+  "tier": "Intern",
+  "school": "Global Indian International School",
+  "team": "Member"
+ },
+ {
+  "name": "Ryan David",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Charlotte Davidson",
+  "tier": "Intern",
+  "school": "Miller Place High School",
+  "team": "Member"
+ },
+ {
+  "name": "Romir Dedhia",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Darsh Desai",
+  "tier": "Intern",
+  "school": "International Academy East",
+  "team": "Member"
+ },
+ {
+  "name": "Dhairya Desai",
+  "tier": "Intern",
+  "school": "Cherokee High School",
+  "team": "Member"
+ },
+ {
+  "name": "Omkar Desai",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ruvaneka DeSilva",
+  "tier": "Intern",
+  "school": "Rutgers Prep",
+  "team": "Member"
+ },
+ {
+  "name": "Aayush Dhar",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Khushi Dhotre",
+  "tier": "Intern",
+  "school": "Livingston High School",
+  "team": "Member"
+ },
+ {
+  "name": "Saketh Dintakurti",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sai Raaghav Diwakar",
+  "tier": "Intern",
+  "school": "Allen High School",
+  "team": "Member"
+ },
+ {
+  "name": "Abhinav Dubey",
+  "tier": "Intern",
+  "school": "NIT Calicut",
+  "team": "Member"
+ },
+ {
+  "name": "Sophia Duong",
+  "tier": "Intern",
+  "school": "Frontier STEM Academy",
+  "team": "Member"
+ },
+ {
+  "name": "Aradhay Dwivedi",
+  "tier": "Intern",
+  "school": "Sunbeam School Laharatara",
+  "team": "Member"
+ },
+ {
+  "name": "Garrett Ewy",
+  "tier": "Intern",
+  "school": "Blue Valley West High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ayesha Fathima",
+  "tier": "Intern",
+  "school": "Osmania University",
+  "team": "Member"
+ },
+ {
+  "name": "Andy Fenstermaker",
+  "tier": "Intern",
+  "school": "Seymour High School",
+  "team": "Member"
+ },
+ {
+  "name": "Job Fonanih",
+  "tier": "Intern",
+  "school": "Oswego East High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shrija Gaba",
+  "tier": "Intern",
+  "school": "APA",
+  "team": "Member"
+ },
+ {
+  "name": "Abhay Gadam",
+  "tier": "Intern",
+  "school": "McNeil High School",
+  "team": "Member"
+ },
+ {
+  "name": "Om Garine",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ana Gaur",
+  "tier": "Intern",
+  "school": "GEMS New Millennium School",
+  "team": "Member"
+ },
+ {
+  "name": "Vivan Gheewala",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ahaan Ghosh",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Chirag Goel",
+  "tier": "Intern",
+  "school": "Hindu College, University of Delhi",
+  "team": "Member"
+ },
+ {
+  "name": "Vedant Golan",
+  "tier": "Intern",
+  "school": "Birla Divya Jyoti",
+  "team": "Member"
+ },
+ {
+  "name": "Alvaro Gonzalez",
+  "tier": "Intern",
+  "school": "Allen High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sara Govani",
+  "tier": "Intern",
+  "school": "Piscataway High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shirish Reddy Govrawaram",
+  "tier": "Intern",
+  "school": "Westcliff High School for Boys",
+  "team": "Member"
+ },
+ {
+  "name": "Yena Gu",
+  "tier": "Intern",
+  "school": "Prepa Tec Eugenio Garza",
+  "team": "Member"
+ },
+ {
+  "name": "Aarav Gupta",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Aarush Gupta",
+  "tier": "Intern",
+  "school": "Prosper Richland High School",
+  "team": "Member"
+ },
+ {
+  "name": "Advaye Gupta",
+  "tier": "Intern",
+  "school": "Delhi Public School Indore",
+  "team": "Member"
+ },
+ {
+  "name": "Arnav Gupta",
+  "tier": "Intern",
+  "school": "Fort Zumwalt East High School",
+  "team": "Member"
+ },
+ {
+  "name": "Masuda Hairulla",
+  "tier": "Intern",
+  "school": "Morris Knolls",
+  "team": "Member"
+ },
+ {
+  "name": "Kamrul Hassan",
+  "tier": "Intern",
+  "school": "Fyruz Education Services",
+  "team": "Member"
+ },
+ {
+  "name": "Mustafa Hassan",
+  "tier": "Intern",
+  "school": "Emerson High School",
+  "team": "Member"
+ },
+ {
+  "name": "John Heard",
+  "tier": "Intern",
+  "school": "Arkansas Connections Academy",
+  "team": "Member"
+ },
+ {
+  "name": "Celine Huang",
+  "tier": "Intern",
+  "school": "Bukit Sion High School",
+  "team": "Member"
+ },
+ {
+  "name": "Harden Hyde",
+  "tier": "Intern",
+  "school": "UNC Chapel Hill",
+  "team": "Member"
+ },
+ {
+  "name": "Ethan Jacob",
+  "tier": "Intern",
+  "school": "National Public School HSR",
+  "team": "Member"
+ },
+ {
+  "name": "Dhruv Jain",
+  "tier": "Intern",
+  "school": "Emerson High School",
+  "team": "Member"
+ },
+ {
+  "name": "Nitya Jain",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ronak Jain",
+  "tier": "Intern",
+  "school": "Podar International School",
+  "team": "Member"
+ },
+ {
+  "name": "Soham Jain",
+  "tier": "Intern",
+  "school": "McLean High School",
+  "team": "Member"
+ },
+ {
+  "name": "Manuel Jean",
+  "tier": "Intern",
+  "school": "GIIS Singapore",
+  "team": "Member"
+ },
+ {
+  "name": "Navya Jha",
+  "tier": "Intern",
+  "school": "Prosper High School",
+  "team": "Member"
+ },
+ {
+  "name": "Joel Jomy",
+  "tier": "Intern",
+  "school": "Meridian World School",
+  "team": "Member"
+ },
+ {
+  "name": "Sriram Jothi",
+  "tier": "Intern",
+  "school": "Central Jersey College Prep Charter School",
+  "team": "Member"
+ },
+ {
+  "name": "Dhruv Jujare",
+  "tier": "Intern",
+  "school": "Seminole High School",
+  "team": "Member"
+ },
+ {
+  "name": "Aarav Juneja",
+  "tier": "Intern",
+  "school": "Indraprastha World School",
+  "team": "Member"
+ },
+ {
+  "name": "Neil Kaler",
+  "tier": "Intern",
+  "school": "American School of Doha",
+  "team": "Member"
+ },
+ {
+  "name": "Abhiram Kanteti",
+  "tier": "Intern",
+  "school": "Leadership Prep School",
+  "team": "Member"
+ },
+ {
+  "name": "Sonu Karnati",
+  "tier": "Intern",
+  "school": "Leander High School",
+  "team": "Member"
+ },
+ {
+  "name": "Mahathi Karthik",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Siddharth Karthik Nithya",
+  "tier": "Intern",
+  "school": "Seminole High School",
+  "team": "Member"
+ },
+ {
+  "name": "Harshaa Karthikeyan",
+  "tier": "Intern",
+  "school": "Tom Glenn High School",
+  "team": "Member"
+ },
+ {
+  "name": "Yuvan Katamaneni",
+  "tier": "Intern",
+  "school": "Tomball Memorial High School",
+  "team": "Member"
+ },
+ {
+  "name": "Menaj Katta",
+  "tier": "Intern",
+  "school": "St. Mark's School",
+  "team": "Member"
+ },
+ {
+  "name": "Mikaal Hussain Khan",
+  "tier": "Intern",
+  "school": "St Mary Catholic Secondary",
+  "team": "Member"
+ },
+ {
+  "name": "Shayaan Khan",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Akshaj Kommepalli",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Keshav Kulshrestha",
+  "tier": "Intern",
+  "school": "Redwood",
+  "team": "Member"
+ },
+ {
+  "name": "Mohit Kumar",
+  "tier": "Intern",
+  "school": "University of Delhi",
+  "team": "Member"
+ },
+ {
+  "name": "Sarthak Kumar",
+  "tier": "Intern",
+  "school": "Parsippany Hills High School",
+  "team": "Member"
+ },
+ {
+  "name": "Saanvi Lamba",
+  "tier": "Intern",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sienna Lebron",
+  "tier": "Intern",
+  "school": "Saint Anthony's High School",
+  "team": "Member"
+ },
+ {
+  "name": "Nikita Legostaev",
+  "tier": "Intern",
+  "school": "Illinois Mathematics and Science Academy",
+  "team": "Member"
+ },
+ {
+  "name": "Hellen Liu",
+  "tier": "Intern",
+  "school": "Great Neck North High School",
+  "team": "Member"
+ },
+ {
+  "name": "Wangshu Liu",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Siya Lokwani",
+  "tier": "Intern",
+  "school": "Beacon's Secondary Girls High School",
+  "team": "Member"
+ },
+ {
+  "name": "Taran Lokwani",
+  "tier": "Intern",
+  "school": "Beacons Secondary High School Kandhkot",
+  "team": "Member"
+ },
+ {
+  "name": "Thristan Lundy",
+  "tier": "Intern",
+  "school": "Abington Senior High School",
+  "team": "Member"
+ },
+ {
+  "name": "Xi Luo",
+  "tier": "Intern",
+  "school": "Francis Lewis High School",
+  "team": "Member"
+ },
+ {
+  "name": "Siddharth Madiraju",
+  "tier": "Intern",
+  "school": "Emerson High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shounak Majumder",
+  "tier": "Intern",
+  "school": "University of Calcutta",
+  "team": "Member"
+ },
+ {
+  "name": "Yashika Makam",
+  "tier": "Intern",
+  "school": "Richland High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sharaja Male",
+  "tier": "Intern",
+  "school": "TMSA",
+  "team": "Member"
+ },
+ {
+  "name": "Julia Malinowski",
+  "tier": "Intern",
+  "school": "LaGuardia High School of Arts",
+  "team": "Member"
+ },
+ {
+  "name": "Sriteja Malladi",
+  "tier": "Intern",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Amrit Mann",
+  "tier": "Intern",
+  "school": "Hightstown High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ubaid Maredia",
+  "tier": "Intern",
+  "school": "Leander High School",
+  "team": "Member"
+ },
+ {
+  "name": "Diego Martinez",
+  "tier": "Intern",
+  "school": "American School Foundation Puebla",
+  "team": "Member"
+ },
+ {
+  "name": "Sarvesh Masalkar",
+  "tier": "Intern",
+  "school": "Troy High School",
+  "team": "Member"
+ },
+ {
+  "name": "Jash Mehta",
+  "tier": "Intern",
+  "school": "Dubai American Academy",
+  "team": "Member"
+ },
+ {
+  "name": "Nohamin Melesse",
+  "tier": "Intern",
+  "school": "University of Warsaw",
+  "team": "Member"
+ },
+ {
+  "name": "Ishaan Merchant",
+  "tier": "Intern",
+  "school": "Robbinsville High School",
+  "team": "Member"
+ },
+ {
+  "name": "Bavishya Meruva",
+  "tier": "Intern",
+  "school": "Tom Glenn High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kushagra Mishra",
+  "tier": "Intern",
+  "school": "Heritage High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shivank Mishra",
+  "tier": "Intern",
+  "school": "Dubai International Academy",
+  "team": "Member"
+ },
+ {
+  "name": "Akhil Mittapalli",
+  "tier": "Intern",
+  "school": "NC School of Science and Mathematics",
+  "team": "Member"
+ },
+ {
+  "name": "Aarush Modi",
+  "tier": "Intern",
+  "school": "St. Mary CSS",
+  "team": "Member"
+ },
+ {
+  "name": "Harshil Mongia",
+  "tier": "Intern",
+  "school": "Delhi University",
+  "team": "Member"
+ },
+ {
+  "name": "Oliver Morton",
+  "tier": "Intern",
+  "school": "Seton Hall Preparatory",
+  "team": "Member"
+ },
+ {
+  "name": "Maximilian Mui",
+  "tier": "Intern",
+  "school": "White Plains Public High School",
+  "team": "Member"
+ },
+ {
+  "name": "Keshab Musaddi",
+  "tier": "Intern",
+  "school": "L.K. Singhania Education Centre",
+  "team": "Member"
+ },
+ {
+  "name": "Varun Nadupalli",
+  "tier": "Intern",
+  "school": "Redmond High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shania Nagpal",
+  "tier": "Intern",
+  "school": "Reedy High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sejal Nagrani",
+  "tier": "Intern",
+  "school": "Manalapan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Mohit Nair",
+  "tier": "Intern",
+  "school": "Lone Star High School",
+  "team": "Member"
+ },
+ {
+  "name": "Suhayb Nasir",
+  "tier": "Intern",
+  "school": "Sinclair Secondary School",
+  "team": "Member"
+ },
+ {
+  "name": "Karan Naveen",
+  "tier": "Intern",
+  "school": "Liberty High School",
+  "team": "Member"
+ },
+ {
+  "name": "Rygel Ng",
+  "tier": "Intern",
+  "school": "Brooklyn Technical High School",
+  "team": "Member"
+ },
+ {
+  "name": "Alex Nguyen",
+  "tier": "Intern",
+  "school": "Cedar Ridge High School",
+  "team": "Member"
+ },
+ {
+  "name": "Dean Nguyen",
+  "tier": "Intern",
+  "school": "Kenyon College",
+  "team": "Member"
+ },
+ {
+  "name": "Vy Nguyen",
+  "tier": "Intern",
+  "school": "Tran Dai Nghia High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shiloh Ninan",
+  "tier": "Intern",
+  "school": "Birla Public School",
+  "team": "Member"
+ },
+ {
+  "name": "Joshita Nuthanki",
+  "tier": "Intern",
+  "school": "Coppell High School",
+  "team": "Member"
+ },
+ {
+  "name": "Nicole Nyamgarav",
+  "tier": "Intern",
+  "school": "Yorktown High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kartikey Ojha",
+  "tier": "Intern",
+  "school": "KP Inter College",
+  "team": "Member"
+ },
+ {
+  "name": "Kevin Oneill",
+  "tier": "Intern",
+  "school": "Regis High School",
+  "team": "Member"
+ },
+ {
+  "name": "Aybike Oran",
+  "tier": "Intern",
+  "school": "Ataturk Anatolian High School",
+  "team": "Member"
+ },
+ {
+  "name": "Leo Osorio",
+  "tier": "Intern",
+  "school": "UNIS",
+  "team": "Member"
+ },
+ {
+  "name": "Gyan Padoli",
+  "tier": "Intern",
+  "school": "Heritage High School",
+  "team": "Member"
+ },
+ {
+  "name": "Suhani Parmar",
+  "tier": "Intern",
+  "school": "Central Jersey College Prep Charter School",
+  "team": "Member"
+ },
+ {
+  "name": "Sahan Pasnuri",
+  "tier": "Intern",
+  "school": "Hillsborough High School",
+  "team": "Member"
+ },
+ {
+  "name": "Aayog Patel",
+  "tier": "Intern",
+  "school": "Hebron High School",
+  "team": "Member"
+ },
+ {
+  "name": "Dev Patel",
+  "tier": "Intern",
+  "school": "Salem High School",
+  "team": "Member"
+ },
+ {
+  "name": "Drew Patel",
+  "tier": "Intern",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Jay Patel",
+  "tier": "Intern",
+  "school": "Burlington Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Krish Patel",
+  "tier": "Intern",
+  "school": "Wayne County High School",
+  "team": "Member"
+ },
+ {
+  "name": "Moksh Patel",
+  "tier": "Intern",
+  "school": "South Brunswick High School",
+  "team": "Member"
+ },
+ {
+  "name": "Rishab Patel",
+  "tier": "Intern",
+  "school": "Pennsylvania State University",
+  "team": "Member"
+ },
+ {
+  "name": "Sophia Patel",
+  "tier": "Intern",
+  "school": "Parkway Central",
+  "team": "Member"
+ },
+ {
+  "name": "Tanay Patel",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Yash Patel",
+  "tier": "Intern",
+  "school": "Hillsborough High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vihaan Pathak",
+  "tier": "Intern",
+  "school": "Chelmsford High School",
+  "team": "Member"
+ },
+ {
+  "name": "Monisha Pathi",
+  "tier": "Intern",
+  "school": "Lake Washington High School",
+  "team": "Member"
+ },
+ {
+  "name": "Tanish Patil",
+  "tier": "Intern",
+  "school": "Apex Friendship High School",
+  "team": "Member"
+ },
+ {
+  "name": "Aneesh Patlollaa",
+  "tier": "Intern",
+  "school": "East Brunswick High School",
+  "team": "Member"
+ },
+ {
+  "name": "Karthik Pavani",
+  "tier": "Intern",
+  "school": "Lebanon Trail High School",
+  "team": "Member"
+ },
+ {
+  "name": "Karthik Pesaladinne",
+  "tier": "Intern",
+  "school": "Independence High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shloka Reddy Pesaladinne",
+  "tier": "Intern",
+  "school": "Independence High School",
+  "team": "Member"
+ },
+ {
+  "name": "Karsten Pham",
+  "tier": "Intern",
+  "school": "Cedar Ridge High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kharishma Prabhu",
+  "tier": "Intern",
+  "school": "Tom Glenn High School",
+  "team": "Member"
+ },
+ {
+  "name": "Jivan Puvvada",
+  "tier": "Intern",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Rhea Rachala",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Akshita Raj",
+  "tier": "Intern",
+  "school": "Sinclair Secondary School",
+  "team": "Member"
+ },
+ {
+  "name": "Haresh RajeshShanmugam",
+  "tier": "Intern",
+  "school": "Mira Loma High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sahana Ramadoss",
+  "tier": "Intern",
+  "school": "Liberty High School",
+  "team": "Member"
+ },
+ {
+  "name": "Abhinav Ramakrishnan",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Pratham Rao",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Darsh Rathod",
+  "tier": "Intern",
+  "school": "The Windsor Boys School",
+  "team": "Member"
+ },
+ {
+  "name": "Amartya Rawat",
+  "tier": "Intern",
+  "school": "South Windsor High School",
+  "team": "Member"
+ },
+ {
+  "name": "Alexander Richardson",
+  "tier": "Intern",
+  "school": "Alexander Hamilton Senior High School",
+  "team": "Member"
+ },
+ {
+  "name": "Sofi Roshe",
+  "tier": "Intern",
+  "school": "Westfield High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ayush Sahoo",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Dhriti Saireddy",
+  "tier": "Intern",
+  "school": "Novi High School",
+  "team": "Member"
+ },
+ {
+  "name": "Druv Santhosh",
+  "tier": "Intern",
+  "school": "Parkland High School",
+  "team": "Member"
+ },
+ {
+  "name": "Darshil Selvaraj",
+  "tier": "Intern",
+  "school": "AMSA Charter School",
+  "team": "Member"
+ },
+ {
+  "name": "Arjun Sethi",
+  "tier": "Intern",
+  "school": "Prosper High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vishahan Sethu",
+  "tier": "Intern",
+  "school": "Germantown Friends School",
+  "team": "Member"
+ },
+ {
+  "name": "Shritan Settipalli",
+  "tier": "Intern",
+  "school": "Neuqua Valley High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kavya Setty",
+  "tier": "Intern",
+  "school": "Frisco High School",
+  "team": "Member"
+ },
+ {
+  "name": "Moksh Shah",
+  "tier": "Intern",
+  "school": "Chatrabhuj Narsee School",
+  "team": "Member"
+ },
+ {
+  "name": "Shivam Shah",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vaishvi Shah",
+  "tier": "Intern",
+  "school": "Sinclair Secondary School",
+  "team": "Member"
+ },
+ {
+  "name": "Ailesh Sharma",
+  "tier": "Intern",
+  "school": "The Shriram Millennium School Noida",
+  "team": "Member"
+ },
+ {
+  "name": "Aryan Sharma",
+  "tier": "Intern",
+  "school": "Green Hope High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ridhwan Sharma",
+  "tier": "Intern",
+  "school": "Bridgewater-Raritan High School",
+  "team": "Member"
+ },
+ {
+  "name": "Smyan Shastri",
+  "tier": "Intern",
+  "school": "Felton Grove High School",
+  "team": "Member"
+ },
+ {
+  "name": "Pahul Shelly",
+  "tier": "Intern",
+  "school": "Independence High School",
+  "team": "Member"
+ },
+ {
+  "name": "Shaurya Shinde",
+  "tier": "Intern",
+  "school": "William G. Enloe Magnet High School",
+  "team": "Member"
+ },
+ {
+  "name": "Lavanya Shrivastava",
+  "tier": "Intern",
+  "school": "Sun Valley International",
+  "team": "Member"
+ },
+ {
+  "name": "Rishi Simhadri",
+  "tier": "Intern",
+  "school": "Marquette High School",
+  "team": "Member"
+ },
+ {
+  "name": "Aadishree Singh",
+  "tier": "Intern",
+  "school": "Sri Chaitanya Techno School",
+  "team": "Member"
+ },
+ {
+  "name": "Aarav Singh",
+  "tier": "Intern",
+  "school": "VKE",
+  "team": "Member"
+ },
+ {
+  "name": "Armaan Singh",
+  "tier": "Intern",
+  "school": "DAV Public School, BRS",
+  "team": "Member"
+ },
+ {
+  "name": "Tanisha Singh",
+  "tier": "Intern",
+  "school": "Smt. SBVM",
+  "team": "Member"
+ },
+ {
+  "name": "Bhupesh Sinha",
+  "tier": "Intern",
+  "school": "",
+  "team": "Member"
+ },
+ {
+  "name": "Viraj Sonawane",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Siri Sure",
+  "tier": "Intern",
+  "school": "Dwight Global",
+  "team": "Member"
+ },
+ {
+  "name": "Niranjana Suresh Preethy",
+  "tier": "Intern",
+  "school": "Sinclair Secondary School",
+  "team": "Member"
+ },
+ {
+  "name": "Avyay Surubhotla",
+  "tier": "Intern",
+  "school": "Hillsborough High School",
+  "team": "Member"
+ },
+ {
+  "name": "Gavin Sutter",
+  "tier": "Intern",
+  "school": "The Lawrenceville School",
+  "team": "Member"
+ },
+ {
+  "name": "Aaiza Talib",
+  "tier": "Intern",
+  "school": "Ellesmere College Riyadh",
+  "team": "Member"
+ },
+ {
+  "name": "Siddharth Talla",
+  "tier": "Intern",
+  "school": "Briar Woods High School",
+  "team": "Member"
+ },
+ {
+  "name": "Krupesh Thakkar",
+  "tier": "Intern",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Atharv Thallapragada",
+  "tier": "Intern",
+  "school": "Monroe Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Revaa Thoom",
+  "tier": "Intern",
+  "school": "Liberty Hill",
+  "team": "Member"
+ },
+ {
+  "name": "Johnny Tokarz",
+  "tier": "Intern",
+  "school": "Seymour High School",
+  "team": "Member"
+ },
+ {
+  "name": "Jayden Tong",
+  "tier": "Intern",
+  "school": "Cedar Ridge High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ayush Tripathy",
+  "tier": "Intern",
+  "school": "Heritage High School",
+  "team": "Member"
+ },
+ {
+  "name": "Suraj Tripathy",
+  "tier": "Intern",
+  "school": "Hillsborough High School",
+  "team": "Member"
+ },
+ {
+  "name": "Neel Vadlamani",
+  "tier": "Intern",
+  "school": "Walter Payton College Prep",
+  "team": "Member"
+ },
+ {
+  "name": "Suryansh Varshney",
+  "tier": "Intern",
+  "school": "TMS",
+  "team": "Member"
+ },
+ {
+  "name": "Elijah Varughese",
+  "tier": "Intern",
+  "school": "Northeast High School",
+  "team": "Member"
+ },
+ {
+  "name": "Nishan Vense",
+  "tier": "Intern",
+  "school": "McNeil High School",
+  "team": "Member"
+ },
+ {
+  "name": "Atulya Raj Verma",
+  "tier": "Intern",
+  "school": "Univ of Delhi Motilal Nehru",
+  "team": "Member"
+ },
+ {
+  "name": "Aarush Vignesh",
+  "tier": "Intern",
+  "school": "Seminole High School",
+  "team": "Member"
+ },
+ {
+  "name": "Gautham Vinod",
+  "tier": "Intern",
+  "school": "National Public School",
+  "team": "Member"
+ },
+ {
+  "name": "Abhiram Vislavath",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Smruthi Vongole",
+  "tier": "Intern",
+  "school": "Elkins High School",
+  "team": "Member"
+ },
+ {
+  "name": "Saicharan Vutukuri",
+  "tier": "Intern",
+  "school": "Middleton High School",
+  "team": "Member"
+ },
+ {
+  "name": "Chloe Wang",
+  "tier": "Intern",
+  "school": "Great Neck South High School",
+  "team": "Member"
+ },
+ {
+  "name": "Clayton Wangsanata",
+  "tier": "Intern",
+  "school": "Lambert High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kev Wong",
+  "tier": "Intern",
+  "school": "Brooklyn Technical High School",
+  "team": "Member"
+ },
+ {
+  "name": "Vaishnavi Yadav",
+  "tier": "Intern",
+  "school": "Vidya Devi Jindal School",
+  "team": "Member"
+ },
+ {
+  "name": "Pavit Yaduwanshi",
+  "tier": "Intern",
+  "school": "Liberty High School",
+  "team": "Member"
+ },
+ {
+  "name": "Tarun Yamarthy",
+  "tier": "Intern",
+  "school": "North Brunswick Township High School",
+  "team": "Member"
+ },
+ {
+  "name": "Junjie Yang",
+  "tier": "Intern",
+  "school": "Cedar Ridge High School",
+  "team": "Member"
+ },
+ {
+  "name": "Kino Yap",
+  "tier": "Intern",
+  "school": "GEMS American Academy",
+  "team": "Member"
+ },
+ {
+  "name": "Ishita Sakura Yedlapalli",
+  "tier": "Intern",
+  "school": "India International School in Japan",
+  "team": "Member"
+ },
+ {
+  "name": "Yong Yan Yong",
+  "tier": "Intern",
+  "school": "Universiti Malaya",
+  "team": "Member"
+ },
+ {
+  "name": "Owen Yu",
+  "tier": "Intern",
+  "school": "St. Louis University High School",
+  "team": "Member"
+ },
+ {
+  "name": "Ethan Zann",
+  "tier": "Intern",
+  "school": "Grosse Pointe South",
+  "team": "Member"
+ },
+ {
+  "name": "Sophie Zhang",
+  "tier": "Intern",
+  "school": "Oxford International College",
+  "team": "Member"
+ },
+ {
+  "name": "Bingrui Zhao",
+  "tier": "Intern",
+  "school": "Andover High School",
+  "team": "Member"
+ },
+ {
+  "name": "Neri Zhunio",
+  "tier": "Intern",
+  "school": "Franklin Towne Charter High School",
+  "team": "Member"
+ }
+]

@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { HomeHeader } from "@/components/HomeHeader";
 import { TeamTabs } from "@/components/team/TeamTabs";
-import { TeamMemberCard } from "@/components/team/TeamMemberCard";
+import { CompactMemberCard, TeamMemberCard } from "@/components/team/TeamMemberCard";
 import { teamCategories, teamMembers, type TeamCategory } from "@/lib/team-data";
 import { contentSwitch, heroIntro } from "@/lib/motion";
 
@@ -15,6 +15,11 @@ export default function Directory() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   const members = teamMembers.filter((member) => member.category === activeCategory);
+  // Members is a long, text-only list, so every card there is compact.
+  // Elsewhere, only roster-only people (no hand-written card) are compact.
+  const isCompact = (member: (typeof members)[number]) =>
+    activeCategory === "Members" || member.rosterOnly === true;
+  const compactGrid = members.length > 0 && members.every(isCompact);
 
   useLayoutEffect(() => {
     if (!headerRef.current) return;
@@ -26,11 +31,11 @@ export default function Directory() {
 
   useLayoutEffect(() => {
     if (!gridRef.current) return;
-    // The Interns list is long enough that the usual stagger takes many
+    // The Members list is long enough that the usual stagger takes many
     // seconds to finish — show it instantly instead. Every other tab keeps
     // the normal staggered reveal.
     const tween = contentSwitch(gridRef.current.querySelectorAll("[data-card]"), {
-      instant: activeCategory === "Interns",
+      instant: activeCategory === "Members",
     });
     return () => {
       tween.kill();
@@ -67,10 +72,20 @@ export default function Directory() {
             tabIndex={0}
           >
             {members.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {members.map((member) => (
-                  <TeamMemberCard key={member.id} member={member} />
-                ))}
+              <div
+                className={
+                  compactGrid
+                    ? "grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
+                    : "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                }
+              >
+                {members.map((member) =>
+                  isCompact(member) ? (
+                    <CompactMemberCard key={member.id} member={member} />
+                  ) : (
+                    <TeamMemberCard key={member.id} member={member} />
+                  ),
+                )}
               </div>
             ) : (
               <div data-card className="gsap-hidden rounded-xl border border-border bg-white p-12 text-center">

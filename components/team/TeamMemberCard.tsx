@@ -68,3 +68,31 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
     </div>
   );
 }
+
+/**
+ * Compact, text-only version of the card above — same border, surface,
+ * hover, and type styles, with tighter padding so long lists (Members)
+ * fill a denser grid. Shows tier, name, title (only if a hand-written card
+ * already had one), and school.
+ */
+export function CompactMemberCard({ member }: { member: TeamMember }) {
+  return (
+    <div
+      data-card
+      className="gsap-hidden flex w-full flex-col items-center justify-center rounded-xl border border-border bg-white px-3 py-4 text-center transition-colors sm:px-4 sm:py-5 duration-150 hover:border-muted-foreground"
+    >
+      {member.rank && (
+        <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-signal">
+          {member.rank}
+        </span>
+      )}
+      <h3 className={`break-words font-sans text-sm font-semibold leading-snug text-foreground sm:text-base ${member.rank ? "mt-1" : ""}`}>
+        {member.name}
+      </h3>
+      {member.title && member.title !== member.rank && (
+        <p className="mt-0.5 text-sm font-semibold text-signal">{member.title}</p>
+      )}
+      {member.school && <p className="mt-0.5 text-xs leading-snug text-muted-foreground sm:text-sm">{member.school}</p>}
+    </div>
+  );
+}
