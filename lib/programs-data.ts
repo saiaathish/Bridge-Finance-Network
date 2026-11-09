@@ -21,12 +21,16 @@ export interface Program {
   description: string;
   /** Optional small monospace line under the description. */
   note?: string;
-  parts: ProgramPart[];
-  totals: ProgramTotal[];
+  /** Shows a "Coming Soon" badge and a "Course details coming soon." note in
+   * place of the parts and totals. */
+  comingSoon?: boolean;
+  /** Everything below is optional — anything left out simply doesn't render. */
+  parts?: ProgramPart[];
+  totals?: ProgramTotal[];
   /** Label for the final-work field; defaults to "Final assignment". */
   finalLabel?: string;
-  finalValue: string;
-  gain: string;
+  finalValue?: string;
+  gain?: string;
 }
 
 export const programs: Program[] = [
@@ -188,5 +192,12 @@ export const programs: Program[] = [
     finalLabel: "Practice",
     finalValue: "Exercises throughout the course",
     gain: "Certificate of completion",
+  },
+  {
+    number: "05",
+    name: "Market Analysis and Report Writing",
+    description:
+      "Learn to read and digest financial news while practicing writing financial analysis and news.",
+    comingSoon: true,
   },
 ];
