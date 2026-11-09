@@ -76,9 +76,7 @@ export function ContactSection() {
           }`}
         >
           <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-8xl">
-            Apply
-            <br />
-            to join
+            Apply To Join
           </h2>
         </div>
 
