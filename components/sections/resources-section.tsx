@@ -6,11 +6,14 @@ const RESOURCE_HUB_URL = "https://bfnresources.zite.so/auth/login"
 
 const RESOURCE_TAGS = [
   "Internships",
-  "YouTube Videos",
+  "Summer Programs",
+  "Scholarships",
+  "Competitions",
+  "Networking Events",
   "Virtual Courses",
   "Career Prep",
-  "Organization Databases",
-  "And More",
+  "External Databases",
+  "Books, Podcasts & Videos",
 ]
 
 export function ResourcesSection() {
@@ -46,8 +49,9 @@ export function ResourcesSection() {
           className={`${revealClass} mt-6 max-w-[700px] text-base leading-relaxed text-foreground/80 md:text-lg`}
         >
           Everything you need to explore finance, gathered in one place. Our hub brings together
-          internship opportunities, YouTube videos, external virtual courses, career preparation
-          materials, databases from other organizations, and more.
+          internship opportunities, summer programs, scholarships, finance competitions, networking
+          events, virtual courses, career preparation materials, external databases, and
+          recommended books, podcasts, and videos.
         </p>
 
         <ul
@@ -57,7 +61,7 @@ export function ResourcesSection() {
           {RESOURCE_TAGS.map(tag => (
             <li
               key={tag}
-              className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground/80"
+              className="whitespace-nowrap rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground/80"
             >
               {tag}
             </li>
