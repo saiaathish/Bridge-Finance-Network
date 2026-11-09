@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import type { Map as LeafletMap } from "leaflet"
+import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from "geojson"
 import "leaflet/dist/leaflet.css"
 import locations from "@/data/bfn-member-locations.json"
 
@@ -32,14 +33,103 @@ function spiralPoints({ lat, lng, count }: MemberLocation): [number, number][] {
   })
 }
 
+// Land fill and borders for the built-in world map (no external tiles).
+const LAND_COLOR = "#DCE3EE"
+const ANTARCTICA_ID = "010"
+
+/**
+ * Natural Earth splits a few shapes (Russia, Fiji, …) at ±180°, so their rings
+ * jump from 180 to -180 and a flat map would draw a band across the world.
+ * Make each ring continuous, then clip it at the date line: the main part
+ * stays, and only the slice past ±180° is moved to the other side.
+ */
+function unwrapRing(ring: Position[]): Position[] {
+  let offset = 0
+  return ring.map(([lng, lat], i) => {
+    if (i > 0) {
+      const prev = ring[i - 1][0]
+      if (lng - prev > 180) offset -= 360
+      else if (lng - prev < -180) offset += 360
+    }
+    return [lng + offset, lat]
+  })
+}
+
+/** Sutherland–Hodgman clip of a ring to one side of the meridian `x`. */
+function clipRing(ring: Position[], x: number, keepWest: boolean): Position[] {
+  const inside = ([lng]: Position) => (keepWest ? lng <= x : lng >= x)
+  const out: Position[] = []
+  for (let i = 0; i < ring.length; i++) {
+    const current = ring[i]
+    const previous = ring[(i + ring.length - 1) % ring.length]
+    if (inside(current) !== inside(previous)) {
+      const t = (x - previous[0]) / (current[0] - previous[0])
+      out.push([x, previous[1] + t * (current[1] - previous[1])])
+    }
+    if (inside(current)) out.push(current)
+  }
+  return out
+}
+
+function splitAtAntimeridian(polygons: Position[][][]): Position[][][] {
+  const keep = (rings: Position[][]) => rings.filter((ring) => ring.length >= 3)
+  return polygons.flatMap((polygon) => {
+    const rings = polygon.map(unwrapRing)
+    const lngs = rings[0].map(([lng]) => lng)
+    const edge = Math.max(...lngs) > 180 ? 180 : Math.min(...lngs) < -180 ? -180 : 0
+    if (edge === 0) return [rings]
+    const inWorld = keep(rings.map((ring) => clipRing(ring, edge, edge > 0)))
+    const past = keep(
+      rings
+        .map((ring) => clipRing(ring, edge, edge < 0))
+        .map((ring) => ring.map(([lng, lat]) => [lng - Math.sign(edge) * 360, lat])),
+    )
+    return [inWorld, past].filter((part) => part.length > 0)
+  })
+}
+
+async function loadLand(): Promise<FeatureCollection<MultiPolygon>> {
+  const [{ feature }, atlas] = await Promise.all([
+    import("topojson-client"),
+    import("world-atlas/countries-50m.json"),
+  ])
+  const topology = (atlas.default ?? atlas) as unknown as Parameters<typeof feature>[0]
+  const countries = feature(
+    topology,
+    topology.objects.countries,
+  ) as unknown as FeatureCollection<Polygon | MultiPolygon>
+
+  return {
+    type: "FeatureCollection",
+    features: countries.features
+      .filter((country) => String(country.id) !== ANTARCTICA_ID)
+      .map(
+        (country): Feature<MultiPolygon> => ({
+          type: "Feature",
+          id: country.id,
+          properties: {},
+          geometry: {
+            type: "MultiPolygon",
+            coordinates: splitAtAntimeridian(
+              country.geometry.type === "Polygon"
+                ? [country.geometry.coordinates]
+                : country.geometry.coordinates,
+            ),
+          },
+        }),
+      ),
+  }
+}
+
 function tooltipText({ city, region, country, count }: MemberLocation) {
   return `${city}, ${region || country}: ${count} ${count === 1 ? "member" : "members"}`
 }
 
 /**
- * World map of BFN members, one dot per member. Leaflet touches `window`, so
- * it is imported inside the effect — this component renders only an empty
- * container on the server.
+ * World map of BFN members, one dot per member, over a built-in Natural Earth
+ * country layer (no tile server). Leaflet touches `window`, so it is imported
+ * inside the effect — this component renders only an empty container on the
+ * server. The country data (~750 KB) is also loaded on demand.
  */
 export function MemberMap() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -48,36 +138,40 @@ export function MemberMap() {
     let map: LeafletMap | undefined
     let cancelled = false
 
-    import("leaflet").then((L) => {
+    Promise.all([import("leaflet"), loadLand()]).then(([L, land]) => {
       if (cancelled || !containerRef.current) return
 
-      const world = L.latLngBounds([-85, -180], [85, 180])
-      // Open with the whole world spanning the map's width (never below the
-      // minimum zoom of 2), so wide screens don't show empty side strips.
-      const fitWidthZoom = Math.log2(containerRef.current.clientWidth / 256)
+      // The populated world (no Antarctica / high Arctic) shows on load;
+      // dragging is held to a little past it. The limits are centred on the
+      // view's centre (5°E) so wide screens show the world centred.
+      const view = L.latLngBounds([-55, -170], [78, 180])
+      const limits = L.latLngBounds([-65, -195], [85, 205])
+
       map = L.map(containerRef.current, {
-        // On narrow screens only part of the world fits at zoom 2, so open on
-        // North America, where most members are; on wide screens the whole
-        // world spans the width and this centre makes no visible difference.
-        center: [30, -65],
-        zoom: Math.min(7, Math.max(2, fitWidthZoom)),
         zoomSnap: 0,
-        minZoom: 2,
         maxZoom: 7,
         scrollWheelZoom: false,
         worldCopyJump: false,
-        maxBounds: world,
+        maxBounds: limits,
         maxBoundsViscosity: 1,
       })
+      // Low enough that the full view fits on any screen width.
+      const fitZoom = map.getBoundsZoom(view)
+      map.setMinZoom(Math.min(2, fitZoom))
+      map.fitBounds(view)
 
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: "abcd",
-        noWrap: true,
-        bounds: world,
-        minZoom: 2,
-        maxZoom: 7,
+      map.attributionControl.setPrefix(false)
+      map.attributionControl.addAttribution(
+        'Map data: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a>',
+      )
+
+      // Land sits in its own pane under the dots and ignores the pointer, so
+      // hovering or tapping a dot always reaches the dot's tooltip.
+      map.createPane("land").style.zIndex = "350"
+      L.geoJSON(land, {
+        pane: "land",
+        interactive: false,
+        style: { fillColor: LAND_COLOR, fillOpacity: 1, color: "#ffffff", weight: 0.75 },
       }).addTo(map)
 
       for (const location of locations as MemberLocation[]) {
@@ -107,9 +201,7 @@ export function MemberMap() {
       role="region"
       aria-label="Map of BFN member locations"
       // `isolate` keeps Leaflet's internal z-indexes below the fixed nav.
-      // Background matches the basemap's water so any space past the map's
-      // edges (when zoomed all the way out) reads as ocean, not a gap.
-      className="relative isolate z-0 h-[380px] w-full overflow-hidden rounded-xl border border-border !bg-[#d4dadc] md:h-[520px]"
+      className="relative isolate z-0 h-[380px] w-full overflow-hidden rounded-xl border border-border !bg-card md:h-[520px]"
     />
   )
 }
