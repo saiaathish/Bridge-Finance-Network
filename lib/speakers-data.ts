@@ -14,6 +14,15 @@ export interface Speaker {
 
 export const speakers: Speaker[] = [
   {
+    id: "tim-lintern",
+    name: "Tim Lintern",
+    title: "Executive Director and Portfolio Manager",
+    organization: "J.P. Morgan Asset Management",
+    photo: "/speakers/tim-lintern.webp",
+    bio: "Executive Director and Portfolio Manager at J.P. Morgan Asset Management, working in Global Thematic Equity Allocation. He previously served as a Macro Strategist at the firm.",
+    tags: ["Macro Strategy", "Portfolio Management", "Global Investing"],
+  },
+  {
     id: "brendan-hermanspan",
     name: "Brendan Hermanspan",
     title: "Private Wealth Management",
