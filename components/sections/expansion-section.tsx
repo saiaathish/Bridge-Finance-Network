@@ -1,25 +1,25 @@
 "use client"
 
 import Link from "next/link"
-import { useReveal } from "@/hooks/use-reveal"
+import { revealFrom, useReveal } from "@/hooks/use-reveal"
 import { MemberMap } from "@/components/member-map"
 
 export function ExpansionSection() {
-  const { ref, isVisible } = useReveal(0.2)
+  const { ref } = useReveal(0.2)
 
-  const revealClass = `transition-all duration-700 ${
-    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-  }`
-  const delay = (ms: number) => ({ transitionDelay: `${ms}ms` })
+  const revealClass = "translate-y-0 opacity-100 transition-all duration-700"
+  const delay = (ms: number) => revealFrom("translateY(3rem)", { transitionDelay: `${ms}ms` })
 
   return (
     <section
       ref={ref}
+      data-reveal-root
       className="w-full overflow-x-clip px-6 py-20 md:px-12 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="flex flex-col items-center text-center">
           <h2
+            data-reveal
             style={delay(0)}
             className={`${revealClass} font-display text-4xl font-medium tracking-tight text-foreground md:text-6xl lg:text-7xl`}
           >
@@ -27,6 +27,7 @@ export function ExpansionSection() {
           </h2>
 
           <p
+            data-reveal
             style={delay(100)}
             className={`${revealClass} mt-6 max-w-[700px] text-base leading-relaxed text-foreground/80 md:text-lg`}
           >
@@ -36,7 +37,7 @@ export function ExpansionSection() {
           </p>
         </div>
 
-        <div style={delay(200)} className={`${revealClass} mt-10`}>
+        <div data-reveal style={delay(200)} className={`${revealClass} mt-10`}>
           <MemberMap />
           <p className="mt-4 text-center font-mono text-xs text-muted-foreground">
             Drag to explore, and zoom in to see each city.
