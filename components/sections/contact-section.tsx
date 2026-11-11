@@ -3,7 +3,7 @@
 import { useEffect, type ReactNode } from "react"
 import { usePathname } from "next/navigation"
 import { Mail, ArrowUpRight } from "lucide-react"
-import { useReveal } from "@/hooks/use-reveal"
+import { revealFrom, useReveal } from "@/hooks/use-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
 
 const FILLOUT_EMBED_SRC = "https://server.fillout.com/embed/v1/"
@@ -65,7 +65,7 @@ const APPLICATION_CARDS: ApplicationCard[] = [
 ]
 
 export function ContactSection() {
-  const { ref, isVisible } = useReveal(0.3)
+  const { ref } = useReveal(0.3)
   const pathname = usePathname()
 
   // The layout script boots Fillout once, so it only binds popup buttons
@@ -85,13 +85,14 @@ export function ContactSection() {
   return (
     <section
       ref={ref}
+      data-reveal-root
       className="w-full overflow-x-clip px-4 py-20 md:px-12 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-8 transition-all duration-700 md:mb-12 ${
-            isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
-          }`}
+          data-reveal
+          style={revealFrom("translateX(-3rem)")}
+          className="mb-8 translate-x-0 opacity-100 transition-all duration-700 md:mb-12"
         >
           <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-8xl">
             Apply To Join
@@ -104,10 +105,9 @@ export function ContactSection() {
           {APPLICATION_CARDS.map((card, index) => (
             <div
               key={card.label}
-              className={`flex flex-col rounded-xl border border-border bg-white p-6 transition-all duration-700 md:p-8 ${
-                isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
-              }`}
-              style={{ transitionDelay: `${300 + index * 150}ms` }}
+              data-reveal
+              className="flex translate-x-0 flex-col rounded-xl border border-border bg-white p-6 opacity-100 transition-all duration-700 md:p-8"
+              style={revealFrom("translateX(4rem)", { transitionDelay: `${300 + index * 150}ms` })}
             >
               <p className="mb-2 font-mono text-xs text-muted-foreground">{card.label}</p>
               <h3 className="mb-4 font-sans text-2xl font-light leading-snug tracking-tight text-foreground md:text-3xl">
@@ -145,10 +145,9 @@ export function ContactSection() {
 
         <a
           href={`mailto:${CONTACT_EMAIL}`}
-          className={`group mt-8 block w-fit transition-all duration-700 md:mt-12 ${
-            isVisible ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
-          }`}
-          style={{ transitionDelay: "600ms" }}
+          data-reveal
+          className="group mt-8 block w-fit translate-x-0 opacity-100 transition-all duration-700 md:mt-12"
+          style={revealFrom("translateX(-4rem)", { transitionDelay: "600ms" })}
         >
           <div className="mb-1 flex items-center gap-2">
             <Mail className="h-3 w-3 text-muted-foreground" />

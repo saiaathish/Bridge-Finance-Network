@@ -6,22 +6,23 @@ import { useLayoutEffect, useRef } from "react";
 import { HomeHeader } from "@/components/HomeHeader";
 import { MagneticButton } from "@/components/magnetic-button";
 import Footer from "@/components/Footer";
-import { useReveal } from "@/hooks/use-reveal";
+import { revealFrom, useReveal } from "@/hooks/use-reveal";
 import { partners, type Partner } from "@/lib/partners-data";
 import { heroIntro } from "@/lib/motion";
 
 const CONTACT_EMAIL = "bridgefinancenetwork@gmail.com";
 
 function PartnerRow({ partner, index }: { partner: Partner; index: number }) {
-  const { ref, isVisible } = useReveal(0.2);
+  const { ref } = useReveal(0.2);
   const logoOnRight = index % 2 === 1;
 
   return (
     <section
       ref={ref}
-      className={`border-t border-border py-8 transition-all duration-700 md:py-10 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      }`}
+      data-reveal-root
+      data-reveal
+      style={revealFrom("translateY(2rem)")}
+      className="translate-y-0 border-t border-border py-8 opacity-100 transition-all duration-700 md:py-10"
     >
       <div className="container">
         <div

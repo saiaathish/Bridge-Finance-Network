@@ -76,8 +76,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${figtree.variable} ${ebGaramond.variable} ${ebGaramondItalic.variable} ${jetbrainsMono.variable}`}
+      // The head script adds `js` before first paint. That class is not in
+      // the server markup, so suppress the attribute mismatch on <html>.
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
         {/* Fillout embed — turns [data-fillout-embed-type="popup"] elements

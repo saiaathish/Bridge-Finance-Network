@@ -1,13 +1,14 @@
 "use client"
 
-import { useReveal } from "@/hooks/use-reveal"
+import { revealFrom, useReveal } from "@/hooks/use-reveal"
 
 export function AboutSection() {
-  const { ref, isVisible } = useReveal(0.3)
+  const { ref } = useReveal(0.3)
 
   return (
     <section
       ref={ref}
+      data-reveal-root
       className="w-full overflow-x-clip px-6 py-20 md:px-12 md:py-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
@@ -15,8 +16,9 @@ export function AboutSection() {
           {/* Left side - Narrative */}
           <div>
             <div
-              className={`mb-6 transition-all duration-700 md:mb-10 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
-                }`}
+              data-reveal
+              style={revealFrom("translateY(-3rem)")}
+              className="mb-6 translate-y-0 opacity-100 transition-all duration-700 md:mb-10"
             >
               <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
                 Made by students, brought to students.
@@ -24,9 +26,9 @@ export function AboutSection() {
             </div>
 
             <div
-              className={`space-y-4 transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              style={{ transitionDelay: "200ms" }}
+              data-reveal
+              className="translate-y-0 space-y-4 opacity-100 transition-all duration-700"
+              style={revealFrom("translateY(2rem)", { transitionDelay: "200ms" })}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 BFN is a hub that centralizes resources for ambitious students interested in finance, offering a structured pathway for students at any experience level. Members go beyond studying curriculums by learning from industry professionals, joining cohorts, discovering opportunities through our partners, and completing specialized tracks built around their goals.
@@ -66,22 +68,16 @@ export function AboutSection() {
                 direction: "right",
               },
             ].map((item, i) => {
-              const getRevealClass = () => {
-                if (!isVisible) {
-                  return item.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
-                }
-                return "translate-x-0 opacity-100"
-              }
-
               return (
                 <div
                   key={i}
-                  className={`group border-l border-foreground/30 pl-4 transition-all duration-700 hover:border-foreground/60 md:pl-8 ${getRevealClass()}`}
-                  style={{
+                  data-reveal
+                  className="group translate-x-0 border-l border-foreground/30 pl-4 opacity-100 transition-all duration-700 hover:border-foreground/60 md:pl-8"
+                  style={revealFrom(item.direction === "left" ? "translateX(-4rem)" : "translateX(4rem)", {
                     transitionDelay: `${300 + i * 150}ms`,
                     marginLeft: i % 2 === 0 ? "0" : "auto",
                     maxWidth: i % 2 === 0 ? "100%" : "90%",
-                  }}
+                  })}
                 >
                   <div className="mb-1 flex items-center gap-3">
                     <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
