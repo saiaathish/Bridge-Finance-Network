@@ -37,12 +37,12 @@ export function ResourcesSection() {
           </span>
         </div>
 
-        <h2
+        <h1
           style={delay(100)}
           className={`${revealClass} mt-5 font-display text-4xl font-medium tracking-tight text-foreground md:text-6xl lg:text-7xl`}
         >
           The BFN Resource Hub
-        </h2>
+        </h1>
 
         <p
           style={delay(200)}

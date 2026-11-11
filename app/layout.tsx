@@ -2,11 +2,29 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
+import { getSiteUrl, openGraphDefaults, siteOgImage } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Bridge Finance Network",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: "Bridge Finance Network",
+    template: "%s | Bridge Finance Network",
+  },
   description:
     "BFN: a finance education project fiscally sponsored by FMW Nonprofit Solutions (a 501(c)(3) tax-exempt organization).",
+  // "./" resolves against the current pathname, so every route gets its own canonical.
+  alternates: {
+    canonical: "./",
+  },
+  openGraph: {
+    ...openGraphDefaults,
+    // "./" resolves against the current pathname, same as the canonical.
+    url: "./",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [siteOgImage.url],
+  },
 };
 
 export default function RootLayout({
