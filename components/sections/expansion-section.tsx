@@ -31,7 +31,7 @@ export function ExpansionSection() {
             className={`${revealClass} mt-6 max-w-[700px] text-base leading-relaxed text-foreground/80 md:text-lg`}
           >
             BFN&apos;s student community now reaches more than 140 cities across 16 countries. Each dot
-            represents one BFN member, and every new member brings us closer to making finance
+            marks where our members are, and every new member brings us closer to making finance
             education and opportunity accessible to students everywhere.
           </p>
         </div>
