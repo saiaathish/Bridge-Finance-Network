@@ -13,6 +13,15 @@ export function prefersReducedMotion(): boolean {
 }
 
 /**
+ * Park targets at the hero-intro start pose before a later tween.
+ * Call from useLayoutEffect so JS still animates from that pose, while the
+ * markup itself stays visible with no JS and in the server HTML.
+ */
+export function holdForIntro(targets: gsap.TweenTarget) {
+  gsap.set(targets, { y: 24, autoAlpha: 0 })
+}
+
+/**
  * Page-load hero intro: headline + subhead fade up. One shot only.
  * Pass the elements in visual order; they stagger 0.08s.
  */

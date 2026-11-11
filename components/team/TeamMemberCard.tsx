@@ -10,7 +10,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
     <div
       data-card
-      className="gsap-hidden hover-wiggle group flex w-full flex-col items-center rounded-xl border border-border bg-white p-8 text-center transition-colors duration-150 hover:border-muted-foreground"
+      className="hover-wiggle group flex w-full flex-col items-center rounded-xl border border-border bg-white p-8 text-center transition-colors duration-150 hover:border-muted-foreground"
     >
       {showPhoto && (
         <div
@@ -40,7 +40,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
       )}
 
       {member.rank && (
-        <span className={`font-mono text-[11px] font-semibold uppercase tracking-wider text-signal ${showPhoto ? "mt-4" : ""}`}>
+        <span className={`font-mono text-[11px] font-semibold uppercase tracking-wider text-[#153B63] ${showPhoto ? "mt-4" : ""}`}>
           {member.rank}
         </span>
       )}
@@ -54,7 +54,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
       </h3>
       {/* Skip the title line when it's just a restatement of the rank badge above it. */}
       {member.title && member.title !== member.rank && (
-        <p className="mt-1 text-sm font-semibold text-signal">{member.title}</p>
+        <p className="mt-1 text-sm font-semibold text-[#153B63]">{member.title}</p>
       )}
       {member.school && <p className="mt-1 text-sm text-muted-foreground">{member.school}</p>}
 
@@ -81,10 +81,10 @@ export function CompactMemberCard({ member }: { member: TeamMember }) {
   return (
     <div
       data-card
-      className="gsap-hidden flex w-full flex-col items-center justify-center rounded-xl border border-border bg-white px-3 py-4 text-center transition-colors sm:px-4 sm:py-5 duration-150 hover:border-muted-foreground"
+      className="flex w-full flex-col items-center justify-center rounded-xl border border-border bg-white px-3 py-4 text-center transition-colors sm:px-4 sm:py-5 duration-150 hover:border-muted-foreground"
     >
       {member.rank && (
-        <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-signal">
+        <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#153B63]">
           {member.rank}
         </span>
       )}
@@ -92,7 +92,7 @@ export function CompactMemberCard({ member }: { member: TeamMember }) {
         {member.name}
       </h3>
       {member.title && member.title !== member.rank && (
-        <p className="mt-0.5 text-sm font-semibold text-signal">{member.title}</p>
+        <p className="mt-0.5 text-sm font-semibold text-[#153B63]">{member.title}</p>
       )}
       {member.school && <p className="mt-0.5 text-xs leading-snug text-muted-foreground sm:text-sm">{member.school}</p>}
     </div>

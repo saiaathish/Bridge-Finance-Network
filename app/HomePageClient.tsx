@@ -8,7 +8,7 @@ import { MagneticButton } from "@/components/magnetic-button";
 import { HomeHeader } from "@/components/HomeHeader";
 import Footer from "@/components/Footer";
 import { APPLICATION_URL } from "@/lib/constants";
-import { heroIntro, heroSkyParallax, statCounter, typewriter } from "@/lib/motion";
+import { heroIntro, heroSkyParallax, holdForIntro, statCounter, typewriter } from "@/lib/motion";
 import { DollarSign, GraduationCap, Handshake, LayoutGrid, Users } from "lucide-react";
 import { useRef, useEffect, useLayoutEffect, useState } from "react";
 
@@ -86,7 +86,7 @@ function TypewriterHeadline({ onDone }: { onDone: () => void }) {
               aria-hidden="true"
             >
               {part.text.split("").map((char, ci) => (
-                <span key={ci} data-char className="gsap-hidden">
+                <span key={ci} data-char>
                   {char === " " ? " " : char}
                 </span>
               ))}
@@ -277,10 +277,11 @@ export default function Home() {
   const [activeKey, setActiveKey] = useState("hero");
 
   // Badge fades up immediately; subhead/CTAs/logo carousel follow once the
-  // typewriter headline finishes. useLayoutEffect: runs before paint so
-  // there is no visible-then-hidden flash.
+  // typewriter headline finishes. The from-pose is set here, on mount, so
+  // the markup stays visible without JS and the intro still plays with JS.
   useLayoutEffect(() => {
     if (!heroRef.current) return;
+    holdForIntro(heroRef.current.querySelectorAll("[data-hero-item]"));
     const tween = heroIntro(
       heroRef.current.querySelectorAll("[data-hero-lead]")
     );
@@ -361,7 +362,7 @@ export default function Home() {
         <div ref={heroRef} className="relative mx-auto w-full max-w-7xl">
           <div
             data-hero-lead
-            className="gsap-hidden mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5"
+            className="mb-4 inline-block rounded-lg border border-border bg-card px-4 py-1.5"
           >
             <p className="font-mono text-xs text-muted-foreground">
               STUDENT-LED FINANCE EDUCATION PROJECT
@@ -372,7 +373,7 @@ export default function Home() {
 
           <p
             data-hero-item
-            className="gsap-hidden mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             <span className="text-pretty">
               Student-led finance education, opportunities, and community. BFN
@@ -382,7 +383,7 @@ export default function Home() {
           </p>
           <div
             data-hero-item
-            className="gsap-hidden mb-12 flex flex-col gap-4 sm:flex-row sm:items-center"
+            className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
             <MagneticButton
               size="lg"
@@ -401,7 +402,7 @@ export default function Home() {
           </div>
 
           {/* Industry-professional logo carousel inside the hero */}
-          <div data-hero-item className="gsap-hidden">
+          <div data-hero-item>
             <IndustryLogoMarquee />
           </div>
         </div>

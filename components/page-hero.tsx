@@ -1,6 +1,6 @@
 "use client"
 
-import { heroIntro, typewriter } from "@/lib/motion"
+import { heroIntro, holdForIntro, typewriter } from "@/lib/motion"
 import { useLayoutEffect, useRef, useState } from "react"
 
 interface PageHeroProps {
@@ -28,6 +28,7 @@ export function PageHero({ kicker, title, accent, subtitle, children, divider = 
   useLayoutEffect(() => {
     const root = rootRef.current
     if (!root || !headingRef.current) return
+    holdForIntro(root.querySelectorAll("[data-hero-item]"))
     const tweens = [
       heroIntro(root.querySelectorAll("[data-hero-lead]")),
       typewriter(headingRef.current, {
@@ -51,7 +52,7 @@ export function PageHero({ kicker, title, accent, subtitle, children, divider = 
       <section className="hero-fade relative overflow-hidden pt-36 pb-20">
         <div className="sky-beam pointer-events-none absolute bottom-0 right-0 top-0 w-full md:w-[55%]" />
         <div ref={rootRef} className="container relative">
-          <span data-hero-lead className="gsap-hidden inline-block font-mono text-signal text-sm font-semibold uppercase tracking-wider mb-4">
+          <span data-hero-lead className="inline-block font-mono text-signal text-sm font-semibold uppercase tracking-wider mb-4">
             {kicker}
           </span>
           <h1
@@ -62,7 +63,7 @@ export function PageHero({ kicker, title, accent, subtitle, children, divider = 
             {words.map((word, wi) => (
               <span key={wi} className={word === accent ? "accent-word" : undefined} aria-hidden="true">
                 {word.split("").map((char, ci) => (
-                  <span key={ci} data-char className="gsap-hidden">
+                  <span key={ci} data-char>
                     {char}
                   </span>
                 ))}
@@ -71,12 +72,12 @@ export function PageHero({ kicker, title, accent, subtitle, children, divider = 
             ))}
           </h1>
           {subtitle && (
-            <p data-hero-item className="gsap-hidden text-lg text-muted-foreground max-w-2xl">
+            <p data-hero-item className="text-lg text-muted-foreground max-w-2xl">
               {subtitle}
             </p>
           )}
           {children && (
-            <div data-hero-item className="gsap-hidden mt-6">
+            <div data-hero-item className="mt-6">
               {children}
             </div>
           )}
