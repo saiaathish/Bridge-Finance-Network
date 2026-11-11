@@ -16,20 +16,14 @@ export const openGraphDefaults: NonNullable<Metadata["openGraph"]> = {
   images: [siteOgImage],
 };
 
-/**
- * Origin for metadataBase, canonical URLs, sitemap.xml, and robots.txt.
- *
- * No production domain is recorded in this repo (README, package.json,
- * vercel.json, or in-app links). Set NEXT_PUBLIC_SITE_URL to the live
- * origin, with no trailing slash. The localhost value is a development
- * placeholder so metadata stays valid when the variable is unset.
- */
-const FALLBACK_SITE_URL = "http://localhost:3000";
+/** Production origin. NEXT_PUBLIC_SITE_URL overrides this when set. */
+const DEFAULT_SITE_URL = "https://www.bridgefinance.network";
 
+/** Origin for metadataBase, canonical URLs, sitemap.xml, and robots.txt. */
 export function getSiteUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   const value =
-    configured && configured.length > 0 ? configured : FALLBACK_SITE_URL;
+    configured && configured.length > 0 ? configured : DEFAULT_SITE_URL;
   return value.replace(/\/+$/, "");
 }
 
