@@ -78,7 +78,7 @@ const cardMembers: TeamMember[] = [
     photo: "/team/emily-tai.png",
     category: "C-Suite",
     description: [
-      "Emily is a rising senior at Brooklyn Technical High School with a passion for finance and organizational management.",
+      "Emily is a senior at Brooklyn Technical High School with a passion for finance and organizational management.",
       "At BFN, she oversees all fundraising and budgeting, ensuring the organization has the financial foundation to grow and serve its members.",
     ],
   },
@@ -89,7 +89,7 @@ const cardMembers: TeamMember[] = [
     photo: "/team/sai-karthik.png",
     category: "C-Suite",
     description: [
-      "Sai is a rising senior at Marquette High School with deep experience in artificial intelligence and technical systems.",
+      "Sai is a senior at Marquette High School with deep experience in artificial intelligence and technical systems.",
       "At BFN, he leads platform architecture and engineering, building the technical infrastructure that gives students a seamless, powerful experience.",
     ],
   },
