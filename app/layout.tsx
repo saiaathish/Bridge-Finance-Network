@@ -1,8 +1,48 @@
 import type { Metadata } from "next";
+import { EB_Garamond, Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { getSiteUrl, openGraphDefaults, siteOgImage } from "@/lib/site";
+
+// Same faces the previous Google stylesheet requested. Weights stay limited
+// to those files so heavier weights (Figtree 700, JetBrains Mono 600) keep
+// the browser's existing synthetic bold instead of a newly loaded cut.
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: "normal",
+  display: "swap",
+  variable: "--font-figtree",
+  fallback: ["system-ui", "sans-serif"],
+});
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: "normal",
+  display: "swap",
+  variable: "--font-eb-garamond",
+  fallback: ["Georgia", "serif"],
+});
+
+const ebGaramondItalic = EB_Garamond({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  display: "swap",
+  variable: "--font-eb-garamond-italic",
+  fallback: ["Georgia", "serif"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: "normal",
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  fallback: ["ui-monospace", "monospace"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -33,15 +73,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${figtree.variable} ${ebGaramond.variable} ${ebGaramondItalic.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <Providers>{children}</Providers>
         {/* Fillout embed — turns [data-fillout-embed-type="popup"] elements
