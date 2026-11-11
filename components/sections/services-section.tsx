@@ -101,7 +101,7 @@ function ProgramCard({ program, index }: { program: Program; index: number }) {
                       {part.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="whitespace-nowrap rounded-full bg-signal/10 px-2.5 py-0.5 text-[11px] font-medium text-signal"
+                          className="whitespace-nowrap rounded-full bg-[#153B63]/10 px-2.5 py-0.5 text-[11px] font-medium text-[#153B63]"
                         >
                           {tag}
                         </span>

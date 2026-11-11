@@ -344,6 +344,14 @@
   }
 }
 
+/* One frame of the useReveal hide, so it does not fade out before the
+   scroll reveal. Removed as soon as the hidden pose has painted. */
+html.reveal-instant *,
+html.reveal-instant *::before,
+html.reveal-instant *::after {
+  transition: none !important;
+}
+
 /* Fixed header is 72px. Keep in-page hash targets below it. */
 #about,
 #programs,
