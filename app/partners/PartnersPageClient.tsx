@@ -140,7 +140,7 @@ export default function PartnersPage() {
               className="mt-16 rounded-2xl border border-border bg-card px-8 py-12 text-center md:mt-20 md:px-16 md:py-16"
             >
               <h2 data-header-item className="gsap-hidden font-display text-3xl font-medium leading-tight text-foreground md:text-4xl">
-                Want to join the <span className="accent-word">Partners?</span>
+                Want to become a <span className="accent-word">Partner?</span>
               </h2>
               <p data-header-item className="gsap-hidden mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 Whether you&apos;re a student organization, nonprofit, company, educator, or community organization, we&apos;d love to hear what you&apos;re working on and explore how we could collaborate.
