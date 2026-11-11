@@ -36,10 +36,10 @@ export default function GuestSpeakersPage() {
         <section className="pt-32 pb-20 md:pt-36 md:pb-24">
           <div className="container">
             <div ref={headerRef} className="mb-10 max-w-2xl md:mb-12">
-              <h1 data-header-item className="gsap-hidden font-display text-4xl font-medium leading-tight text-foreground md:text-5xl">
+              <h1 data-header-item className="font-display text-4xl font-medium leading-tight text-foreground md:text-5xl">
                 Guest <span className="accent-word">Speakers</span>
               </h1>
-              <p data-header-item className="gsap-hidden mt-4 text-lg text-muted-foreground">
+              <p data-header-item className="mt-4 text-lg text-muted-foreground">
                 Hear from industry professionals across various fields of finance.
               </p>
             </div>
@@ -49,7 +49,7 @@ export default function GuestSpeakersPage() {
                 <div
                   key={speaker.id}
                   data-card
-                  className="gsap-hidden flex flex-col rounded-xl border border-border bg-white p-6 transition-colors duration-150 hover:border-muted-foreground"
+                  className="flex flex-col rounded-xl border border-border bg-white p-6 transition-colors duration-150 hover:border-muted-foreground"
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-card">
@@ -68,7 +68,7 @@ export default function GuestSpeakersPage() {
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-sans text-lg font-semibold text-foreground">{speaker.name}</h3>
-                      <p className="mt-1 text-sm font-semibold text-signal">{speaker.title}</p>
+                      <p className="mt-1 text-sm font-semibold text-[#153B63]">{speaker.title}</p>
                       <p className="text-sm text-muted-foreground">{speaker.organization}</p>
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export default function GuestSpeakersPage() {
                       {speaker.tags.map(tag => (
                         <span
                           key={tag}
-                          className="rounded-full bg-signal/10 px-3 py-1 text-xs font-medium text-signal"
+                          className="rounded-full bg-signal/10 px-3 py-1 text-xs font-medium text-[#153B63]"
                         >
                           {tag}
                         </span>

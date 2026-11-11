@@ -11,10 +11,10 @@ interface TeamTabsProps<T extends string> {
 }
 
 /**
- * Horizontally scrollable pill tablist. Implements the WAI-ARIA tabs
- * pattern with roving tabindex and arrow-key navigation; activation is
- * automatic (moving focus selects the tab), matching how the rest of the
- * site treats hover/click state as immediate feedback.
+ * Wrapping pill tablist. Implements the WAI-ARIA tabs pattern with roving
+ * tabindex and arrow-key navigation; activation is automatic (moving focus
+ * selects the tab), matching how the rest of the site treats hover/click
+ * state as immediate feedback.
  */
 export function TeamTabs<T extends string>({ categories, active, onChange, idPrefix }: TeamTabsProps<T>) {
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -53,7 +53,7 @@ export function TeamTabs<T extends string>({ categories, active, onChange, idPre
     <div
       role="tablist"
       aria-label="Team categories"
-      className="no-scrollbar -mx-6 mb-10 flex gap-2 overflow-x-auto px-6 md:mx-0 md:flex-wrap md:px-0"
+      className="mb-10 flex flex-wrap gap-2"
     >
       {categories.map((category, index) => {
         const isActive = category === active;

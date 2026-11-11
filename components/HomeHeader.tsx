@@ -58,7 +58,24 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
+  // Hover opens the menu, and the click that follows would otherwise toggle
+  // it straight shut. A click or keyboard activation pins it open.
+  const [morePinned, setMorePinned] = useState(false)
   const moreRef = useRef<HTMLDivElement>(null)
+  const moreButtonRef = useRef<HTMLButtonElement>(null)
+  const moreLinkRefs = useRef<Array<HTMLAnchorElement | null>>([])
+
+  const closeMore = () => {
+    setMoreOpen(false)
+    setMorePinned(false)
+  }
+
+  const focusMoreLink = (index: number) => {
+    const links = moreLinkRefs.current.filter((link): link is HTMLAnchorElement => link !== null)
+    if (links.length === 0) return
+    const next = (index + links.length) % links.length
+    links[next]?.focus()
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -72,19 +89,31 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
   useEffect(() => {
     setMenuOpen(false)
     setMoreOpen(false)
+    setMorePinned(false)
   }, [pathname])
 
-  // Close the "More" dropdown on an outside click, so click-to-open
-  // (touch/keyboard) has a matching click-to-close.
+  // Outside click and Escape close a pinned or hovered menu. Escape is
+  // ignored unless this menu is open, so other popups keep their own keys.
   useEffect(() => {
     if (!moreOpen) return
     const onClickOutside = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
         setMoreOpen(false)
+        setMorePinned(false)
       }
     }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return
+      setMoreOpen(false)
+      setMorePinned(false)
+      moreButtonRef.current?.focus()
+    }
     document.addEventListener("mousedown", onClickOutside)
-    return () => document.removeEventListener("mousedown", onClickOutside)
+    document.addEventListener("keydown", onKey)
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside)
+      document.removeEventListener("keydown", onKey)
+    }
   }, [moreOpen])
 
   const isMoreActive = MORE_NAV_ITEMS.some(item => pathname === item.href)
@@ -151,12 +180,36 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
           ref={moreRef}
           className="relative"
           onMouseEnter={() => setMoreOpen(true)}
-          onMouseLeave={() => setMoreOpen(false)}
+          onMouseLeave={() => {
+            if (!morePinned) setMoreOpen(false)
+          }}
         >
           <button
+            ref={moreButtonRef}
             type="button"
-            onClick={() => setMoreOpen(open => !open)}
             aria-expanded={moreOpen}
+            aria-haspopup="true"
+            aria-controls="more-menu"
+            onClick={(event) => {
+              if (morePinned) {
+                closeMore()
+                return
+              }
+              setMoreOpen(true)
+              setMorePinned(true)
+              // detail 0 is a keyboard click (Enter/Space). Move focus into the menu.
+              if (event.detail === 0) {
+                requestAnimationFrame(() => focusMoreLink(0))
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowDown") {
+                event.preventDefault()
+                setMoreOpen(true)
+                setMorePinned(true)
+                requestAnimationFrame(() => focusMoreLink(0))
+              }
+            }}
             className={`group relative flex items-center gap-1 font-sans text-sm font-semibold transition-colors duration-150 ${
               isMoreActive || moreOpen ? "text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}
@@ -167,18 +220,38 @@ export function HomeHeader({ activeKey, onNavigate }: HomeHeaderProps) {
             />
             <span
               className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-150 ${
-                isMoreActive ? "w-full" : "w-0 group-hover:w-full"
+                isMoreActive || moreOpen ? "w-full" : "w-0 group-hover:w-full"
               }`}
             />
           </button>
 
-          <div className={`absolute left-0 top-full pt-2 ${moreOpen ? "block" : "hidden"}`}>
-            <div className="min-w-[180px] rounded-xl border border-border bg-card p-2 shadow-sm">
-              {MORE_NAV_ITEMS.map(item => (
+          <div id="more-menu" className={`absolute left-0 top-full z-50 pt-2 ${moreOpen ? "block" : "hidden"}`}>
+            <div
+              className="min-w-[180px] rounded-xl border border-border bg-card p-2 shadow-sm"
+              onKeyDown={(event) => {
+                const links = moreLinkRefs.current.filter((link): link is HTMLAnchorElement => link !== null)
+                const index = links.findIndex((link) => link === document.activeElement)
+                if (event.key === "ArrowDown") {
+                  event.preventDefault()
+                  focusMoreLink(index + 1)
+                } else if (event.key === "ArrowUp") {
+                  event.preventDefault()
+                  focusMoreLink(index < 0 ? links.length - 1 : index - 1)
+                } else if (event.key === "Escape") {
+                  event.preventDefault()
+                  closeMore()
+                  moreButtonRef.current?.focus()
+                }
+              }}
+            >
+              {MORE_NAV_ITEMS.map((item, index) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMoreOpen(false)}
+                  ref={(element) => {
+                    moreLinkRefs.current[index] = element
+                  }}
+                  onClick={() => closeMore()}
                   className={`block rounded-lg px-3 py-2 font-sans text-sm font-semibold transition-colors duration-150 ${
                     pathname === item.href
                       ? "text-foreground"

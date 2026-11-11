@@ -1,9 +1,12 @@
 "use client"
 
-import type { ReactNode } from "react"
+import { useEffect, type ReactNode } from "react"
+import { usePathname } from "next/navigation"
 import { Mail, ArrowUpRight } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
+
+const FILLOUT_EMBED_SRC = "https://server.fillout.com/embed/v1/"
 
 const CONTACT_EMAIL = "bridgefinancenetwork@gmail.com"
 const TEAM_DESCRIPTIONS_URL =
@@ -63,6 +66,21 @@ const APPLICATION_CARDS: ApplicationCard[] = [
 
 export function ContactSection() {
   const { ref, isVisible } = useReveal(0.3)
+  const pathname = usePathname()
+
+  // The layout script boots Fillout once, so it only binds popup buttons
+  // that exist on the first load. These buttons remount after a client
+  // navigation. Loading the embed again picks up any that are not yet
+  // marked data-fillout-initialized, and leaves ones that already are.
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = FILLOUT_EMBED_SRC
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      script.remove()
+    }
+  }, [pathname])
 
   return (
     <section

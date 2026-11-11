@@ -257,13 +257,6 @@
     animation: skyDrift 60s linear infinite alternate;
   }
 
-  /* Hidden-before-GSAP state: applied in JSX so animated elements are
-     invisible on first paint; GSAP flips visibility as its first act. */
-  .gsap-hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-
   /* Deliberate cinematic opening on the hero container */
   .hero-fade {
     animation: fadeIn 0.3s ease-out both;
@@ -343,6 +336,20 @@
 @keyframes industryLogoMarquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-logo-marquee-track {
+    animation: none;
+  }
+}
+
+/* Fixed header is 72px. Keep in-page hash targets below it. */
+#about,
+#programs,
+#expansion,
+#contact {
+  scroll-margin-top: 72px;
 }
 
 /* Hover micro-interactions */

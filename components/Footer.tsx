@@ -2,11 +2,11 @@ export default function Footer() {
   return (
     <footer className="bg-card border-t border-border text-muted-foreground">
       <div className="container py-16">
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-xs text-muted-foreground">
-            &copy; 2025 Bridge Finance Network · Fiscally sponsored by FMW Nonprofit Solutions (501(c)(3) tax-exempt organization). All rights reserved.
+        <div className="flex w-full flex-col items-center justify-between gap-4 md:flex-row md:flex-wrap">
+          <p className="max-w-full text-center text-xs text-muted-foreground md:text-left">
+            &copy; {new Date().getFullYear()} Bridge Finance Network · Fiscally sponsored by FMW Nonprofit Solutions (501(c)(3) tax-exempt organization). All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex w-max max-w-full shrink-0 items-center gap-4">
             <a
               href="https://www.linkedin.com/company/bridge-finance-network/"
               target="_blank"
@@ -31,7 +31,7 @@ export default function Footer() {
             </a>
             <a
               href="mailto:bridgefinancenetwork@gmail.com"
-              className="text-muted-foreground hover:text-signal transition-colors text-xs"
+              className="whitespace-nowrap text-xs text-muted-foreground transition-colors hover:text-signal"
             >
               bridgefinancenetwork@gmail.com
             </a>

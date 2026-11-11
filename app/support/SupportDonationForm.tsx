@@ -53,6 +53,7 @@ export function SupportDonationForm() {
     >
       <div className={`${styles.donationForm} ${isReady ? styles.donationFormReady : styles.donationFormPending}`}>
         <div
+          role="region"
           aria-label="Givebutter donation form for Bridge Finance Network"
           dangerouslySetInnerHTML={{
             __html: '<givebutter-widget id="pEZRrA" align="center"></givebutter-widget>',
