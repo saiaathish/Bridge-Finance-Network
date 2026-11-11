@@ -5,9 +5,9 @@ import { SupportDonationForm } from "./SupportDonationForm";
 import styles from "./support.module.css";
 
 export const metadata: Metadata = {
-  title: "Support BFN | Bridge Finance Network",
+  title: "Support BFN",
   description:
-    "Be part of BFN's mission by helping high school students turn ambition into opportunity through support for finance education and career preparation.",
+    "Support the next generation of finance. Donations help expand access to real-world finance education, mentors, and educational resources and programming.",
 };
 
 export default function SupportPage() {

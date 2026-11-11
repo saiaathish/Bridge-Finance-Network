@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import { ResourcesSection } from "@/components/sections/resources-section";
 
 export const metadata: Metadata = {
-  title: "Resources | Bridge Finance Network",
+  title: "Resources",
   description:
-    "The BFN Resource Hub: internships, summer programs, scholarships, competitions, networking events, courses, career prep, and more in one place.",
+    "The BFN Resource Hub brings together internship opportunities, summer programs, scholarships, finance competitions, networking events, virtual courses, and career preparation materials in one place.",
 };
 
 export default function ResourcesPage() {
